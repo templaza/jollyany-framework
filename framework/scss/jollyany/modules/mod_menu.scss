@@ -1,0 +1,54 @@
+.sidebar {
+  .menu-module.nav {
+    >li {
+      margin: 0 0 3px;
+      >a {
+        padding: 10px 15px;
+        border: 1px solid darken($border-color, 2%);
+        border-radius: 0;
+        display: block;
+        color: $colorBlack;
+        &:hover, &:focus {
+          background-color: $colorMain;
+          color: $colorWhite;
+          border-color: $colorMain;
+        }
+      }
+      &.active {
+        >a {
+          background-color: $colorMain;
+          color: $colorWhite;
+          border-color: $colorMain;
+        }
+      }
+
+    }
+  }
+}
+.jollyany-dropdownmenu {
+  a {
+    color: inherit;
+  }
+  .dropdown-menu {
+    z-index: 1001;
+    li {
+      padding: 0.3rem 1rem;
+      display: block;
+    }
+  }
+}
+.jollyany-menu {
+  a {
+    color: inherit;
+  }
+  .navVerticalView li {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    &:first-child{
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

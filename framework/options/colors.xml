@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset icon="fa fa-paint-brush" label="ASTROID_OPTIONS_COLOURS" name="astroid_colours" addfieldpath="/libraries/astroid/framework/fields" order="3">
+			<field type="astroidgroup" name="footer_group" title="TPL_JOLLYANY_FOOTER_LABEL" description="TPL_JOLLYANY_FOOTER_COLOR_DESC"/>
+			<field astroidgroup="body" name="body_heading_color" type="astroidcolor" large="true" label="TPL_ASTROID_HEADING_COLOR_LABEL" description="TPL_ASTROID_HEADING_COLOR_DESC">
+			</field>
+			<field astroidgroup="body" name="body_meta_color" type="astroidcolor" large="true" label="TPL_ASTROID_META_COLOR_LABEL" description="TPL_ASTROID_META_COLOR_DESC">
+			</field>
+			<field astroidgroup="body" description="TPL_JOLLYANY_BACKGROUND_IMAGE_DESC" name="body_background_image" type="astroidmedia" label="TPL_JOLLYANY_BACKGROUND_IMAGE_LABEL">
+			</field>
+			<field astroidgroup="header_colors" name="header_heading_color" type="astroidcolor" large="true" label="TPL_ASTROID_HEADING_COLOR_LABEL" description="TPL_ASTROID_HEADING_COLOR_DESC">
+			</field>
+			<field astroidgroup="header_colors" name="header_link_color" type="astroidcolor" large="true" label="TPL_ASTROID_LINK_COLOR_LABEL" description="TPL_ASTROID_BODY_LINK_COLOR_DESC">
+			</field>
+			<field astroidgroup="header_colors" name="header_link_hover_color" type="astroidcolor" large="true" label="TPL_ASTROID_LINK_HOVER_COLOR_LABEL" description="TPL_ASTROID_BODY_LINK_HOVER_COLOR_DESC">
+			</field>
+			<field astroidgroup="sticky_header" name="sticky_off_canvas_button_color" type="astroidcolor" large="true" label="TPL_ASTROID_OFFCANVAS_BUTTON_COLOR_LABEL" description="TPL_ASTROID_OFFCANVAS_BUTTON_COLOR_DESC">
+			</field>
+			<field astroidgroup="footer_group" name="footer_background_color" type="astroidcolor" large="true" label="TPL_ASTROID_BACKGROUND_COLOR_LABEL" description="TPL_JOLLYANY_FOOTER_BACKGROUND_COLOR_DESC">
+			</field>
+			<field astroidgroup="footer_group" name="footer_text_color" type="astroidcolor" large="true" label="TPL_ASTROID_TEXT_COLOR_LABEL" description="TPL_ASTROID_BODY_TEXT_COLOR_DESC">
+			</field>
+			<field astroidgroup="footer_group" name="footer_heading_color" type="astroidcolor" large="true" label="TPL_ASTROID_HEADING_COLOR_LABEL" description="TPL_ASTROID_HEADING_COLOR_DESC">
+			</field>
+			<field astroidgroup="footer_group" name="footer_link_color" type="astroidcolor" large="true" label="TPL_ASTROID_LINK_COLOR_LABEL" description="TPL_ASTROID_BODY_LINK_COLOR_DESC">
+			</field>
+			<field astroidgroup="footer_group" name="footer_link_hover_color" type="astroidcolor" large="true" label="TPL_ASTROID_LINK_HOVER_COLOR_LABEL" description="TPL_ASTROID_BODY_LINK_HOVER_COLOR_DESC">
+			</field>
+		</fieldset>
+	</fields>
+</form>

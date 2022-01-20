@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+   <fieldset name="jollyany_course_item" label="Section1" addfieldpath="/libraries/jollyany/framework/fields">
+      <field type="list" name="jollyany_lesson_type" label="JOLLYANY_CONTENT_TYPE" default="content">
+         <option value="section">Section</option>
+         <option value="content">Content</option>
+      </field>
+      <field type="text" name="lesson_section_title" label="JOLLYANY_LESSON_SECTION_TITLE" description="JOLLYANY_LESSON_SECTION_TITLE_DESC" showon="jollyany_lesson_type:section" />
+      <field type="text" name="lesson_content_title" label="JOLLYANY_LESSON_CONTENT_TITLE" description="JOLLYANY_LESSON_SECTION_TITLE_DESC" showon="jollyany_lesson_type:content" />
+      <field type="text" name="lesson_content_duration" label="JOLLYANY_LESSON_CONTENT_DURATION" description="JOLLYANY_LESSON_CONTENT_DURATION_DESC" showon="jollyany_lesson_type:content" />
+      <field type="list" name="jollyany_content_type" label="JOLLYANY_COURSE_CONTENT_TYPE" default="video" showon="jollyany_lesson_type:content">
+         <option value="video">Video</option>
+         <option value="embed">Embed</option>
+      </field>
+      <field type="text" name="lesson_content_video_url" label="JOLLYANY_LESSON_VIDEO_URL" description="JOLLYANY_LESSON_VIDEO_URL_DESC" showon="jollyany_lesson_type:content[AND]jollyany_content_type:video" />
+      <field name="lesson_content_embed" type="textarea" default="" label="JOLLYANY_LESSON_EMBED" description="" rows="10" cols="15" filter="raw" showon="jollyany_lesson_type:content[AND]jollyany_content_type:embed" />
+      <field name="jollyany_content_description" type="editor" label="JGLOBAL_DESCRIPTION" height="150px" description="" filter="safehtml" showon="jollyany_lesson_type:content" />
+      <field type="filelist" name="lesson_content_download_link" filter="pdf" fileFilter="pdf" directory="images" hide_none="true" label="JOLLYANY_LESSON_DOWNLOAD_LINK" description="JOLLYANY_LESSON_DOWNLOAD_LINK_DESC" showon="jollyany_lesson_type:content" />
+
+   </fieldset>
+</form>

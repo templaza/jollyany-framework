@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+   <fields name="params">
+      <fieldset label="COURSE_CATEGORY_OPTIONS_TITLE_LABEL" name="coursecategoryoptions">
+         <field type="radio" name="course_category_data" label="ENABLE_COURSE_DATA_OPTIONS" description="ENABLE_COURSE_DATA_OPTIONS_DESC" class="form-check-inline" default="">
+            <option value="">JGLOBAL_INHERIT</option>
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="textarea" name="course_category_contact_info" label="JOLLYANY_COURSE_CONTACT_INFO" description="JOLLYANY_COURSE_CONTACT_INFO_DESC" rows="10" cols="5" filter="raw" />
+         <field type="radio" name="show_course_lecture" label="SHOW_COURSE_LECTURE_OPTIONS" description="SHOW_COURSE_LECTURE_OPTIONS_DESC" class="form-check-inline" default="1">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+      </fieldset>
+      <fieldset label="JOLLYANY_EVENT_OPTIONS_TITLE_LABEL" name="eventcategoryoptions">
+         <field type="radio" name="event_category_data" label="ENABLE_EVENT_DATA_OPTIONS" description="ENABLE_EVENT_DATA_OPTIONS_DESC" class="form-check-inline" default="">
+            <option value="">JGLOBAL_INHERIT</option>
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="radio" name="jollyany_show_event_countdown" label="JOLLYANY_SHOW_EVENT_COUNTDOWN" description="JOLLYANY_SHOW_EVENT_COUNTDOWN_DESC" class="form-check-inline" default="0">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="radio" name="jollyany_show_event_location" label="JOLLYANY_SHOW_EVENT_LOCATION" description="JOLLYANY_SHOW_EVENT_LOCATION_DESC" class="form-check-inline" default="0">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="radio" name="jollyany_show_event_duration" label="JOLLYANY_SHOW_EVENT_DURATION" description="JOLLYANY_SHOW_EVENT_DURATION_DESC" class="form-check-inline" default="0">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="radio" name="jollyany_show_event_seats" label="JOLLYANY_SHOW_EVENT_SEATS" description="JOLLYANY_SHOW_EVENT_SEATS_DESC" class="form-check-inline" default="0">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+         <field type="radio" name="jollyany_show_event_phone" label="JOLLYANY_SHOW_EVENT_PHONE" description="JOLLYANY_SHOW_EVENT_PHONE_DESC" class="form-check-inline" default="0">
+            <option value="1">ASTROID_SHOW</option>
+            <option value="0">ASTROID_HIDE</option>
+         </field>
+      </fieldset>
+   </fields>
+</form>

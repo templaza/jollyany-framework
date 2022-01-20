@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+   <fields name="params">
+      <fieldset label="ASTROID_OPTIONS_BASIC" icon="fas fa-home" name="basic" addfieldpath="/libraries/astroid/framework/fields" order="1">
+         <field astroidgroup="preloader_options" description="TPL_JOLLYANY_BASIC_PRELOADER_LOGO_DESC" ngShow="preloader=='1'" name="preloader_logo" type="astroidmedia" label="TPL_JOLLYANY_BASIC_PRELOADER_LOGO_LABEL">
+         </field>
+      </fieldset>
+   </fields>
+</form>

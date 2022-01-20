@@ -1,0 +1,83 @@
+.astroid-nav {
+  .nav-stacked-logo {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.astroid-header-section header.astroid-stacked-divided-header {
+  .astroid-nav-wraper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+  input[type="image"] {
+    object-fit: contain;
+    padding: 0.375rem 0.8rem;
+  }
+}
+.astroid-sidebar-menu {
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    > ul {
+      width: 100%;
+    }
+    > .nav-item-caret, a {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media(max-width: 1600px) {
+    li {
+      a {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+.nav-submenu-static > li > a {
+  padding: 5px 15px;
+}
+.astroid-offcanvas {
+  .astroid-offcanvas-inner {
+    .moduletable {
+      margin-left: 0;
+      margin-right: 0;
+      .module-title {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+.nav-item-megamenu .nav-submenu{
+  .nav-submenu-static {
+    >li {
+      a {
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+      }
+    }
+  }
+}
+.cta-menu {
+  >a {
+    background-color: $colorMain !important;
+    border-color: $colorMain !important;
+    color: $dark !important;
+    border-radius: 3px;
+    &:hover {
+      background-color: lighten($colorMain, 10%) !important;
+      color: $dark !important;
+    }
+    &:focus {
+      color: $dark !important;
+    }
+  }
+}
