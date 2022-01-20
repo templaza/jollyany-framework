@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="attribs">
+        <fieldset label="JOLLYANY_COURSE_OPTIONS_TITLE_LABEL" name="jollyanycourseoptions" addfieldpath="/libraries/jollany/framework/fields">
+            <!-- Course Options -->
+            <field name="jollyany_course_lessons" type="subform" formsource="libraries/jollyany/framework/forms/lesson.xml" multiple="true" label="JOLLYANY_COURSE_LESSONS" />
+        </fieldset>
+
+        <fieldset label="JOLLYANY_EVENT_OPTIONS_TITLE_LABEL" name="jollyanyeventoptions" addfieldpath="/libraries/jollany/framework/fields">
+            <!-- Event Options -->
+            <field type="text" name="jollyany_event_location" label="JOLLYANY_EVENT_LOCATION" description="JOLLYANY_EVENT_LOCATION_DESC" />
+            <field type="text" name="jollyany_event_phone" label="JOLLYANY_EVENT_PHONE" description="JOLLYANY_EVENT_PHONE_DESC" />
+            <field name="jollyany_event_start" type="calendar" default="" label="JOLLYANY_EVENT_START" description=""
+                   class="input-medium" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
+                   singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
+                   filltable="true" minyear="-3" maxyear="5" />
+            <field name="jollyany_event_end" type="calendar" default="" label="JOLLYANY_EVENT_END" description=""
+                   class="input-medium" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
+                   singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
+                   filltable="true" minyear="-3" maxyear="5" />
+            <field type="text" name="jollyany_event_expired" label="JOLLYANY_EVENT_EXPIRED" description="JOLLYANY_EVENT_EXPIRED" />
+            <field type="text" name="jollyany_event_spot" label="JOLLYANY_EVENT_SPOT" description="JOLLYANY_EVENT_SPOT" />
+            <field type="text" name="jollyany_event_url" label="JOLLYANY_EVENT_URL" description="JOLLYANY_EVENT_URL" />
+            <field type="text" name="jollyany_event_url_text" label="JOLLYANY_EVENT_URL_TEXT" description="JOLLYANY_EVENT_URL_TEXT" />
+            <field type="text" name="jollyany_event_long_lat" label="JOLLYANY_EVENT_LONG_LAT" description="JOLLYANY_EVENT_LONG_LAT" />
+            <field name="event_multi_locations" type="subform" formsource="libraries/jollyany/framework/forms/location.xml" multiple="true" label="JOLLYANY_EVENT_LOCATIONS" />
+        </fieldset>
+    </fields>
+</form>

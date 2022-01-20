@@ -1,0 +1,22 @@
+#ed {
+  --si-root-font-size: 1rem;
+  --si-font-family: inherit;
+  .o-card {
+    box-shadow: 0 5px 15px rgb(0 0 0 / 8%);
+  }
+  .o-card--ed-badge, .o-card--ed-category, .o-card--ed-post-item {
+    background-color: var(--si-body);
+  }
+  .o-card__body {
+    padding: calc(var(--si-spacing)*1.5);
+  }
+  .o-card--ed-active-category, .o-card--ed-active-tag, .o-card--ed-dashboard-form, .o-card--ed-dashboard-item, .o-card--ed-edit-profile-item, .o-card--ed-empty-section, .o-card--ed-entry-item, .o-card--ed-forum-category, .o-card--ed-locked-section, .o-card--ed-notification-item, .o-card--ed-post-viewers, .o-card--ed-reply-login, .o-card--ed-subscriptions, .o-card--ed-subscriptions-post-item, .o-card--ed-user-item, .o-card--ed-user-profile {
+    background-color: var(--si-body);
+  }
+  .o-title {
+    font-size: var(--si-font-size--05);
+  }
+  .o-card--ed-reply-item, .o-card--ed-reply-item .o-card__body--entry-meta, .o-card--ed-reply-item .o-card__footer:last-child {
+    background-color: var(--si-body);
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fieldset name="jollyany_location_item" label="JOLLYANY_LOCATION" addfieldpath="/libraries/jollyany/framework/fields">
+        <field type="text" name="jollyany_location_long_lat" label="JOLLYANY_EVENT_LONG_LAT" description="JOLLYANY_EVENT_LONG_LAT" />
+        <field type="text" name="jollyany_location_infowindow" label="JOLLYANY_EVENT_INFO" description="JOLLYANY_EVENT_INFO" />
+    </fieldset>
+</form>

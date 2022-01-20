@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset label="JOLLYANY_HIKASHOP_LISTING_OPTIONS" name="jollyany_hikashop_listing_options">
+            <field type="radio" name="jollyany_hikashop_show_product_stock_count" label="JOLLYANY_HIKASHOP_SHOW_PRODUCT_STOCK_COUNT" class="form-check-inline" default="1">
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field type="radio" name="jollyany_hikashop_show_product_code" label="JOLLYANY_HIKASHOP_SHOW_PRODUCT_CODE" class="form-check-inline" default="">
+                <option value="">JGLOBAL_INHERIT</option>
+                <option value="1">JSHOW</option>
+                <option value="0">JHIDE</option>
+            </field>
+            <field type="number" name="jollyany_hikashop_description_limit" default="100" label="JOLLYANY_HIKASHOP_DESC_LIMIT" />
+            <field type="list" name="jollyany_hikashop_margin_bottom" label="JOLLYANY_HIKASHOP_MARGIN_BOTTOM" default="">
+                <option value="">Default</option>
+                <option value="small">Small</option>
+                <option value="large">Large</option>
+                <option value="xlarge">X-Large</option>
+                <option value="remove">Remove</option>
+            </field>
+        </fieldset>
+
+    </fields>
+</form>

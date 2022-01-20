@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+   <fields name="params">
+      <fieldset icon="fas fa-heading" label="ASTROID_OPTIONS_HEADER" name="astroid_header" addfieldpath="/libraries/astroid/framework/fields" order="2">
+         <field ngShow="header==true" astroidgroup="header_element" description="TPL_JOLLYANY_HEADER_EXTRA_DESC" title="TPL_JOLLYANY_HEADER_EXTRA" type="astroidheading" />
+         <field ngShow="header==true AND header_mode!='sidebar'" astroidgroup="header_element" name="header_absolute" type="astroidtext" astroid-switch="true" default="0" label="TPL_JOLLYANY_HEADER_OPTIONS_ABSOLUTE_LABEL" description="TPL_JOLLYANY_HEADER_OPTIONS_ABSOLUTE_DESC"></field>
+
+         <field astroidgroup="header_element" description="TPL_ASTROID_BASIC_SIDEBAR_COLLAPSED_LOGO_DESC" ngShow="header==true AND header_mode=='sidebar'" name="sidebar_logo" type="astroidmedia" label="TPL_ASTROID_BASIC_SIDEBAR_COLLAPSED_LOGO_LABEL">
+         </field>
+      </fieldset>
+   </fields>
+</form>

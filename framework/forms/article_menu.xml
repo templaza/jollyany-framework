@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset label="COURSE_CATEGORY_OPTIONS_TITLE_LABEL" name="coursecategoryoptions">
+            <field type="radio" name="jollyany_show_course_lecture" label="SHOW_COURSE_LECTURE_OPTIONS" description="SHOW_COURSE_LECTURE_OPTIONS_DESC" class="form-check-inline" default="0">
+                <option value="1">ASTROID_SHOW</option>
+                <option value="0">ASTROID_HIDE</option>
+            </field>
+        </fieldset>
+        <fieldset label="JOLLYANY_EVENT_OPTIONS_TITLE_LABEL" name="eventcategoryoptions">
+            <field type="radio" name="jollyany_show_event_location" label="JOLLYANY_SHOW_EVENT_LOCATION" description="JOLLYANY_SHOW_EVENT_LOCATION_DESC" class="form-check-inline" default="0">
+                <option value="1">ASTROID_SHOW</option>
+                <option value="0">ASTROID_HIDE</option>
+            </field>
+            <field type="radio" name="jollyany_show_event_duration" label="JOLLYANY_SHOW_EVENT_DURATION" description="JOLLYANY_SHOW_EVENT_DURATION_DESC" class="form-check-inline" default="0">
+                <option value="1">ASTROID_SHOW</option>
+                <option value="0">ASTROID_HIDE</option>
+            </field>
+            <field type="radio" name="jollyany_show_event_seats" label="JOLLYANY_SHOW_EVENT_SEATS" description="JOLLYANY_SHOW_EVENT_SEATS_DESC" class="form-check-inline" default="0">
+                <option value="1">ASTROID_SHOW</option>
+                <option value="0">ASTROID_HIDE</option>
+            </field>
+            <field type="radio" name="jollyany_show_event_phone" label="JOLLYANY_SHOW_EVENT_PHONE" description="JOLLYANY_SHOW_EVENT_PHONE_DESC" class="form-check-inline" default="0">
+                <option value="1">ASTROID_SHOW</option>
+                <option value="0">ASTROID_HIDE</option>
+            </field>
+        </fieldset>
+        <fieldset label="ASTROID_ARTICLE_BLOG_OPTIONS_TITLE_LABEL" name="menublogoptions">
+            <field type="spacer" name="image_lead_spacer" label="JOLLYANY_ARTICLE_IMAGE_LEAD_OPTIONS" />
+            <field name="image_lead_position" type="list" default="" label="Lead Item Image Position">
+                <option value="">Default</option>
+                <option value="top">Top</option>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="bottom">Bottom</option>
+            </field>
+            <field showon="image_lead_position:left[OR]image_lead_position:right" type="spacer" name="image_lead_width_spacer" label="JOLLYANY_ARTICLE_IMAGE_LEAD_IMAGE_WIDTH" />
+            <field showon="image_lead_position:left[OR]image_lead_position:right" name="image_lead_width_xl" type="list" default="1-3" label="Large Desktop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_lead_position:left[OR]image_lead_position:right" name="image_lead_width_l" type="list" default="1-3" label="Desktop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_lead_position:left[OR]image_lead_position:right" name="image_lead_width_m" type="list" default="1-2" label="Laptop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_lead_position:left[OR]image_lead_position:right" name="image_lead_width_s" type="list" default="1-1" label="Tablet">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_lead_position:left[OR]image_lead_position:right" name="image_lead_width" type="list" default="1-1" label="Mobile">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field type="spacer" name="image_intro_spacer" label="JOLLYANY_ARTICLE_IMAGE_INTRO_OPTIONS" />
+            <field name="image_intro_position" type="list" default="" label="Intro Item Image Position">
+                <option value="">Default</option>
+                <option value="top">Top</option>
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+                <option value="bottom">Bottom</option>
+            </field>
+            <field showon="image_intro_position:left[OR]image_intro_position:right" type="spacer" name="image_intro_width_spacer" label="JOLLYANY_ARTICLE_IMAGE_INTRO_IMAGE_WIDTH" />
+            <field showon="image_intro_position:left[OR]image_intro_position:right" name="image_intro_width_xl" type="list" default="1-3" label="Large Desktop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_intro_position:left[OR]image_intro_position:right" name="image_intro_width_l" type="list" default="1-3" label="Desktop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_intro_position:left[OR]image_intro_position:right" name="image_intro_width_m" type="list" default="1-2" label="Laptop">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_intro_position:left[OR]image_intro_position:right" name="image_intro_width_s" type="list" default="1-1" label="Tablet">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+            <field showon="image_intro_position:left[OR]image_intro_position:right" name="image_intro_width" type="list" default="1-1" label="Mobile">
+                <option value="1-1">1-1</option>
+                <option value="1-2">1-2</option>
+                <option value="1-3">1-3</option>
+                <option value="2-3">2-3</option>
+                <option value="1-4">1-4</option>
+                <option value="3-4">3-4</option>
+                <option value="1-5">1-5</option>
+                <option value="2-5">2-5</option>
+                <option value="4-5">4-5</option>
+                <option value="1-6">1-6</option>
+                <option value="5-6">5-6</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>
