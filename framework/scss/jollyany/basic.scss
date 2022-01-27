@@ -916,6 +916,7 @@ legend + .control-group {
 .z-index-2 {
   z-index: 2 !important;
 }
+.heading-highlighted-wrapper svg{position:absolute;top:50%;left:50%;width:calc(100% + 20px);height:calc(100% + 20px);-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);overflow:visible}.heading-highlighted-wrapper svg path{stroke:#333b69;stroke-width:9;fill:none;stroke-dasharray:1500;-webkit-animation:heading-highlighted-dash 10s infinite;animation:heading-highlighted-dash 10s infinite}.heading-highlighted-text-active{position:relative}.heading-highlighted-wrapper{display:inline-block;position:relative}.heading-highlighted-text{display:inline-block;white-space:nowrap;top:0;left:0}@-webkit-keyframes heading-highlighted-dash{0%{stroke-dasharray:0 1500}15%{stroke-dasharray:1500 1500}85%{opacity:1}90%{stroke-dasharray:1500 1500;opacity:0}to{stroke-dasharray:0 1500;opacity:0}}@keyframes heading-highlighted-dash{0%{stroke-dasharray:0 1500}15%{stroke-dasharray:1500 1500}85%{opacity:1}90%{stroke-dasharray:1500 1500;opacity:0}to{stroke-dasharray:0 1500;opacity:0}}
 @media (max-width: 767px) {
   div.modal {
     position: fixed;
