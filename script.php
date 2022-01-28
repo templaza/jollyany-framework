@@ -2,8 +2,8 @@
 /**
  * @package   Jollyany Framework
  * @author    TemPlaza https://www.templaza.com
- * @copyright Copyright (C) 2011 - 2019 TemPlaza.
- * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
+ * @copyright Copyright (C) 2011 - 2022 TemPlaza.
+ * @license https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 or Later
  */
 // no direct access
 defined('_JEXEC') or die;
