@@ -88,6 +88,32 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_alex'      =>  array(
+                // Pack Info
+                'name'        => 'Alex',
+                'desc'        => 'Portfolio Personal Blogger Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/alex/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://alex.jollyany.co/',
+                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/alex',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Alex Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_alex',
+                    'ext_code'  =>  'tz-alex-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                ),
+            ),
             'tz_lefala'      =>  array(
                 // Pack Info
                 'name'        => 'Lefala',

@@ -47,11 +47,21 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 
         $html[]     =   '<div class="row mt-4">';
         $html[]     =   '<div class="col-12 col-xl-4 col-xxl-5 mb-4">';
-        $html[]     =   '<div class="card"><img src="'.JUri::root().'templates/'.$template->template.'/template_preview.png" class="card-img-top" alt="'.$template->template.'" /><div class="card-body">';
+        $html[]     =   '<div class="card"><img src="'.JUri::root().'templates/'.$template->template.'/template_preview.png" class="card-img-top" alt="'.$template->template.'" />';
+
+        $html[]     =   '<div class="card-body">';
         $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">You are using: Version <strong>'.$template->version.'</strong></h6>';
         $html[]     =   '<h5 class="card-title">'.JText::_($template->template).'</h5>';
         $html[]     =   '<div class="card-text">'.JText::_(preg_replace('/tz_/i', 'tpl_', $template->template).'_desc').'</div>';
-        $html[]     =   '</div></div>';
+        $html[]     =   '</div>';
+
+        $html[]     =   '<ul class="list-group list-group-flush">';
+        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/how-to-download-jollyany-template-at-templaza-com" target="_blank">How to download Quickstart & Template?</a></li>';
+        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/demo-content-install" target="_blank">How to install demo content?</a></li>';
+        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/install-template-on-an-existing-website" target="_blank">How to Install on an existing website?</a></li>';
+        $html[]     =   '</ul>';
+
+        $html[]     =   '</div>';
         $html[]     =   '</div>';
         $html[]     =   '<div class="col-12 col-xl-8 col-xxl-7 license-info">';
 	    $html[]     =   '<div class="card"><div class="card-body">';
