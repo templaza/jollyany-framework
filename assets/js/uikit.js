@@ -1,4 +1,4 @@
-/*! UIkit 3.10.1 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! UIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2021 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -146,7 +146,7 @@
 
     function toNumber(value) {
         var number = Number(value);
-        return isNaN(number) ? false : number;
+        return !isNaN(number) ? number : false;
     }
 
     function toFloat(value) {
@@ -634,9 +634,8 @@
     function domPath(element) {
         var names = [];
         while (element.parentNode) {
-            var id = attr(element, 'id');
-            if (id) {
-                names.unshift(("#" + (escape(id))));
+            if (element.id) {
+                names.unshift(("#" + (escape(element.id))));
                 break;
             } else {
                 var tagName = element.tagName;
@@ -1105,7 +1104,10 @@
             return;
         }
 
-        once(document, 'DOMContentLoaded', fn);
+        var unbind = on(document, 'DOMContentLoaded', function () {
+            unbind();
+            fn();
+        });
     }
 
     function empty(element) {
@@ -1125,10 +1127,10 @@
 
         parent = $(parent);
 
-        if (parent.hasChildNodes()) {
-            return insertNodes(element, function (element) { return parent.insertBefore(element, parent.firstChild); });
-        } else {
+        if (!parent.hasChildNodes()) {
             return append(parent, element);
+        } else {
+            return insertNodes(element, function (element) { return parent.insertBefore(element, parent.firstChild); });
         }
     }
 
@@ -2292,10 +2294,10 @@
                     scrollTop(element, scroll + top * percent);
 
                     // scroll more if we have not reached our destination
-                    if (percent === 1) {
-                        resolve();
-                    } else {
+                    if (percent !== 1) {
                         requestAnimationFrame(step);
+                    } else {
+                        resolve();
                     }
 
                 })();
@@ -3004,12 +3006,12 @@
 
                 events.forEach(function (event) {
 
-                    if (hasOwn(event, 'handler')) {
-                        registerEvent(this$1$1, event);
-                    } else {
+                    if (!hasOwn(event, 'handler')) {
                         for (var key in event) {
                             registerEvent(this$1$1, event[key], key);
                         }
+                    } else {
+                        registerEvent(this$1$1, event);
                     }
 
                 });
@@ -3390,10 +3392,10 @@
                     var instance = UIkit.getComponent(element, name);
 
                     if (instance) {
-                        if (data) {
-                            instance.$destroy();
-                        } else {
+                        if (!data) {
                             return instance;
+                        } else {
+                            instance.$destroy();
                         }
                     }
 
@@ -3463,7 +3465,7 @@
     UIkit.data = '__uikit__';
     UIkit.prefix = 'uk-';
     UIkit.options = {};
-    UIkit.version = '3.10.1';
+    UIkit.version = '3.9.4';
 
     globalAPI(UIkit);
     hooksAPI(UIkit);
@@ -4103,7 +4105,7 @@
 
     var cover = {
 
-        mixins: [Video],
+        mixins: [Class, Video],
 
         props: {
             width: Number,
@@ -4193,7 +4195,7 @@
         },
 
         data: {
-            pos: ("bottom-" + (isRtl ? 'right' : 'left')),
+            pos: ("bottom-" + (!isRtl ? 'left' : 'right')),
             flip: true,
             offset: false,
             clsPos: ''
@@ -4204,7 +4206,7 @@
             pos: function(ref) {
                 var pos = ref.pos;
 
-                return pos.split('-').concat('center').slice(0, 2);
+                return (pos + (!includes(pos, '-') ? '-center' : '')).split('-');
             },
 
             dir: function() {
@@ -4325,8 +4327,7 @@
                 this.target = this.$create('toggle', query(this.toggle, this.$el), {
                     target: this.$el,
                     mode: this.mode
-                }).$el;
-                attr(this.target, 'aria-haspopup', true);
+                });
             }
 
         },
@@ -6592,7 +6593,7 @@
 
         data: {
             dropdown: navItem,
-            align: isRtl ? 'right' : 'left',
+            align: !isRtl ? 'left' : 'right',
             clsDrop: 'uk-navbar-dropdown',
             mode: undefined,
             offset: undefined,
@@ -7819,7 +7820,7 @@
             {
 
                 read: function(ref, types) {
-                    var height$1 = ref.height;
+                    var height = ref.height;
 
 
                     this.inactive = !this.matchMedia || !isVisible(this.$el);
@@ -7830,20 +7831,15 @@
 
                     if (this.isActive && types.has('resize')) {
                         this.hide();
-                        height$1 = this.$el.offsetHeight;
+                        height = this.$el.offsetHeight;
                         this.show();
                     }
 
-                    height$1 = this.isActive ? height$1 : this.$el.offsetHeight;
-
-                    if (height$1 + this.offset > height(window)) {
-                        this.inactive = true;
-                        return false;
-                    }
+                    height = !this.isActive ? this.$el.offsetHeight : height;
 
                     var referenceElement = this.isFixed ? this.placeholder : this.$el;
                     this.topOffset = offset(referenceElement).top;
-                    this.bottomOffset = this.topOffset + height$1;
+                    this.bottomOffset = this.topOffset + height;
                     this.offsetParentTop = offset(referenceElement.offsetParent).top;
 
                     var bottom = parseProp('bottom', this);
@@ -7853,7 +7849,7 @@
                     this.width = dimensions(isVisible(this.widthElement) ? this.widthElement : this.$el).width;
 
                     return {
-                        height: height$1,
+                        height: height,
                         top: offsetPosition(this.placeholder)[0],
                         margins: css(this.$el, ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'])
                     };
@@ -8244,8 +8240,6 @@
 
     };
 
-    var KEY_SPACE = 32;
-
     var toggle = {
 
         mixins: [Media, Togglable],
@@ -8368,11 +8362,12 @@
                 name: 'keydown',
 
                 filter: function() {
-                    return includes(this.mode, 'click') && this.$el.tagName !== 'INPUT';
+                    return includes(this.mode, 'click');
                 },
 
                 handler: function(e) {
-                    if (e.keyCode === KEY_SPACE) {
+                    // Space
+                    if (e.keyCode === 32) {
                         e.preventDefault();
                         this.$el.click();
                     }
@@ -8971,12 +8966,12 @@
 
                             return fade.apply(void 0, args.concat( [40] ));
                 }
-                        : name
-                            ? slide
-                            : function () {
+                        : !name
+                            ? function () {
                                 action();
                                 return Promise$1.resolve();
-                            };
+                            }
+                            : slide;
 
                 return animationFn(action, target, this.duration)
                     .then(function () { return this$1$1.$update(target, 'resize'); }, noop);
@@ -9255,7 +9250,7 @@
         if ( unit === void 0 ) unit = '%';
 
         value += value ? unit : '';
-        return isIE ? ("translateX(" + value + ")") : ("translate3d(" + value + ", 0, 0)"); // currently, not translate3d in IE, translate3d within translate3d does not work while transitioning
+        return isIE ? ("translateX(" + value + ")") : ("translate3d(" + value + ", 0, 0)"); // currently not translate3d in IE, translate3d within translate3d does not work while transitioning
     }
 
     function scale3d(value) {
@@ -10969,7 +10964,7 @@
                             var p = ref$1[2];
 
                             css[prop] = "rgba(" + (start.map(function (value, i) {
-                                    value += p * (end[i] - value);
+                                    value = value + p * (end[i] - value);
                                     return i === 3 ? toFloat(value) : parseInt(value, 10);
                                 }).join(',')) + ")";
                             break;
@@ -11686,7 +11681,13 @@
 
         percent /= 2;
 
-        return isIn(type) ^ dir < 0 ? percent : 1 - percent;
+        return !isIn(type)
+            ? dir < 0
+                ? percent
+                : 1 - percent
+            : dir < 0
+                ? 1 - percent
+                : percent;
     }
 
     var Animations = assign({}, Animations$2, {
@@ -11828,10 +11829,6 @@
         update: {
 
             read: function() {
-
-                if (!this.list) {
-                    return false;
-                }
 
                 var ref = this.ratio.split(':').map(Number);
                 var width = ref[0];
@@ -12184,7 +12181,7 @@
             var dist = (Date.now() - last) * .3;
             last = Date.now();
 
-            scrollParents(document.elementFromPoint(x, pos.y), /auto|scroll/).reverse().some(function (scrollEl) {
+            scrollParents(document.elementFromPoint(x, pos.y)).reverse().some(function (scrollEl) {
 
                 var scroll = scrollEl.scrollTop;
                 var scrollHeight = scrollEl.scrollHeight;
@@ -12380,8 +12377,7 @@
                 }
 
                 this.toggleElement(this.tooltip, false, false).then(function () {
-                    remove$1(this$1$1.tooltip);
-                    this$1$1.tooltip = null;
+                    this$1$1.tooltip = remove$1(this$1$1.tooltip);
                     this$1$1._unbind();
                 });
             },

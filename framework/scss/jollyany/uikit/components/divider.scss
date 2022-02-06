@@ -114,7 +114,7 @@ $divider-vertical-border:                        $global-border !default;
  ========================================================================== */
 
 .uk-divider-vertical {
-    width: max-content;
+    width: 1px;
     height: $divider-vertical-height;
     margin-left: auto;
     margin-right: auto;
