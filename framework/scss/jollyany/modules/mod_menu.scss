@@ -1,30 +1,33 @@
 .sidebar {
   .menu-module.nav {
-    >li {
-      margin: 0 0 3px;
-      >a {
-        padding: 10px 15px;
-        border: 1px solid darken($border-color, 2%);
-        border-radius: 0;
+    li {
+      a {
         display: block;
-        color: $colorBlack;
-        &:hover, &:focus {
-          background-color: $colorMain;
-          color: $colorWhite;
-          border-color: $colorMain;
+        padding: 5px 0;
+      }
+    }
+    ul.nav-child {
+      list-style: none;
+      border-left: 1px dashed $border-color;
+      margin-left: 10px;
+      padding-left: 15px;
+      > li > a {
+        position: relative;
+        &:before {
+          content: "";
+          margin-right: 10px;
+          border-top: 1px dashed $border-color;
+          width: 7px;
+          height: 1px;
+          position: absolute;
+          top: 50%;
+          left: -13px;
         }
       }
-      &.active {
-        >a {
-          background-color: $colorMain;
-          color: $colorWhite;
-          border-color: $colorMain;
-        }
-      }
-
     }
   }
 }
+
 .jollyany-dropdownmenu {
   a {
     color: inherit;
