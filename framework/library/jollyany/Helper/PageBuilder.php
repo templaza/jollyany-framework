@@ -489,8 +489,8 @@ class PageBuilder
     }
 
     public static function general_styles($settings) {
-        $general      = ( isset( $settings->visibility ) && $settings->visibility ) ? ' ' . $settings->visibility : '';
-        $general     .= ( isset( $settings->class ) && $settings->class ) ? ' ' . $settings->class : '';
+        $general        = ( isset( $settings->visibility ) && $settings->visibility ) ? ' ' . $settings->visibility : '';
+        $class          = ( isset( $settings->class ) && $settings->class ) ? ' ' . $settings->class : '';
 
 	    $container  =   isset($settings->addon_container) && $settings->addon_container ? $settings->addon_container : '';
 	    if ($container) {
@@ -600,7 +600,7 @@ class PageBuilder
 
         return array(
 			'container' => $zindex_cls . $container . $general,
-            'class' => $text_alignment . $flex_alignment . $scrollspy_cls. $max_width_cfg,
+            'class' => $class. $text_alignment . $flex_alignment . $scrollspy_cls. $max_width_cfg,
             'animation' => $animation
         );
     }
