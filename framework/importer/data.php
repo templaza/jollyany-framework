@@ -88,6 +88,33 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_powfit'      =>  array(
+                // Pack Info
+                'name'        => 'PowFit',
+                'desc'        => 'Gym Fitness Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/powfit/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://powfit.jollyany.co/',
+                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/powfit',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'PowFit Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_powfit',
+                    'ext_code'  =>  'tz-powfit-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_alex'      =>  array(
                 // Pack Info
                 'name'        => 'Alex',
