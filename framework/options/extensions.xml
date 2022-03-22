@@ -18,6 +18,9 @@
             </field>
             <field astroidgroup="hikashopcart" ngShow="hikacart=='1'" description="TPL_ASTROID_ICON_COLOR_HIKACART_DESC" name="hikacart_icon_color" type="astroidcolor" large="true" label="TPL_ASTROID_ICON_COLOR_HIKACART_LABEL">
             </field>
+            <field astroidgroup="hikashopcart" ngShow="hikacart=='1'" name="hikacart_enable_text" type="astroidtext" astroid-switch="true" default="1" label="TPL_JOLLYANY_OPTIONS_HIKACART_TEXT_LABEL" description="TPL_JOLLYANY_OPTIONS_HIKACART_TEXT_DESC"/>
+            <field astroidgroup="hikashopcart" ngShow="hikacart=='1'" name="hikacart_font_size" type="astroidrange" min="10" max="200" step="1" postfix="px" default="16" label="TPL_JOLLYANY_OPTIONS_HIKACART_FONTSIZE_LABEL" description="TPL_JOLLYANY_OPTIONS_HIKACART_FONTSIZE_DESC" />
+            <field astroidgroup="hikashopcart" ngShow="hikacart=='1'" name="hikacart_class" type="astroidtext" default="" label="TPL_JOLLYANY_OPTIONS_HIKACART_CLASS_LABEL" description="TPL_JOLLYANY_OPTIONS_HIKACART_CLASS_DESC"  class="form-control"/>
 
             <field astroidgroup="hikashopwishlist" name="hikawishlist" type="astroidtext" astroid-switch="true" default="0" label="TPL_JOLLYANY_OPTIONS_HIKAWISHLIST_LABEL" description="TPL_JOLLYANY_OPTIONS_HIKAWISHLIST_DESC"/>
             <field astroidgroup="hikashopwishlist" name="hikawishlist_module" type="jollyanymodulesid" extension="mod_hikashop_wishlist" default="" label="TPL_JOLLYANY_OPTIONS_HIKAWISHLIST_MODULE_LABEL" description="TPL_JOLLYANY_OPTIONS_HIKAWISHLIST_MODULE_DESC" class="form-control" ngShow="hikawishlist=='1'" ngRequired="hikawishlist=='1'"/>
