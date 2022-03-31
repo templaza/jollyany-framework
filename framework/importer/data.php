@@ -23,6 +23,12 @@ class JollyanyFrameworkDataImport {
 		    'code'      =>  'tz_extensions',
 		    'ext_code'  =>  'uk-sp-addons',
 	    ),
+        'ui-sp-addons'  =>   array(
+            'name'      =>  'SP Page Builder UI Addons',
+            'type'      =>  'included',
+            'code'      =>  'tz_extensions',
+            'ext_code'  =>  'ui-sp-addons',
+        ),
         'tz-portfolio'  =>      array(
             'name'      =>  'TZ Portfolio',
             'type'      =>  'url',
@@ -88,6 +94,33 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_baressco'      =>  array(
+                // Pack Info
+                'name'        => 'Baressco',
+                'desc'        => 'Wine & Vineyard Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/baressco/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://baressco.jollyany.co/',
+                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/baressco',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Baressco Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_baressco',
+                    'ext_code'  =>  'tz-baressco-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_powfit'      =>  array(
                 // Pack Info
                 'name'        => 'PowFit',
@@ -165,6 +198,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
                     self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                     self::$exts['hikashop'],
                 ),
             ),
@@ -192,6 +226,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                 ),
             ),
             'tz_magazine'      =>  array(
@@ -218,6 +253,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                 ),
             ),
             'tz_varaham'      =>  array(
@@ -244,6 +280,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                 ),
             ),
             'tz_krypton'      =>  array(
@@ -270,6 +307,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                 ),
             ),
             'tz_alita'      =>  array(
@@ -296,6 +334,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -324,6 +363,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -352,6 +392,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
             ),
@@ -379,6 +420,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
 	                self::$exts['uk-sp-addons'],
+                    self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
