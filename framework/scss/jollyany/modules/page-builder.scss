@@ -1,3 +1,8 @@
+.sppb-row-container {
+  --bs-gutter-x: #{$grid-gutter-width};
+  padding-right: calc(.5 * var(--bs-gutter-x));
+  padding-left: calc(.5 * var(--bs-gutter-x));
+}
 .sp-pagebuilder-row, .sppb-row {
   --bs-gutter-x: #{$grid-gutter-width};
   margin-right: calc(-.5 * var(--bs-gutter-x));
