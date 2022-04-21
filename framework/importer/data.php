@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_organico'      =>  array(
+                // Pack Info
+                'name'        => 'Organico',
+                'desc'        => 'Nutritionist Food & Farm Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/organico/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://organico.jollyany.co/',
+                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/organico',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Organico Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_organico',
+                    'ext_code'  =>  'tz-organico-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_baressco'      =>  array(
                 // Pack Info
                 'name'        => 'Baressco',
@@ -118,6 +146,7 @@ class JollyanyFrameworkDataImport {
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
                     self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
             ),
