@@ -16,7 +16,7 @@ jQuery(function($){
         if ($('.logo-wrapper').length) {
             $('.logo-wrapper img').each(function (i, el){
                 if ($(el).attr('src') && $(el).attr('src').substr( ($(el).attr('src').lastIndexOf('.') +1) ) === 'svg') {
-                    $(el).attr('uk-svg','');
+                    $(el).addClass('uk-preserve').attr('uk-svg','');
                 }
             });
         }
