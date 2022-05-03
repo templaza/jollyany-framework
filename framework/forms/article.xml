@@ -10,14 +10,12 @@
             <!-- Event Options -->
             <field type="text" name="jollyany_event_location" label="JOLLYANY_EVENT_LOCATION" description="JOLLYANY_EVENT_LOCATION_DESC" />
             <field type="text" name="jollyany_event_phone" label="JOLLYANY_EVENT_PHONE" description="JOLLYANY_EVENT_PHONE_DESC" />
-            <field name="jollyany_event_start" type="calendar" default="" label="JOLLYANY_EVENT_START" description=""
-                   class="input-medium" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
-                   singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
-                   filltable="true" minyear="-3" maxyear="5" />
-            <field name="jollyany_event_end" type="calendar" default="" label="JOLLYANY_EVENT_END" description=""
-                   class="input-medium" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
-                   singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
-                   filltable="true" minyear="-3" maxyear="5" />
+            <field name="jollyany_event_start" type="calendar" label="JOLLYANY_EVENT_START" description=""
+                   class="input-small" filter="user_utc"
+                   showtime="true" todaybutton="true" filltable="true" translateformat="true" />
+            <field name="jollyany_event_end" type="calendar" label="JOLLYANY_EVENT_END" description=""
+                   class="input-small" filter="user_utc"
+                   showtime="true" todaybutton="true" filltable="true" translateformat="true" />
             <field type="text" name="jollyany_event_expired" label="JOLLYANY_EVENT_EXPIRED" description="JOLLYANY_EVENT_EXPIRED" />
             <field type="text" name="jollyany_event_spot" label="JOLLYANY_EVENT_SPOT" description="JOLLYANY_EVENT_SPOT" />
             <field type="text" name="jollyany_event_url" label="JOLLYANY_EVENT_URL" description="JOLLYANY_EVENT_URL" />
