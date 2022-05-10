@@ -235,7 +235,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                 echo '</div>';
             }
             if ( !$this->isCategoryView && $this->article->params->get('jollyany_event_url', '') && (!$this->article->params->get('jollyany_event_start', '') || time() < strtotime($this->article->params->get('jollyany_event_start', '')))) { ?>
-                <div class="call-to-action"><a href="<?php echo $this->article->params->get('jollyany_event_url', ''); ?>" class="btn btn-primary"><?php echo $this->article->params->get('jollyany_event_url_text', JText::_('JOLLYANY_EVENT_BUTTON_TEXT')); ?></a></div>
+                <div class="call-to-action"><a href="<?php echo $this->article->params->get('jollyany_event_url', ''); ?>" class="uk-button uk-button-primary"><?php echo $this->article->params->get('jollyany_event_url_text', JText::_('JOLLYANY_EVENT_BUTTON_TEXT')); ?></a></div>
             <?php }
             echo '</div>';
             echo '<hr />';
