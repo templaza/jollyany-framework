@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_goldenheart'      =>  array(
+                // Pack Info
+                'name'        => 'Golden Hearts',
+                'desc'        => 'Fundraising & Charity Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/golden_hearts/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://goldenheart.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/goldenheart',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Golden Hearts Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_goldenheart',
+                    'ext_code'  =>  'tz-goldenheart-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_organico'      =>  array(
                 // Pack Info
                 'name'        => 'Organico',
@@ -104,7 +132,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://organico.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/organico',
+                'doc_url'     => 'https://docs.jollyany.co/templates/organico',
 
                 'joomla_version'     => array(3,4),
 
@@ -132,7 +160,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://baressco.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/baressco',
+                'doc_url'     => 'https://docs.jollyany.co/templates/baressco',
 
                 'joomla_version'     => array(3,4),
 
@@ -160,7 +188,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://powfit.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/powfit',
+                'doc_url'     => 'https://docs.jollyany.co/templates/powfit',
 
                 'joomla_version'     => array(3,4),
 
@@ -187,7 +215,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://alex.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/alex',
+                'doc_url'     => 'https://docs.jollyany.co/templates/alex',
 
                 'joomla_version'     => array(3,4),
 
@@ -213,7 +241,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://lefala.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/lefala',
+                'doc_url'     => 'https://docs.jollyany.co/templates/lefala',
 
                 'joomla_version'     => array(3,4),
 
@@ -241,7 +269,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://newspaper.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/newspaper',
+                'doc_url'     => 'https://docs.jollyany.co/templates/newspaper',
 
                 'joomla_version'     => array(3,4),
 
@@ -268,7 +296,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://magazine.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/magazine',
+                'doc_url'     => 'https://docs.jollyany.co/templates/magazine',
 
                 'joomla_version'     => array(3,4),
 
@@ -295,7 +323,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://varaham.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/varaham',
+                'doc_url'     => 'https://docs.jollyany.co/templates/varaham',
 
                 'joomla_version'     => array(3,4),
 
@@ -322,7 +350,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://krypton.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/krypton',
+                'doc_url'     => 'https://docs.jollyany.co/templates/krypton',
 
                 'joomla_version'     => array(3,4),
 
@@ -349,7 +377,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://alita.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/alita',
+                'doc_url'     => 'https://docs.jollyany.co/templates/alita',
 
                 'joomla_version'     => array(3,4),
 
@@ -378,7 +406,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://martha.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/martha',
+                'doc_url'     => 'https://docs.jollyany.co/templates/martha',
 
                 'joomla_version'     => array(3,4),
 
@@ -407,7 +435,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://logistics.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/logistics',
+                'doc_url'     => 'https://docs.jollyany.co/templates/logistics',
 
                 'joomla_version'     => array(3,4),
 
@@ -435,7 +463,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://pethub.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/pethub',
+                'doc_url'     => 'https://docs.jollyany.co/templates/pethub',
 
                 'joomla_version'     => array(3,4),
 
@@ -464,7 +492,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://goldena.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/goldena',
+                'doc_url'     => 'https://docs.jollyany.co/templates/goldena',
 
                 'joomla_version'     => array(3,4),
 
@@ -491,7 +519,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://educab.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/educab',
+                'doc_url'     => 'https://docs.jollyany.co/templates/educab',
 
                 'joomla_version'     => array(3,4),
 
@@ -518,7 +546,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://profiler.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/profiler',
+                'doc_url'     => 'https://docs.jollyany.co/templates/profiler',
 
                 'joomla_version'     => array(3,4),
 
@@ -545,7 +573,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://musika.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/musika',
+                'doc_url'     => 'https://docs.jollyany.co/templates/musika',
 
                 'joomla_version'     => array(3,4),
 
@@ -600,7 +628,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://everline.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/everline',
+                'doc_url'     => 'https://docs.jollyany.co/templates/everline',
 
                 'joomla_version'     => array(3,4),
 
@@ -628,7 +656,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://eventory.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/eventory',
+                'doc_url'     => 'https://docs.jollyany.co/templates/eventory',
 
                 'joomla_version'     => array(3,4),
 
@@ -656,7 +684,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://meetup.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/meetup',
+                'doc_url'     => 'https://docs.jollyany.co/templates/meetup',
 
                 'joomla_version'     => array(3,4),
 
@@ -684,7 +712,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://newage.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/new-age',
+                'doc_url'     => 'https://docs.jollyany.co/templates/new-age',
 
                 'joomla_version'     => array(3,4),
 
@@ -712,7 +740,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://nish2.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/nish_ii',
+                'doc_url'     => 'https://docs.jollyany.co/templates/nish_ii',
 
                 'joomla_version'     => array(3,4),
 
@@ -738,7 +766,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://fashion.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/fashion',
+                'doc_url'     => 'https://docs.jollyany.co/templates/fashion',
 
                 'joomla_version'     => array(3,4),
 
@@ -766,7 +794,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://justice.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/lawyer-justice',
+                'doc_url'     => 'https://docs.jollyany.co/templates/lawyer-justice',
 
                 'joomla_version'     => array(3,4),
 
@@ -794,7 +822,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://charity.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/charity',
+                'doc_url'     => 'https://docs.jollyany.co/templates/charity',
 
                 'joomla_version'     => array(3,4),
 
@@ -822,7 +850,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://foodz.jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation/extra-templates/foodz',
+                'doc_url'     => 'https://docs.jollyany.co/templates/foodz',
 
                 'joomla_version'     => array(3,4),
 
@@ -850,7 +878,7 @@ class JollyanyFrameworkDataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://construction.jollyany.co/',
-                'doc_url'     => 'https://www.templaza.com/docs/construction/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/construction/',
 
                 'joomla_version'     => array(3,4),
 
