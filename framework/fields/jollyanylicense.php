@@ -56,9 +56,9 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
         $html[]     =   '</div>';
 
         $html[]     =   '<ul class="list-group list-group-flush">';
-        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/how-to-download-jollyany-template-at-templaza-com" target="_blank">How to download Quickstart & Template?</a></li>';
-        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/demo-content-install" target="_blank">How to install demo content?</a></li>';
-        $html[]     =   '<li class="list-group-item"><a href="https://classic.jollyany.co/support/documentation/install-template-on-an-existing-website" target="_blank">How to Install on an existing website?</a></li>';
+        $html[]     =   '<li class="list-group-item"><a href="https://docs.jollyany.co/getting-started/how-to-download-templates" target="_blank">How to download Quickstart & Template?</a></li>';
+        $html[]     =   '<li class="list-group-item"><a href="https://docs.jollyany.co/getting-started/template-installation" target="_blank">How to install template?</a></li>';
+        $html[]     =   '<li class="list-group-item"><a href="https://docs.jollyany.co/getting-started/update-template-and-3rd-party-extension" target="_blank">How to update extensions?</a></li>';
         $html[]     =   '</ul>';
 
         $html[]     =   '</div>';
