@@ -38,10 +38,12 @@ class plgSystemJollyany extends JPlugin {
         if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
             return false;
         }
-        $document = Astroid\Framework::getDocument(); // Astroid Document
-        $document->addScript('media/jollyany/assets/js/uikit.min.js', 'body');
-        $document->addScript('media/jollyany/assets/js/uikit-icons.min.js', 'body');
-        $document->addScript('media/jollyany/assets/js/frontend.min.js', 'body');
+        if (Framework::isSite()) {
+            $document = Astroid\Framework::getDocument(); // Astroid Document
+            $document->addScript('media/jollyany/assets/js/uikit.min.js', 'body');
+            $document->addScript('media/jollyany/assets/js/uikit-icons.min.js', 'body');
+            $document->addScript('media/jollyany/assets/js/frontend.min.js', 'body');
+        }
     }
 	public function onAfterInitialise() {
         if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
