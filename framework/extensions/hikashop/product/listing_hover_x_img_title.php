@@ -1,9 +1,9 @@
 <?php
 /**
  * @package	HikaShop for Joomla!
- * @version	4.4.4
+ * @version	4.5.1
  * @author	hikashop.com
- * @copyright	(C) 2010-2021 HIKARI SOFTWARE. All rights reserved.
+ * @copyright	(C) 2010-2022 HIKARI SOFTWARE. All rights reserved.
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
@@ -14,7 +14,13 @@ $width = (int)$this->image->main_thumbnail_x;
 
 $hidden_html = '';
 $part_html = '';
-$img_nb = count($this->row->images);
+
+if ($height == '') {
+    $height = '150';
+}
+$img_nb = 0;
+if (isset($this->row->images))
+    $img_nb = count($this->row->images);
 if ($img_nb > 1) {
     $row = @$this->row->images;
 
