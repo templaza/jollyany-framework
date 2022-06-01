@@ -730,3 +730,205 @@
     border: 3px solid #333333;
   }
 }
+
+.sppb-addon-audio-playlist {
+  .jp-audio {
+    width: 100%;
+  }
+  .jp-interface {
+    display: flex;
+    align-items: center;
+    .jp-controls {
+      width: 195px;
+      padding: 0 20px;
+    }
+    .jp-progress {
+      position: static;
+      height: 3px;
+    }
+  }
+  .jp-audio, .jp-audio-stream, .jp-video {
+    border: 2px solid $border-color;
+    background-color: transparent;
+  }
+  .jp-details, .jp-playlist {
+    border-color: $border-color;
+  }
+  div.jp-type-playlist div.jp-playlist li {
+    padding: 15px 20px;
+    border-color: $border-color;
+    a {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 22px;
+      &.jp-playlist-current, &:hover {
+        color: $colorMain;
+      }
+    }
+    &.jp-playlist-current {
+      list-style-type: none;
+      list-style-position: inside;
+      padding-left: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &:after{
+        content: '\f028';
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-size: 14px;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate(0,0);
+        font-weight: 900;
+      }
+    }
+  }
+  .jp-playlist ul {
+    padding: 0;
+  }
+  .jp-controls {
+    button {
+      display: inline-block;
+      font-family: "Font Awesome 5 Free";
+      font-size: 20px;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0,0);
+      font-weight: 900;
+      text-indent: 0;
+      line-height: 1;
+      background: none !important;
+      width: auto;
+      color: inherit;
+      &.jp-play {
+        font-size: 200%;
+      }
+    }
+  }
+  .jp-volume-controls {
+    position: static;
+    display: flex;
+    align-items: center;
+    width: 145px;
+    padding: 0 20px;
+    button {
+      display: inline-block;
+      position: relative;
+      font-family: "Font Awesome 5 Free";
+      font-size: 14px;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0,0);
+      font-weight: 900;
+      text-indent: 0;
+      line-height: 1;
+      background: none !important;
+      width: auto;
+      color: inherit;
+    }
+  }
+  .jp-state-playing {
+    .jp-play {
+      &:focus {
+        &:after {
+          content: '\f04c';
+        }
+      }
+      &:after {
+        content: '\f04c';
+      }
+    }
+  }
+  .jp-play, .jp-next, .jp-previous, .jp-stop {
+    &:focus {
+      color: $colorMain;
+    }
+  }
+  .jp-play{
+    &:after {
+      content: '\f04b';
+    }
+    &:focus {
+      &:after {
+        content: '\f04b';
+      }
+    }
+  }
+  .jp-next {
+    &:after {
+      content: '\f04e';
+    }
+  }
+  .jp-previous {
+    &:after {
+      content: '\f04a';
+    }
+
+  }
+  .jp-stop {
+    margin-left: 0;
+    &:after {
+      content: '\f04d';
+    }
+  }
+  .jp-seek-bar {
+    background-image: none;
+  }
+  .jp-play-bar {
+    background-image: none;
+    background-color: $colorMain;
+  }
+  .jp-audio .jp-type-playlist .jp-progress {
+    width: calc(100% - 340px);
+  }
+  .jp-mute {
+    &:after {
+      content: '\f6a9';
+    }
+  }
+  .jp-volume-max {
+    left: 0;
+    &:after {
+      content: '\f028';
+    }
+  }
+  .jp-volume-bar {
+    background-image: none;
+    background-color: #ddd;
+    position: static;
+    top: 6px;
+    left: 26px;
+    height: 3px;
+  }
+  .jp-volume-bar-value {
+    background-image: none;
+    background-color: $colorMain;
+  }
+  .jp-interface {
+    background-color: transparent;
+  }
+  .jp-playlist {
+    background-color: transparent;
+    > ul > li {
+      > div {
+        display: flex;
+        align-items: center;
+        &:before {
+          content: '';
+          display: block;
+          margin-right: 20px;
+        }
+        span.jp-artist {
+          display: block;
+        }
+      }
+    }
+  }
+  div.jp-type-playlist div.jp-playlist a {
+    color: inherit;
+  }
+}
