@@ -216,6 +216,7 @@ a.hikacart {
 }
 .hikashop_product_page div.hikashop_small_image_div a, .hikashop_product_page div.hikashop_small_image_div a.hikashop_active_thumbnail {
   border-width: 1px;
+  border-color: $border-color;
 }
 .ui-slider-horizontal{
   background: $light;
@@ -275,6 +276,7 @@ a.jollyany-hikacart-icon {
 }
 input.hikashop_product_quantity_field {
   max-width: 40px;
+  background-color: transparent;
 }
 .hikashop_product_quantity_field_change {
   color: #666666;
