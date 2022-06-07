@@ -367,7 +367,7 @@ if(!empty($this->extraData[$this->module_position]) && !empty($this->extraData[$
 	<div class="hkform-group control-group">
 		<div class="<?php echo $labelcolumnclass;?> hkcontrol-label"></div>
 		<div class="<?php echo $inputcolumnclass;?>">
-			<button type="submit" onclick="window.checkout.submitLogin(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>, 'register'); return false;" class="<?php echo $this->config->get('css_button','hikabtn'); ?> uk-button uk-button-default hikabtn_checkout_login_register" id="hikashop_register_form_button"><?php
+			<button type="submit" onclick="window.checkout.submitLogin(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>, 'register'); return false;" class="<?php echo $this->config->get('css_button','hikabtn'); ?> uk-button uk-button-primary hikabtn_checkout_login_register" id="hikashop_register_form_button"><?php
 				echo !empty($this->options['registration_simplified']) || !empty($this->options['registration_guest']) ? JText::_('HIKA_NEXT') : JText::_('HIKA_REGISTER');
 			?></button>
 		</div>

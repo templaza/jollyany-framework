@@ -73,7 +73,7 @@ if(!empty($this->extraData[$this->module_position]) && !empty($this->extraData[$
 	<div class="hkform-group control-group hikashop_login_button_line">
 		<div class="<?php echo $labelcolumnclass;?> hkcontrol-label"></div>
 		<div class=" <?php echo $inputcolumnclass;?>">
-			<button type="submit" onclick="window.checkout.submitLogin(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>, 'login'); return false;" class="<?php echo $this->config->get('css_button','hikabtn'); ?> uk-button uk-button-default hikabtn_checkout_login_form">
+			<button type="submit" onclick="window.checkout.submitLogin(<?php echo $this->step; ?>,<?php echo $this->module_position; ?>, 'login'); return false;" class="<?php echo $this->config->get('css_button','hikabtn'); ?> uk-button uk-button-primary hikabtn_checkout_login_form">
 				<?php echo JText::_('HIKA_LOGIN'); ?>
 			</button>
 		</div>
