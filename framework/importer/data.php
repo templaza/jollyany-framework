@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_oraz'      =>  array(
+                // Pack Info
+                'name'        => 'Oraz',
+                'desc'        => 'Music Band Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/oraz/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://oraz.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/oraz',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Oraz Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_oraz',
+                    'ext_code'  =>  'tz-oraz-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_goldenheart'      =>  array(
                 // Pack Info
                 'name'        => 'Golden Hearts',
