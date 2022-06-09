@@ -697,11 +697,6 @@
   .event-description {
     margin-top: 1rem;
   }
-  .metainfo {
-    >span+span {
-      margin-left: 5px;
-    }
-  }
 }
 .ui-social {
   &.magazine {
@@ -770,7 +765,6 @@
       list-style-position: inside;
       padding-left: 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       &:after{
         content: '\f028';
@@ -914,9 +908,25 @@
   .jp-playlist {
     background-color: transparent;
     > ul > li {
+      display: flex;
+      align-items: center;
+      margin: 0 !important;
+      &:before {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-right: 18px;
+        margin-bottom: 0;
+        left: 0;
+      }
+      &.jp-playlist-current {
+        &:before {
+          color: $colorMain;
+        }
+      }
       > div {
         display: flex;
         align-items: center;
+        flex: 1;
         &:before {
           content: '';
           display: block;
