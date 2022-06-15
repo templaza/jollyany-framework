@@ -276,15 +276,10 @@
                 return 1;
             }
         });
-        if ($('#astroid-form-fieldset-section-dashboard .astroid-form-fieldset-section').length) {
-            var licenseContainer    =   $('#astroid-form-fieldset-section-dashboard .astroid-form-fieldset-section');
-            licenseContainer.find(".form-group > .row > *[class^='col-sm-']").attr('class','col-12 col-sm-12');
-        }
         if ($('#astroid-form-fieldset-section-jollyanyexts .astroid-form-fieldset-section').length) {
             var extsContainer       =   $('#astroid-form-fieldset-section-jollyanyexts .astroid-form-fieldset-section'),
                 dialogExtPopup         =   $('#install-ext-dialog'),
                 dialogExtTemplate      =   $('#jollyany-dialog-extension');
-            extsContainer.find(".form-group > .row > *[class^='col-sm-']").attr('class','col-12 col-sm-12');
 
             $('.intall-extension').on('click', function (e) {
                 e.preventDefault();
@@ -400,7 +395,7 @@
             var importContainer =   $('#astroid-form-fieldset-section-jollyanyimport .astroid-form-fieldset-section'),
                 dialogPopup     =   $('#install-package-dialog'),
                 dialogTemplate  =   $('#jollyany-dialog-template');
-            importContainer.find("*[class^='col-sm-']").attr('class','col-12 col-sm-12');
+            
             $('.intall-package').on('click', function (e) {
                 e.preventDefault();
                 var thisLink    =   $(this);
