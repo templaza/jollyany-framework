@@ -208,6 +208,7 @@ class plgSystemJollyany extends JPlugin {
 							$url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
 							//install quickstart package
 							/* Get package zip file from server */
+                            ini_set('memory_limit', '-1');
 							$data = array(
 								'task'          => 'download.package',
 								'produce'       => $install_code,
