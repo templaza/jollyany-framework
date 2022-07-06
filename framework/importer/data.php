@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_agruco'      =>  array(
+                // Pack Info
+                'name'        => 'Agruco',
+                'desc'        => 'Agriculture & Organic Food Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/agruco/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://agruco.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/agruco',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Agruco Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_agruco',
+                    'ext_code'  =>  'tz-agruco-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_oraz'      =>  array(
                 // Pack Info
                 'name'        => 'Oraz',

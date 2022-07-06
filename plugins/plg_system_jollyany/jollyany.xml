@@ -2,7 +2,7 @@
 <extension version="3.1" type="plugin" method="upgrade" group="system">
    <name>Jollyany Plugin</name>
    <author>TemPlaza</author>
-   <creationDate>June 2022</creationDate>
+   <creationDate>July 2022</creationDate>
    <version>3.5.8</version>
    <url>https://www.jollyany.co</url>
    <copyright>Copyright (C) 2021 TemPlaza, Jsc. All rights reserved.</copyright>
