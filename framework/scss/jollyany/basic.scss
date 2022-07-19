@@ -15,9 +15,10 @@ $global-link-color: $colorMain !default;
 
 // 5 Tiny Slider style
 @import "tiny_slider/theme";
-.uk-modal {
-  z-index: 1050;
-}
+
+// 6 Override UIKit
+@import "modules/uikit_override";
+
 .lead {
   line-height: 1.6em;
   strong {
@@ -26,16 +27,6 @@ $global-link-color: $colorMain !default;
 }
 .visually-hidden {
   display: none !important;
-}
-.uk-button-rounded {
-  border-radius: 5px;
-}
-.uk-button-round {
-  border-radius: 500px;
-}
-.uk-badge-success {
-  color: $badge-color;
-  background-color: $global-success-background;
 }
 .tz-price-table_featured {
   position: absolute;
