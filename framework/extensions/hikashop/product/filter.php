@@ -21,6 +21,8 @@ if(!empty($this->filters)){
 	$attributes = '';
 	$submit = "document.forms['hikashop_filter_form_" . $this->params->get('main_div_name') . "'].submit();";
 
+    $class_columns = $this->maxColumn > 3 ? 'uk-grid-small' : 'uk-grid-medium';
+
 	if(!empty($this->params) && $this->params->get('module') == 'mod_hikashop_filter' && ($this->params->get('force_redirect',0) || (hikaInput::get()->getVar('force_using_filters', 0) !== 1 && empty($this->currentId) && (hikaInput::get()->getVar('option','')!='com_hikashop'|| !in_array(hikaInput::get()->getVar('ctrl','product'),array('product','category')) ||hikaInput::get()->getVar('task','listing')!='listing')))){
         if(empty($url)) {
 			$type = 'category';
@@ -152,7 +154,7 @@ if(!empty($this->filters)){
 	<?php } ?>
 
 		<form action="<?php echo $url; ?>" method="post" name="hikashop_filter_form_<?php echo $this->params->get('main_div_name'); ?>" <?php echo $form_attributes; ?> enctype="multipart/form-data">
-            <div data-uk-grid>
+            <div class="<?php echo $class_columns; ?>" data-uk-grid>
                 <?php
                 while($count<$this->maxFilter+1){
                     $activeClass = '';
@@ -162,7 +164,7 @@ if(!empty($this->filters)){
                     if(!empty($html[$count])){
                         if($filters[$count]->filter_options['column_width']>$this->maxColumn) $filters[$count]->filter_options['column_width'] = $this->maxColumn;
                         ?>
-                        <div class="hikashop_filter_main hikashop_filter_main_<?php echo $filters[$count]->filter_namekey; echo ($this->maxColumn) ? ' uk-width-'.$filters[$count]->filter_options['column_width'].'-'.$this->maxColumn : ''; ?>">
+                        <div class="hikashop_filter_main hikashop_filter_main_<?php echo $filters[$count]->filter_namekey; echo ($this->maxColumn) ? ' uk-width-'.$filters[$count]->filter_options['column_width'].'-'.$this->maxColumn.'@m uk-width-1-1' : ''; ?>">
                             <?php $html[$count] = preg_replace(array('/<select/i', '/size=.*?\s/i', '/<input(.*?type="text")/i'), array('<select class="uk-select"', '', '<input$1 class="uk-input"'), $html[$count]); ?>
                             <?php echo '<div class="'.$activeClass.'hikashop_filter_'.$filters[$count]->filter_namekey.'">'.$html[$count].'</div>'; ?>
                         </div>
@@ -175,16 +177,16 @@ if(!empty($this->filters)){
                     if($this->showButton ){
                         $js = "document.getElementById('hikashop_filtered_" . $this->params->get('main_div_name') . "').value='1';" . $submit . "return false;";
                         ?>
-                        <div class="hikashop_filter_button_inside<?php echo ($this->maxColumn) ? ' uk-width-1-'.$this->maxColumn : ''; ?>">
-                            <a href="#" id="hikashop_filter_button_<?php echo $this->params->get('main_div_name'); ?>" <?php echo $attributes; ?> onclick="<?php echo $js; ?>" class="uk-button uk-button-default <?php echo $this->config->get('css_button', 'hikabtn'); ?>"><?php echo JText::_('FILTER'); ?></a>
+                        <div class="hikashop_filter_button_inside<?php echo ($this->maxColumn) ? ' uk-width-1-'.$this->maxColumn.'@m uk-width-1-1' : ''; ?>">
+                            <a href="#" id="hikashop_filter_button_<?php echo $this->params->get('main_div_name'); ?>" <?php echo $attributes; ?> onclick="<?php echo $js; ?>" class="uk-button uk-button-primary uk-width-1-1 <?php echo $this->config->get('css_button', 'hikabtn'); ?>"><?php echo JText::_('FILTER'); ?></a>
                         </div>
                         <?php
                     }
                     if($this->showResetButton ){
                         $js = "document.getElementById('hikashop_reseted_" . $this->params->get('main_div_name') . "').value='1';" . $submit . "return false;";
                         ?>
-                        <div class="hikashop_reset_button_inside<?php echo ($this->maxColumn) ? ' uk-width-1-'.$this->maxColumn : ''; ?>">
-                            <a href="#" id="hikashop_reset_button_<?php echo $this->params->get('main_div_name'); ?>" class="<?php echo $this->config->get('css_button', 'hikabtn'); ?>" <?php echo $attributes; ?> onclick="<?php echo $js; ?>"><?php echo JText::_('RESET'); ?></a>
+                        <div class="hikashop_reset_button_inside<?php echo ($this->maxColumn) ? ' uk-width-1-'.$this->maxColumn.'@m uk-width-1-1' : ''; ?>">
+                            <a href="#" id="hikashop_reset_button_<?php echo $this->params->get('main_div_name'); ?>" class="uk-button uk-button-default uk-width-1-1 <?php echo $this->config->get('css_button', 'hikabtn'); ?>" <?php echo $attributes; ?> onclick="<?php echo $js; ?>"><?php echo JText::_('RESET'); ?></a>
                         </div>
                         <?php
                     }
