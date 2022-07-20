@@ -78,22 +78,6 @@ a.hikacart {
     border-color: $colorBlack;
   }
 }
-.hika-button-inside {
-  input[type="text"] {
-    height: 40px;
-    vertical-align: middle;
-    display: inline-block;
-    max-width: 100%;
-    width: 100%;
-    padding: 0 10px;
-    background: #fff;
-    color: #666;
-    border: 1px solid #e5e5e5;
-    transition: 0.2s ease-in-out;
-    transition-property: color, background-color, border;
-    -webkit-appearance: none;
-  }
-}
 .hikashop_products_listing {
   .hikashop_product {
     margin-bottom: 3rem;
