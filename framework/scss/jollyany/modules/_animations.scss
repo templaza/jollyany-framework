@@ -471,3 +471,37 @@
   animation-timing-function: linear;
   animation-iteration-count: 1
 }
+
+.uk-effect-light-up {
+  &:hover {
+    filter: brightness( 100% ) contrast( 113% ) saturate( 159% ) blur( 0.2px ) hue-rotate( 0deg );
+  }
+}
+
+@keyframes uk-effect-flash {
+  0% {left:-100%;}
+  100% {left:125%;}
+}
+
+.uk-effect-flash {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+    z-index: 2;
+  }
+  &:hover {
+    &:before {
+      -webkit-animation: uk-effect-flash 1.3s;
+      animation: uk-effect-flash 1.3s;
+    }
+  }
+}
