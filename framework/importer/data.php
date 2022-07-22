@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_medil'      =>  array(
+                // Pack Info
+                'name'        => 'Medil',
+                'desc'        => 'Medical & Healthcare Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/medil/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://medil.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/medil',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Medil Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_medil',
+                    'ext_code'  =>  'tz-medil-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_agruco'      =>  array(
                 // Pack Info
                 'name'        => 'Agruco',
