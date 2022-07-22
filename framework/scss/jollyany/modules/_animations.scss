@@ -1,0 +1,507 @@
+@keyframes uk-transition-bob {
+  0% {
+    transform: translateY(-8px)
+  }
+  50% {
+    transform: translateY(-4px)
+  }
+  100% {
+    transform: translateY(-8px)
+  }
+}
+
+@keyframes uk-transition-bob-float {
+  100% {
+    transform: translateY(-8px)
+  }
+}
+
+.uk-transition-bob:active, .uk-transition-bob:focus, .uk-transition-bob:hover {
+  animation-name: uk-transition-bob-float, uk-transition-bob;
+  animation-duration: .3s, 1.5s;
+  animation-delay: 0s, .3s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate
+}
+
+@keyframes uk-transition-pulse {
+  25% {
+    transform: scale(1.1)
+  }
+  75% {
+    transform: scale(0.9)
+  }
+}
+
+.uk-transition-pulse:active, .uk-transition-pulse:focus, .uk-transition-pulse:hover {
+  animation-name: uk-transition-pulse;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite
+}
+
+@keyframes uk-transition-pulse-grow {
+  to {
+    transform: scale(1.1)
+  }
+}
+
+.uk-transition-pulse-grow:active, .uk-transition-pulse-grow:focus, .uk-transition-pulse-grow:hover {
+  animation-name: uk-transition-pulse-grow;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate
+}
+
+@keyframes uk-transition-pulse-shrink {
+  to {
+    transform: scale(0.9)
+  }
+}
+
+.uk-transition-pulse-shrink:active, .uk-transition-pulse-shrink:focus, .uk-transition-pulse-shrink:hover {
+  animation-name: uk-transition-pulse-shrink;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate
+}
+
+@keyframes uk-transition-push {
+  50% {
+    transform: scale(0.8)
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
+.uk-transition-push:active, .uk-transition-push:focus, .uk-transition-push:hover {
+  animation-name: uk-transition-push;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-pop {
+  50% {
+    transform: scale(1.2)
+  }
+}
+
+.uk-transition-pop:active, .uk-transition-pop:focus, .uk-transition-pop:hover {
+  animation-name: uk-transition-pop;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1
+}
+
+.uk-transition-bounce-in {
+  transition-duration: .5s
+}
+
+.uk-transition-bounce-in:active, .uk-transition-bounce-in:focus, .uk-transition-bounce-in:hover {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.47, 2.02, .31, -.36)
+}
+
+.uk-transition-bounce-out {
+  transition-duration: .5s
+}
+
+.uk-transition-bounce-out:active, .uk-transition-bounce-out:focus, .uk-transition-bounce-out:hover {
+  transform: scale(0.8);
+  transition-timing-function: cubic-bezier(0.47, 2.02, .31, -.36)
+}
+
+.uk-transition-rotate {
+  transition-duration: .3s;
+  transition-property: transform
+}
+
+.uk-transition-rotate:active, .uk-transition-rotate:focus, .uk-transition-rotate:hover {
+  transform: rotate(4deg)
+}
+
+.uk-transition-grow-rotate {
+  transition-duration: .3s;
+  transition-property: transform
+}
+
+.uk-transition-grow-rotate:active, .uk-transition-grow-rotate:focus, .uk-transition-grow-rotate:hover {
+  transform: scale(1.1) rotate(4deg)
+}
+
+.uk-transition-float {
+  transition-duration: .3s;
+  transition-property: transform;
+  transition-timing-function: ease-out
+}
+
+.uk-transition-float:active, .uk-transition-float:focus, .uk-transition-float:hover {
+  transform: translateY(-8px)
+}
+
+.uk-transition-sink {
+  transition-duration: .3s;
+  transition-property: transform;
+  transition-timing-function: ease-out
+}
+
+.uk-transition-sink:active, .uk-transition-sink:focus, .uk-transition-sink:hover {
+  transform: translateY(8px)
+}
+
+@keyframes uk-transition-hang {
+  0% {
+    transform: translateY(8px)
+  }
+  50% {
+    transform: translateY(4px)
+  }
+  100% {
+    transform: translateY(8px)
+  }
+}
+
+@keyframes uk-transition-hang-sink {
+  100% {
+    transform: translateY(8px)
+  }
+}
+
+.uk-transition-hang:active, .uk-transition-hang:focus, .uk-transition-hang:hover {
+  animation-name: uk-transition-hang-sink, uk-transition-hang;
+  animation-duration: .3s, 1.5s;
+  animation-delay: 0s, .3s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate
+}
+
+.uk-transition-skew {
+  transition-duration: .3s;
+  transition-property: transform
+}
+
+.uk-transition-skew:active, .uk-transition-skew:focus, .uk-transition-skew:hover {
+  transform: skew(-10deg)
+}
+
+.uk-transition-skew-forward {
+  transition-duration: .3s;
+  transition-property: transform;
+  transform-origin: 0 100%
+}
+
+.uk-transition-skew-forward:active, .uk-transition-skew-forward:focus, .uk-transition-skew-forward:hover {
+  transform: skew(-10deg)
+}
+
+.uk-transition-skew-backward {
+  transition-duration: .3s;
+  transition-property: transform;
+  transform-origin: 0 100%
+}
+
+.uk-transition-skew-backward:active, .uk-transition-skew-backward:focus, .uk-transition-skew-backward:hover {
+  transform: skew(10deg)
+}
+
+@keyframes uk-transition-wobble-vertical {
+  16.65% {
+    transform: translateY(8px)
+  }
+  33.3% {
+    transform: translateY(-6px)
+  }
+  49.95% {
+    transform: translateY(4px)
+  }
+  66.6% {
+    transform: translateY(-2px)
+  }
+  83.25% {
+    transform: translateY(1px)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+
+.uk-transition-wobble-vertical:active, .uk-transition-wobble-vertical:focus, .uk-transition-wobble-vertical:hover {
+  animation-name: uk-transition-wobble-vertical;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-horizontal {
+  16.65% {
+    transform: translateX(8px)
+  }
+  33.3% {
+    transform: translateX(-6px)
+  }
+  49.95% {
+    transform: translateX(4px)
+  }
+  66.6% {
+    transform: translateX(-2px)
+  }
+  83.25% {
+    transform: translateX(1px)
+  }
+  100% {
+    transform: translateX(0)
+  }
+}
+
+.uk-transition-wobble-horizontal:active, .uk-transition-wobble-horizontal:focus, .uk-transition-wobble-horizontal:hover {
+  animation-name: uk-transition-wobble-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-to-bottom-right {
+  16.65% {
+    transform: translate(8px, 8px)
+  }
+  33.3% {
+    transform: translate(-6px, -6px)
+  }
+  49.95% {
+    transform: translate(4px, 4px)
+  }
+  66.6% {
+    transform: translate(-2px, -2px)
+  }
+  83.25% {
+    transform: translate(1px, 1px)
+  }
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+.uk-transition-wobble-to-bottom-right:active, .uk-transition-wobble-to-bottom-right:focus, .uk-transition-wobble-to-bottom-right:hover {
+  animation-name: uk-transition-wobble-to-bottom-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-to-top-right {
+  16.65% {
+    transform: translate(8px, -8px)
+  }
+  33.3% {
+    transform: translate(-6px, 6px)
+  }
+  49.95% {
+    transform: translate(4px, -4px)
+  }
+  66.6% {
+    transform: translate(-2px, 2px)
+  }
+  83.25% {
+    transform: translate(1px, -1px)
+  }
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+.uk-transition-wobble-to-top-right:active, .uk-transition-wobble-to-top-right:focus, .uk-transition-wobble-to-top-right:hover {
+  animation-name: uk-transition-wobble-to-top-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-top {
+  16.65% {
+    transform: skew(-12deg)
+  }
+  33.3% {
+    transform: skew(10deg)
+  }
+  49.95% {
+    transform: skew(-6deg)
+  }
+  66.6% {
+    transform: skew(4deg)
+  }
+  83.25% {
+    transform: skew(-2deg)
+  }
+  100% {
+    transform: skew(0)
+  }
+}
+
+.uk-transition-wobble-top {
+  transform-origin: 0 100%
+}
+
+.uk-transition-wobble-top:active, .uk-transition-wobble-top:focus, .uk-transition-wobble-top:hover {
+  animation-name: uk-transition-wobble-top;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-bottom {
+  16.65% {
+    transform: skew(-12deg)
+  }
+  33.3% {
+    transform: skew(10deg)
+  }
+  49.95% {
+    transform: skew(-6deg)
+  }
+  66.6% {
+    transform: skew(4deg)
+  }
+  83.25% {
+    transform: skew(-2deg)
+  }
+  100% {
+    transform: skew(0)
+  }
+}
+
+.uk-transition-wobble-bottom {
+  transform-origin: 100% 0
+}
+
+.uk-transition-wobble-bottom:active, .uk-transition-wobble-bottom:focus, .uk-transition-wobble-bottom:hover {
+  animation-name: uk-transition-wobble-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-wobble-skew {
+  16.65% {
+    transform: skew(-12deg)
+  }
+  33.3% {
+    transform: skew(10deg)
+  }
+  49.95% {
+    transform: skew(-6deg)
+  }
+  66.6% {
+    transform: skew(4deg)
+  }
+  83.25% {
+    transform: skew(-2deg)
+  }
+  100% {
+    transform: skew(0)
+  }
+}
+
+.uk-transition-wobble-skew:active, .uk-transition-wobble-skew:focus, .uk-transition-wobble-skew:hover {
+  animation-name: uk-transition-wobble-skew;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1
+}
+
+@keyframes uk-transition-buzz {
+  50% {
+    transform: translateX(3px) rotate(2deg)
+  }
+  100% {
+    transform: translateX(-3px) rotate(-2deg)
+  }
+}
+
+.uk-transition-buzz:active, .uk-transition-buzz:focus, .uk-transition-buzz:hover {
+  animation-name: uk-transition-buzz;
+  animation-duration: .15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite
+}
+
+@keyframes uk-transition-buzz-out {
+  10% {
+    transform: translateX(3px) rotate(2deg)
+  }
+  20% {
+    transform: translateX(-3px) rotate(-2deg)
+  }
+  30% {
+    transform: translateX(3px) rotate(2deg)
+  }
+  40% {
+    transform: translateX(-3px) rotate(-2deg)
+  }
+  50% {
+    transform: translateX(2px) rotate(1deg)
+  }
+  60% {
+    transform: translateX(-2px) rotate(-1deg)
+  }
+  70% {
+    transform: translateX(2px) rotate(1deg)
+  }
+  80% {
+    transform: translateX(-2px) rotate(-1deg)
+  }
+  90% {
+    transform: translateX(1px) rotate(0)
+  }
+  100% {
+    transform: translateX(-1px) rotate(0)
+  }
+}
+
+.uk-transition-buzz-out:active, .uk-transition-buzz-out:focus, .uk-transition-buzz-out:hover {
+  animation-name: uk-transition-buzz-out;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1
+}
+
+.uk-effect-light-up {
+  &:hover {
+    filter: brightness( 100% ) contrast( 113% ) saturate( 159% ) blur( 0.2px ) hue-rotate( 0deg );
+  }
+}
+
+@keyframes uk-effect-flash {
+  0% {left:-100%;}
+  100% {left:125%;}
+}
+
+.uk-effect-flash {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+    z-index: 2;
+  }
+  &:hover {
+    &:before {
+      -webkit-animation: uk-effect-flash 1.3s;
+      animation: uk-effect-flash 1.3s;
+    }
+  }
+}

@@ -19,6 +19,9 @@ $global-link-color: $colorMain !default;
 // 6 Override UIKit
 @import "modules/uikit_override";
 
+// 7 Transition style
+@import "modules/animations";
+
 .lead {
   line-height: 1.6em;
   strong {
