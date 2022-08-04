@@ -18,15 +18,22 @@ $hikacart_module        = $params->get('hikacart_module', 0);
 $hikacart_enable_text   = $params->get('hikacart_enable_text', 1);
 $hikacart_font_size     = $params->get('hikacart_font_size', '');
 $hikacart_class         = $params->get('hikacart_class', '');
+$hikacart_uikit_icon    = $params->get('hikacart_uikit_icon', 0);
 if (!$hikacart || !$hikacart_module) {
 	return;
 }
 if (empty($hikacart_class)) {
     $hikacart_class = 'fas fa-shopping-cart';
 }
+$icon = '';
+if ($hikacart_uikit_icon) {
+    $icon   =   '<span data-uk-icon="icon:cart; width:'.$hikacart_font_size.';"></span>';
+} else {
+    $icon   =   '<i class="'.$hikacart_class.' mr-1"'.($hikacart_font_size ? ' style="font-size: '.$hikacart_font_size.'px;"' : '').'></i>';
+}
 ?>
 <div class="jollyany-hikacart">
-    <a href="#jollyany-hikacart-content" class="jollyany-hikacart-icon" uk-toggle><i class="<?php echo $hikacart_class; ?> mr-1"<?php echo $hikacart_font_size ? ' style="font-size: '.$hikacart_font_size.'px;"' : '' ?>></i><?php echo $hikacart_enable_text ? ' ' . JText::_('TPL_JOLLYANY_YOUR_CART') : ''; ?></a>
+    <a href="#jollyany-hikacart-content" class="jollyany-hikacart-icon" uk-toggle><?php echo $icon; ?><?php echo $hikacart_enable_text ? ' ' . JText::_('TPL_JOLLYANY_YOUR_CART') : ''; ?></a>
 </div>
 <?php
 ob_start();
