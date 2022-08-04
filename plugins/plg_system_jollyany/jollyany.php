@@ -1046,6 +1046,11 @@ class plgSystemJollyany extends JPlugin {
         } else {
             $document->addScriptDeclaration('var TZ_LOGO_IMG = false;'); // to add js script in head
         }
+
+        if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation')) {
+            jimport('joomla.filesystem.folder');
+            JFolder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation');
+        }
 	}
 
     // Astroid Admin Events

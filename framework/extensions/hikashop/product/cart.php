@@ -39,7 +39,7 @@ if (!empty($small_cart)) $spinner_css="small_spinner small_cart";
 
 if(empty($this->rows)) {
 	$hidecart = (int)$this->params->get('hide_cart', 0);
-	$desc = trim($this->params->get('msg'));
+	$desc = $this->params->get('msg') ? trim($this->params->get('msg')) : '';
 	if((empty($desc) && $desc != '0') || $hidecart == 0)
 		$desc = ($this->cart_type == 'cart') ? JText::_('CART_EMPTY') : JText::_('WISHLIST_EMPTY');
 	if($hidecart == 2)
