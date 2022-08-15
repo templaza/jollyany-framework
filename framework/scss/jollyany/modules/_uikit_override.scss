@@ -13,7 +13,7 @@
 }
 .uk-grid-divider {
   &:not(.uk-grid-stack) {
-    .uk-grid-margin {
+    > .uk-grid-margin {
       margin-top: ($grid-gutter-vertical * 2);
       > *:first-child {
         position: relative;
@@ -36,7 +36,7 @@
       }
     }
     &.uk-grid-small, &.uk-grid-row-small {
-      .uk-grid-margin {
+      > .uk-grid-margin {
         margin-top: ($grid-small-gutter-vertical * 2);
         > *:first-child {
           &:before {
@@ -46,7 +46,7 @@
       }
     }
     &.uk-grid-medium, &.uk-grid-row-medium {
-      .uk-grid-margin {
+      > .uk-grid-margin {
         margin-top: ($grid-medium-gutter-vertical * 2);
         > *:first-child {
           &:before {
@@ -56,7 +56,7 @@
       }
     }
     &.uk-grid-large, &.uk-grid-row-large {
-      .uk-grid-margin {
+      > .uk-grid-margin {
         margin-top: ($grid-large-gutter-vertical * 2);
         > *:first-child {
           &:before {
