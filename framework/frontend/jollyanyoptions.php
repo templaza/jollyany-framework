@@ -110,10 +110,10 @@ if (!empty($body_link_hover_color)) {
     $styles[] = '.tpp-bootstrap a:hover, a.uk-link-heading:hover, .uk-link-heading a:hover, .uk-link-toggle:hover .uk-link-heading, .uk-link-toggle:focus .uk-link-heading{ color: ' . $body_link_hover_color . ';}';
 }
 if (!empty($login_icon_color)) {
-    $styles[] = '.jollyany-login-icon > i{ color: ' . $login_icon_color . ' !important;}';
+    $styles[] = '.jollyany-login-icon, .jollyany-login-icon > i{ color: ' . $login_icon_color . ' !important;}';
 }
 if (!empty($hikacart_icon_color)) {
-    $styles[] = '.jollyany-hikacart-icon > i{ color: ' . $hikacart_icon_color . ' !important;}';
+    $styles[] = '.jollyany-hikacart-icon, .jollyany-hikacart-icon > i{ color: ' . $hikacart_icon_color . ' !important;}';
 }
 if (!empty($dropdownmenu_icon_color)) {
     $styles[] = '#jollyany-dropdownmenu > i{ color: ' . $dropdownmenu_icon_color . ' !important;}';
