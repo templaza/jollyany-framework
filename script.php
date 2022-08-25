@@ -56,6 +56,10 @@ if (!class_exists('jollyanyInstallerScript')) {
             foreach ($plugins as $plugin) {
                 if ($type == "install" || $type == "update") {
                     $this->installPlugin($plugin, $plugin_dir);
+                    if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation')) {
+                        jimport('joomla.filesystem.folder');
+                        JFolder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation');
+                    }
                 }
             }
         }
