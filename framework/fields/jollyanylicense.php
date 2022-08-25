@@ -121,7 +121,7 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	        $html[]     =   '<div class="card card-highlight"><div class="card-body">';
 	        $html[]     =   '<h4 class="card-title">'.JText::_('JOLLYANY_BENEFIT').'</h4>';
 	        $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">Paid only once</h6>';
-	        $html[]     =   '<h3><small class="text-muted"><del>$1089</del></small> <strong>$59</strong></h3>';
+	        $html[]     =   '<h3><small class="text-muted"><del>$1280</del></small> <strong>$69</strong></h3>';
 
 	        $html[]     =   '<p class="card-text">If you haven\'t purchased Jollyany, <a href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><strong>click here to buy a license</strong></a> and activate template.</p>';
 	        $html[]     =   '</div>';

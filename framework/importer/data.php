@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_interiart'      =>  array(
+                // Pack Info
+                'name'        => 'InteriArt',
+                'desc'        => 'Furniture & Interior Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/interiart/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://interiart.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/interiart',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'InteriArt Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_interiart',
+                    'ext_code'  =>  'tz-interiart-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_medil'      =>  array(
                 // Pack Info
                 'name'        => 'Medil',
