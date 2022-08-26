@@ -1000,7 +1000,6 @@ class plgSystemJollyany extends JPlugin {
             return false;
         }
         $document = Framework::getDocument();
-//		$document->addStyleSheet(); // to add css link
         $document->addStyleDeclaration('
 		.jollyany_placeholder {
 			width: 100%;
@@ -1035,11 +1034,9 @@ class plgSystemJollyany extends JPlugin {
 	    }
 	    }
 		'); // to add css script
-//		$document->addScript(); // to add js file in head
         $document->addScript(JUri::root().'media/jollyany/assets/js/jollyany.min.js', "body"); // to add js file in body
         $document->addScript(JUri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
 		$document->addScriptDeclaration('var TZ_TEMPLATE_NAME = \''.$template->template.'\';'); // to add js script in head
-//		$document->addScriptDeclaration($js, "body"); // to add js script in body
         jimport('joomla.filesystem.file');
         if (JFile::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template->template.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-admin.png')) {
             $document->addScriptDeclaration('var TZ_LOGO_IMG = true;'); // to add js script in head

@@ -16,6 +16,10 @@ $document = Astroid\Framework::getDocument();
 $joomlalogin               = $params->get('joomlalogin', 0);
 $joomlalogin_module        = $params->get('joomlalogin_module', 0);
 $whendisplay               = $params->get('when_login_module_display', '');
+$joomlalogin_enable_text   = $params->get('joomlalogin_enable_text', 1);
+$joomlalogin_font_size     = $params->get('joomlalogin_font_size', '');
+$joomlalogin_class         = $params->get('joomlalogin_class', '');
+$joomlalogin_uikit_icon    = $params->get('joomlalogin_uikit_icon', 0);
 
 if ($whendisplay) {
     $user       =   \JFactory::getUser();
@@ -26,11 +30,20 @@ if ($whendisplay) {
 if (!$joomlalogin || !$joomlalogin_module) {
 	return;
 }
+if (empty($joomlalogin_class)) {
+    $joomlalogin_class = 'fas fa-user';
+}
+$icon = '';
+if ($joomlalogin_uikit_icon) {
+    $icon   =   '<span data-uk-icon="icon:user; width:'.$joomlalogin_font_size.';"></span>';
+} else {
+    $icon   =   '<i class="'.$joomlalogin_class.' mr-1"'.($joomlalogin_font_size ? ' style="font-size: '.$joomlalogin_font_size.'px;"' : '').'></i>';
+}
 $module = JModuleHelper::getModuleById($joomlalogin_module);
 $title  =   $module && isset($module->title) && $module->title ? $module->title : JText::_('TPL_JOLLYANY_LOGIN');
 ?>
 	<div class="jollyany-login">
-		<a href="#jollyany-login-content" class="jollyany-login-icon" uk-toggle><i class="fas fa-user mr-1"></i> <?php echo $title; ?></a>
+		<a href="#jollyany-login-content" class="jollyany-login-icon" uk-toggle><?php echo $icon; ?><?php echo $joomlalogin_enable_text ? ' ' . $title : ''; ?></a>
 	</div>
 <?php
 ob_start();
