@@ -19,7 +19,7 @@ $params = $template->getParams();
 $document = Framework::getDocument();
 
 // Body Font Styles
-$bodyType = $params->get('body_typography');
+$bodyType = $params->get('body_typography','');
 if (trim($bodyType) == 'custom') {
     $typography     = $params->get('body_typography_options');
     $selector       = 'html';
@@ -27,7 +27,7 @@ if (trim($bodyType) == 'custom') {
 }
 
 // Top Bar Font Styles
-$topbarType = $params->get('top_bar_typography');
+$topbarType = $params->get('top_bar_typography','');
 if (trim($topbarType) == 'custom') {
     $typography     = $params->get('top_bar_typography_options');
     $selector       = '.top-bar';
@@ -35,7 +35,7 @@ if (trim($topbarType) == 'custom') {
 }
 
 // Footer Font Styles
-$footerType = $params->get('footer_typography');
+$footerType = $params->get('footer_typography','');
 if (trim($footerType) == 'custom') {
     $typography     = $params->get('footer_typography_options');
     $selector       = '.astroid-footer, .astroid-footer-section, .jollyany-bottom-section';
@@ -43,7 +43,7 @@ if (trim($footerType) == 'custom') {
 }
 
 // Article detail Font Styles
-$articleType = $params->get('article_typography');
+$articleType = $params->get('article_typography','');
 if (trim($articleType) == 'custom') {
     $typography     = $params->get('article_typography_options');
     $selector       = '.articleBody, #eb .eb-entry-article, .tpItemPage > #tz-portfolio-template-body';
@@ -51,7 +51,7 @@ if (trim($articleType) == 'custom') {
 }
 
 // Header Font Styles
-$headerType = $params->get('header_typography');
+$headerType = $params->get('header_typography','');
 if (trim($headerType) == 'custom') {
     $typography     = $params->get('header_typography_options');
     $selector       = '.astroid-header-section, .astroid-sidebar-header';
@@ -59,7 +59,7 @@ if (trim($headerType) == 'custom') {
 }
 
 // Button Font Styles
-$buttonType = $params->get('button_typography');
+$buttonType = $params->get('button_typography','');
 if (trim($buttonType) == 'custom') {
     $typography     = $params->get('button_typography_options');
     $selector       = 'button, [type="button"], [type="reset"], [type="submit"], .sppb-btn, .btn';
