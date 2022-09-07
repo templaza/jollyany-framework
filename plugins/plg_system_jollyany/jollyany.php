@@ -786,7 +786,7 @@ class plgSystemJollyany extends JPlugin {
                         $senderip       = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
                         // Subject Structure
                         $site_name 	    = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
-                        $mail_subject   = $subject . ' | ' . $from_email . ' | ' . $site_name;
+                        $mail_subject   = $subject . ' - ' . $from_email . ' - ' . $site_name;
 
                         // Message structure
                         $mail_body = '<div>';
