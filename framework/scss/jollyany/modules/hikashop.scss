@@ -366,6 +366,15 @@ input.hikashop_product_quantity_field {
     height: 40px;
   }
 }
+div.hikashop_product_quantity_div.hikashop_product_quantity_input_div_regrouped {
+  border: none;
+  height: auto;
+  width: auto;
+}
+.hika_j4  div.hikashop_product_quantity_div.hikashop_product_quantity_input_div_regrouped .hikashop_product_quantity_div.hikashop_product_quantity_change_div_regrouped {
+  background-color: transparent;
+  width: auto;
+}
 @media (min-width: 1200px) {
   .hikashop_product_quantity_div {
     input.hikashop_product_quantity_field {
