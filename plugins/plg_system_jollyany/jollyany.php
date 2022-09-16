@@ -2,7 +2,7 @@
 /**
  * @package   Jollyany Framework
  * @author    TemPlaza https://www.templaza.com
- * @copyright Copyright (C) 2011 - 2021 TemPlaza.
+ * @copyright Copyright (C) 2011 - 2022 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
 defined('_JEXEC') or die;
@@ -28,7 +28,7 @@ class plgSystemJollyany extends JPlugin {
 	protected $app;
     public function onAfterDispatch()
     {
-        if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid')) {
+        if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || $this->isEnableExtension('astroid', 'plugin', 'system') || $this->isEnableExtension('astroid', 'library')) {
             return false;
         }
         Astroid\Framework::getDocument()->addLayoutPath(JPATH_LIBRARIES . '/jollyany/framework/frontend/');
@@ -1165,5 +1165,29 @@ class plgSystemJollyany extends JPlugin {
         $joomla_current_version = $joomla_current_version->getShortVersion();
         $joomla_current_version = substr($joomla_current_version, 0, 1);
         return in_array($joomla_current_version, $template_joomla_version);
+    }
+
+    protected function isEnableExtension($element, $type = '', $folder = '') {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true)
+            ->select(
+                $db->quoteName('enabled')
+            )
+            ->from($db->quoteName('#__extensions'))
+            ->where(
+                $db->quoteName('element') . ' = '.$db->quote($element)
+            );
+        if (!empty($type)) {
+            $query->where($db->quoteName('type') . ' = '.$db->quote($type));
+        }
+        if (!empty($folder)) {
+            $query->where($db->quoteName('folder') . ' = '.$db->quote($folder));
+        }
+        $db->setQuery($query);
+        $result = $db->loadResult();
+        if (!empty($result) && $result == 1) {
+            return true;
+        }
+        return false;
     }
 }
