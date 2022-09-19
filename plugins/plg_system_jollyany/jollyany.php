@@ -21,14 +21,14 @@ if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
 /**
  * Jollyany system plugin
  *
- * @since  2.0.1
+ * @since  3.5.11
  */
 
 class plgSystemJollyany extends JPlugin {
 	protected $app;
     public function onAfterDispatch()
     {
-        if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || $this->isEnableExtension('astroid', 'plugin', 'system') || $this->isEnableExtension('astroid', 'library')) {
+        if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !$this->isEnableExtension('astroid', 'plugin', 'system') || !$this->isEnableExtension('astroid', 'library')) {
             return false;
         }
         Astroid\Framework::getDocument()->addLayoutPath(JPATH_LIBRARIES . '/jollyany/framework/frontend/');
