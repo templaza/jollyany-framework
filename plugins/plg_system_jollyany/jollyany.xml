@@ -17,6 +17,10 @@
       <fields name="params">
          <fieldset name="basic">
             <field name="jollyany_license" type="hidden" default="" />
+            <field name="jollyany_load_uikit" type="radio" default="cdn" label="JOLLYANY_LOAD_UIKIT" description="JOLLYANY_LOAD_UIKIT_DESC" class="btn-group btn-group-yesno">
+               <option value="cdn">CDN</option>
+               <option value="local">Local</option>
+            </field>
          </fieldset>
       </fields>
    </config>
