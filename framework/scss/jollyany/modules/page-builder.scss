@@ -719,6 +719,30 @@
     }
   }
 }
+.uk-social {
+  &.magazine {
+    .uk-social-item > a {
+      display: flex;
+      background-color: #f5f5f5;
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+      > span {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 12px;
+      }
+      .uk-icon {
+        background-color: rgba(0,0,0,0.1);
+      }
+      .uk-social-title {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+  }
+}
 
 .ukmarker {
   .uk-marker-image {
