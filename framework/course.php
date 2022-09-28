@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 abstract class JollyanyFrameworkCourse {
     public static function getData($id) {
-        if (self::checkCourseDB()) {
+        if (self::checkCourseDB() && isset($id) && $id) {
             $db     =   \JFactory::getDbo();
             $db->setQuery('SELECT * FROM #__jollyany_course_data WHERE cid='.$id);
             return $db->loadObject();
