@@ -94,6 +94,32 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_todaynews'      =>  array(
+                // Pack Info
+                'name'        => 'Today News',
+                'desc'        => 'Newspaper, Magazine & News Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/todaynews/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://todaynews.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/todaynews',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Today News Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_todaynews',
+                    'ext_code'  =>  'tz-todaynews-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                ),
+            ),
             'tz_interiart'      =>  array(
                 // Pack Info
                 'name'        => 'InteriArt',

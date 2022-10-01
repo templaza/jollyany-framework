@@ -44,10 +44,10 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	    $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
         $totaltemp  =   JollyanyFrameworkDataImport::getTotalTemplate();
         $template   =   Astroid\Framework::getTemplate();
-
+        $preview_img=   file_exists(JPATH_SITE. '/media/templates/site/' . $template->template . '/images/template_preview.png') ? JUri::root().'media/templates/site/'.$template->template.'/images/template_preview.png' : JUri::root().'templates/'.$template->template.'/template_preview.png';
         $html[]     =   '<div class="row mt-4">';
         $html[]     =   '<div class="col-12 col-xl-4 col-xxl-5 mb-4">';
-        $html[]     =   '<div class="card"><img src="'.JUri::root().'templates/'.$template->template.'/template_preview.png" class="card-img-top" alt="'.$template->template.'" />';
+        $html[]     =   '<div class="card"><img src="'.$preview_img.'" class="card-img-top" alt="'.$template->template.'" />';
 
         $html[]     =   '<div class="card-body">';
         $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">You are using: Version <strong>'.$template->version.'</strong></h6>';
