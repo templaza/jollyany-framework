@@ -377,6 +377,9 @@ a.hikashop_product_quantity_field_change_plus, a.hikashop_product_quantity_field
   padding: 0 5px;
   height: auto;
 }
+span.hikashop_product_name {
+  text-align: inherit;
+}
 @media (min-width: 1200px) {
   .hikashop_product_quantity_div {
     input.hikashop_product_quantity_field {
