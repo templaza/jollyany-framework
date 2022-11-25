@@ -23,7 +23,7 @@ abstract class Framework
     {
         define('JOLLYANY_PACKAGE', 'https://www.templaza.com/joomla-templates.html');
         define('JOLLYANY_SUPPORT', 'https://www.templaza.com/forums.html');
-        define('JOLLYANY_DOCUMENT', 'https://jollyany.co/support/documentation');
+        define('JOLLYANY_DOCUMENT', 'https://docs.jollyany.co/');
         define('JOLLYANY_PURCHASE', 'https://1.envato.market/jollyany-joomla-package');
     }
 }
