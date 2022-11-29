@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_plazart'      =>  array(
+                // Pack Info
+                'name'        => 'Plazart',
+                'desc'        => 'Construction Equipment Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/plazart/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://plazart.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/plazart',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Plazart Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_plazart',
+                    'ext_code'  =>  'tz-plazart-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_todaynews'      =>  array(
                 // Pack Info
                 'name'        => 'Today News',
