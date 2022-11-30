@@ -62,7 +62,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
     <?php
     if($this->config->get('thumbnail', 1)) {
         $extra_class = '';
-        if (count($this->row->images) > 1) {
+        if (isset($this->row->images) && count($this->row->images) > 1) {
             $extra_class = 'hikashop_hover_img';
         }
         ?>
