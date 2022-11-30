@@ -27,9 +27,9 @@ if (empty($hikacart_class)) {
 }
 $icon = '';
 if ($hikacart_uikit_icon) {
-    $icon   =   '<span data-uk-icon="icon:cart; width:'.$hikacart_font_size.';"></span>';
+    $icon   =   '<span class="jollyany-hikashop-cart" data-uk-icon="icon:cart; width:'.$hikacart_font_size.';"></span>';
 } else {
-    $icon   =   '<i class="'.$hikacart_class.' mr-1"'.($hikacart_font_size ? ' style="font-size: '.$hikacart_font_size.'px;"' : '').'></i>';
+    $icon   =   '<i class="jollyany-hikashop-cart '.$hikacart_class.' mr-1"'.($hikacart_font_size ? ' style="font-size: '.$hikacart_font_size.'px;"' : '').'></i>';
 }
 ?>
 <div class="jollyany-hikacart">

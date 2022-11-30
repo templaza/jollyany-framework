@@ -5,10 +5,9 @@ jQuery(function($){
             $('#jollyany-hikacart-content .hikashop_cart_module tbody tr').find('input.hikashop_product_quantity_field').each(function (i, el) {
                 hikacart_quantity   +=  parseInt($(el).val());
             });
+            $('.jollyany-hikacart-icon > .jollyany-hikashop-cart > .cart-count').remove();
             if (hikacart_quantity>0) {
-                $('.jollyany-hikacart-icon > i').html('<span class="cart-count">'+hikacart_quantity+'</span>');
-            } else {
-                $('.jollyany-hikacart-icon > i').empty();
+                $('.jollyany-hikacart-icon > .jollyany-hikashop-cart').append('<span class="cart-count">'+hikacart_quantity+'</span>');
             }
         }
     };
