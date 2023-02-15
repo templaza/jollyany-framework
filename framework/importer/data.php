@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_amanus'      =>  array(
+                // Pack Info
+                'name'        => 'Amanus',
+                'desc'        => 'Yacht Charter Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/amanus/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://amanus.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/amanus',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Amanus Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_amanus',
+                    'ext_code'  =>  'tz-amanus-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['tz-portfolio'],
+                    self::$exts['hikashop'],
+                ),
+            ),
             'tz_plazart'      =>  array(
                 // Pack Info
                 'name'        => 'Plazart',
