@@ -2,7 +2,7 @@
 /**
  * @package   Jollyany Framework
  * @author    TemPlaza https://www.templaza.com
- * @copyright Copyright (C) 2009 - 2019 TemPlaza.
+ * @copyright Copyright (C) 2011 - 2023 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
 defined('_JEXEC') or die;
@@ -217,15 +217,15 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                                 .on('update.countdown', function(event) {
                                     var format = '%H:%M:%S';
                                     if((event.offset.totalDays > 0 && event.offset.weeks === 0) || (event.offset.totalDays % 7 > 0)) {
-                                        format = '%-d day%!d ' + format;
+                                        format = '<?php echo JText::_('JOLLYANY_EVENT_DAY'); ?> ' + format;
                                     }
                                     if(event.offset.weeks > 0) {
-                                        format = '%-w week%!w ' + format;
+                                        format = '<?php echo JText::_('JOLLYANY_EVENT_WEEK'); ?> ' + format;
                                     }
                                     $(this).html(event.strftime(format));
                                 })
                                 .on('finish.countdown', function(event) {
-                                    $(this).html('<?php echo $event_expired; ?>')
+                                    $(this).html('<?php echo addslashes($event_expired); ?>')
                                         .parent().addClass('disabled');
                                 });
                         });
