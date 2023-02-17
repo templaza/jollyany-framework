@@ -3,10 +3,10 @@
    <name>Jollyany Framework</name>
    <libraryname>jollyany</libraryname>
    <author>TemPlaza</author>
-   <creationDate>November 2022</creationDate>
-   <version>3.5.12</version>
+   <creationDate>February 2023</creationDate>
+   <version>3.5.13</version>
    <url>https://www.templaza.com</url>
-   <copyright>Copyright (C) 2022 TemPlaza, Jsc. All rights reserved.</copyright>
+   <copyright>Copyright (C) 2023 TemPlaza, Jsc. All rights reserved.</copyright>
    <license>GNU General Public License version 3 or later; see LICENSE.txt</license>
    <authorEmail>info@templaza.com</authorEmail>
    <authorUrl>https://www.templaza.com</authorUrl>
