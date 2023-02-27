@@ -247,10 +247,10 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
             if ((!$this->isCategoryView || ($this->isCategoryView && $this->categoryParams->get('jollyany_show_event_duration',0))) && ($this->article->params->get('jollyany_event_start', '') || $this->article->params->get('jollyany_event_end', ''))) {
                 $event_duration =   array();
                 if ($this->article->params->get('jollyany_event_start', '')) {
-                    $event_duration[]   =   date(JText::_('DATE_FORMAT_LC2'), strtotime($this->article->params->get('jollyany_event_start', '')));
+                    $event_duration[]   =   HTMLHelper::_('date', $this->article->params->get('jollyany_event_start', ''), Text::_('DATE_FORMAT_LC2'));
                 }
                 if ($this->article->params->get('jollyany_event_end', '')) {
-                    $event_duration[]   =   date(JText::_('DATE_FORMAT_LC2'), strtotime($this->article->params->get('jollyany_event_end', '')));
+                    $event_duration[]   =   HTMLHelper::_('date', $this->article->params->get('jollyany_event_end', ''), Text::_('DATE_FORMAT_LC2'));
                 }
                 echo '<tr><td class="event-duration"><span uk-icon="icon: calendar"></span></td><td>'. implode('<span uk-icon="icon: arrow-right"></span>', $event_duration) .'</td></tr>';
             }
@@ -334,10 +334,10 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                 $content .= '<div class="uk-grid-small" uk-grid>';
                 $event_duration =   array();
                 if ($row->get('jollyany_event_start','')) {
-                    $event_duration[]   =   date('F d, Y H:i', strtotime($row->get('jollyany_event_start','')));
+                    $event_duration[]   =   HTMLHelper::_('date', $row->get('jollyany_event_start',''), 'F d, Y H:i');
                 }
                 if ($row->get('jollyany_event_end','')) {
-                    $event_duration[]   =   date('F d, Y H:i', strtotime($row->get('jollyany_event_end','')));
+                    $event_duration[]   =   HTMLHelper::_('date', $row->get('jollyany_event_end',''), 'F d, Y H:i');
                 }
                 $content .= '<div class="uk-width-auto"><span uk-icon="icon: clock; ratio: 0.8"></span></div><div class="uk-width-expand">'. implode('<span uk-icon="icon: arrow-right"></span>', $event_duration).'</div>';
                 $content .= '</div>';
