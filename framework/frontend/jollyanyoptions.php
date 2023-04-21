@@ -12,7 +12,7 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-use Astroid\Helper;
+use Astroid\Helper\Style;
 use Astroid\Framework;
 $template = Framework::getTemplate();
 $params = $template->getParams();
@@ -53,111 +53,81 @@ if (!empty($sidebar_logo)) {
 }
 
 // Color option
-$styles = [];
-$body_heading_color = $params->get('body_heading_color', '');
-$body_meta_color = $params->get('body_meta_color', '');
-$header_heading_color = $params->get('header_heading_color', '');
-$header_link_color = $params->get('header_link_color', '');
-$header_link_hover_color = $params->get('header_link_hover_color', '');
-$topbar_bordercolor = $params->get('topbar_bordercolor', '');
-$sticky_off_canvas_button_color = $params->get('sticky_off_canvas_button_color', '');
-$stick_header_menu_link_color = $params->get('stick_header_menu_link_color', '');
-$stick_header_menu_link_hover_color = $params->get('stick_header_menu_link_hover_color', '');
+$body_meta_color = Style::getColor($params->get('body_meta_color', ''));
+$sticky_off_canvas_button_color = Style::getColor($params->get('sticky_off_canvas_button_color', ''));
 $background_image = $params->get('body_background_image', false);
-$body_link_color = $params->get('body_link_color', '');
-$body_link_hover_color = $params->get('body_link_hover_color', '');
-$login_icon_color = $params->get('login_icon_color', '');
-$hikacart_icon_color = $params->get('hikacart_icon_color', '');
-$dropdownmenu_icon_color = $params->get('dropdownmenu_icon_color', '');
-$social_icon_color = $params->get('social_icon_color', '');
-$social_icon_color_hover = $params->get('social_icon_color_hover', '');
+$body_link_color = Style::getColor($params->get('body_link_color', ''));
+$body_link_hover_color = Style::getColor($params->get('body_link_hover_color', ''));
+$login_icon_color = Style::getColor($params->get('login_icon_color', ''));
+$hikacart_icon_color = Style::getColor($params->get('hikacart_icon_color', ''));
+$dropdownmenu_icon_color = Style::getColor($params->get('dropdownmenu_icon_color', ''));
 $social_profiles_style = $params->get('social_profiles_style', 1);
 
 if (!empty($background_image)) {
-    $styles[] = 'body{ background-image: url('.JURI::root() . Astroid\Helper\Media::getPath() . '/' . $background_image.');}';
+    Style::addCssBySelector('body', 'background-image', 'url('.JURI::root() . Astroid\Helper\Media::getPath() . '/' . $background_image.')');
 }
-if (!empty($body_heading_color)) {
-    $styles[] = 'h1,h2,h3,h4,h5,h6{ color: ' . $body_heading_color . ';}';
-}
-if (!empty($body_meta_color)) {
-    $styles[] = '.uk-text-meta, .uk-article-meta { color: ' . $body_meta_color . ';}';
-}
-if (!empty($header_heading_color)) {
-    $styles[] = 'header h1,header h2,header h3,header h4,header h5,header h6{ color: ' . $header_heading_color . ';}';
-}
-if (!empty($header_link_color)) {
-    $styles[] = 'body header a{ color: ' . $header_link_color . ';}';
-}
-if (!empty($header_link_hover_color)) {
-    $styles[] = 'body header a:hover{ color: ' . $header_link_hover_color . ';}';
-}
-if (!empty($topbar_bordercolor)) {
-    $styles[]    = '.top-bar, .top-bar .astroid-contact-info > span,.top-bar .astroid-social-icons > li,.top-bar .jollyany-hikacart, .top-bar .jollyany-login, .top-bar .border-right {border-color:'.$topbar_bordercolor.';}';
-}
-if (!empty($sticky_off_canvas_button_color)) {
-    $styles[]    = '#astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner, #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::before, #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::after {background-color:'.$sticky_off_canvas_button_color.';}';
-}
-if (!empty($stick_header_menu_link_color)) {
-    $styles[]    = '#astroid-sticky-header a {color:'.$stick_header_menu_link_color.';}';
-}
-if (!empty($stick_header_menu_link_hover_color)) {
-    $styles[]    = '#astroid-sticky-header a:hover {color:'.$stick_header_menu_link_hover_color.';}';
-}
-if (!empty($body_link_color)) {
-    $styles[] = '.tpp-bootstrap a{ color: ' . $body_link_color . ';}';
-}
-if (!empty($body_link_hover_color)) {
-    $styles[] = '.tpp-bootstrap a:hover, a.uk-link-heading:hover, .uk-link-heading a:hover, .uk-link-toggle:hover .uk-link-heading, .uk-link-toggle:focus .uk-link-heading{ color: ' . $body_link_hover_color . ';}';
-}
-if (!empty($login_icon_color)) {
-    $styles[] = '.jollyany-login-icon, .jollyany-login-icon > i{ color: ' . $login_icon_color . ' !important;}';
-}
-if (!empty($hikacart_icon_color)) {
-    $styles[] = '.jollyany-hikacart-icon, .jollyany-hikacart-icon > i{ color: ' . $hikacart_icon_color . ' !important;}';
-}
-if (!empty($dropdownmenu_icon_color)) {
-    $styles[] = '#jollyany-dropdownmenu > i{ color: ' . $dropdownmenu_icon_color . ' !important;}';
-}
+Style::addCssBySelector('.uk-text-meta, .uk-article-meta', 'color', $body_meta_color['light']);
+Style::addCssBySelector('[data-bs-theme=dark] .uk-text-meta, [data-bs-theme=dark] .uk-article-meta', 'color', $body_meta_color['dark']);
+
+Style::addCssBySelector('#astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner, #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::before, #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::after', 'background-color', $sticky_off_canvas_button_color['light']);
+Style::addCssBySelector('[data-bs-theme=dark] #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner, [data-bs-theme=dark] #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::before, [data-bs-theme=dark] #astroid-sticky-header .header-offcanvas-trigger.burger-menu-button .inner::after', 'background-color', $sticky_off_canvas_button_color['dark']);
+
+Style::addCssBySelector('.tpp-bootstrap a', 'color', $body_link_color['light']);
+Style::addCssBySelector('[data-bs-theme=dark] .tpp-bootstrap a', 'color', $body_link_color['dark']);
+
+Style::addCssBySelector('.tpp-bootstrap a:hover, a.uk-link-heading:hover, .uk-link-heading a:hover, .uk-link-toggle:hover .uk-link-heading, .uk-link-toggle:focus .uk-link-heading', 'color', $body_link_hover_color['light']);
+Style::addCssBySelector('[data-bs-theme=dark] .tpp-bootstrap a:hover, [data-bs-theme=dark] a.uk-link-heading:hover, [data-bs-theme=dark] .uk-link-heading a:hover, [data-bs-theme=dark] .uk-link-toggle:hover .uk-link-heading, [data-bs-theme=dark] .uk-link-toggle:focus .uk-link-heading', 'color', $body_link_hover_color['dark']);
+
+Style::addCssBySelector('.jollyany-login-icon, .jollyany-login-icon > i', 'color', $login_icon_color['light'] . ' !important');
+Style::addCssBySelector('[data-bs-theme=dark] .jollyany-login-icon, [data-bs-theme=dark] .jollyany-login-icon > i', 'color', $login_icon_color['dark'] . ' !important');
+
+Style::addCssBySelector('.jollyany-hikacart-icon, .jollyany-hikacart-icon > i', 'color', $hikacart_icon_color['light'] . ' !important');
+Style::addCssBySelector('[data-bs-theme=dark] .jollyany-hikacart-icon, [data-bs-theme=dark] .jollyany-hikacart-icon > i', 'color', $hikacart_icon_color['dark'] . ' !important');
+
+Style::addCssBySelector('#jollyany-dropdownmenu > i', 'color', $dropdownmenu_icon_color['light'] . ' !important');
+Style::addCssBySelector('[data-bs-theme=dark] #jollyany-dropdownmenu > i', 'color', $dropdownmenu_icon_color['dark'] . ' !important');
 
 // Color Menu Options
-$dropdown_link_color = $params->get('dropdown_link_color', '');
-$dropdown_menu_link_hover_color = $params->get('dropdown_menu_link_hover_color', '');
-$dropdown_menu_active_bg_color = $params->get('dropdown_menu_active_bg_color', '');
-$dropdown_bg_color = $params->get('dropdown_bg_color', '');
+$dropdown_link_color = Style::getColor($params->get('dropdown_link_color', ''));
+$dropdown_menu_link_hover_color = Style::getColor($params->get('dropdown_menu_link_hover_color', ''));
+$dropdown_menu_active_bg_color = Style::getColor($params->get('dropdown_menu_active_bg_color', ''));
+$dropdown_bg_color = Style::getColor($params->get('dropdown_bg_color', ''));
 
-if (!empty($dropdown_link_color)) {
-    $styles[]    = '.astroid-sidebar-menu .nav-item-submenu a.item-link-component {color:'.$dropdown_link_color.';}';
-}
-if (!empty($dropdown_menu_link_hover_color)) {
-    $styles[]    = '.astroid-sidebar-menu .nav-item-submenu a.item-link-component:hover {color:'.$dropdown_menu_link_hover_color.';}';
-}
-if (!empty($dropdown_menu_active_bg_color)) {
-    $styles[]    = '.astroid-sidebar-menu .nav-item-submenu a.item-link-component.active {color:'.$dropdown_menu_active_bg_color.';}';
-}
-if (!empty($dropdown_bg_color)) {
-    $styles[]    = '.astroid-sidebar-menu .navbar-subnav {background-color:'.$dropdown_bg_color.';}';
-}
+$sidebar_menu_style     =   new Style('.astroid-sidebar-menu');
+$sidebar_link   =   $sidebar_menu_style->child('.nav-item-submenu a.item-link-component');
+$sidebar_link->addCss('color', $dropdown_link_color['light']);
+$sidebar_link->hover()->addCss('color', $dropdown_menu_link_hover_color['light']);
+$sidebar_link->active()->addCss('color', $dropdown_menu_active_bg_color['light']);
+$sidebar_menu_style->child('.navbar-subnav')->addCss('background-color', $dropdown_bg_color['light']);
+$sidebar_menu_style->render();
+
+$sidebar_menu_style     =   new Style('.astroid-sidebar-menu', 'dark');
+$sidebar_link   =   $sidebar_menu_style->child('.nav-item-submenu a.item-link-component');
+$sidebar_link->addCss('color', $dropdown_link_color['dark']);
+$sidebar_link->hover()->addCss('color', $dropdown_menu_link_hover_color['dark']);
+$sidebar_link->active()->addCss('color', $dropdown_menu_active_bg_color['dark']);
+$sidebar_menu_style->child('.navbar-subnav')->addCss('background-color', $dropdown_bg_color['dark']);
+$sidebar_menu_style->render();
 
 // Color Footer Options
-$footer_background_color = $params->get('footer_background_color', '');
-$footer_text_color = $params->get('footer_text_color', '');
-$footer_heading_color = $params->get('footer_heading_color', '');
-$footer_link_color = $params->get('footer_link_color', '');
-$footer_link_hover_color = $params->get('footer_link_hover_color', '');
-if (!empty($footer_background_color)) {
-    $styles[]    = '.jollyany-bottom-section {background-color:'.$footer_background_color.' !important;}';
-}
-if (!empty($footer_text_color)) {
-    $styles[]    = '.jollyany-bottom-section {color:'.$footer_text_color.' !important;}';
-}
-if (!empty($footer_heading_color)) {
-    $styles[]    = '.jollyany-bottom-section h1, .jollyany-bottom-section h2, .jollyany-bottom-section h3, .jollyany-bottom-section h4, .jollyany-bottom-section h5, .jollyany-bottom-section h6 {color:'.$footer_heading_color.' !important;}';
-}
-if (!empty($footer_link_color)) {
-    $styles[]    = '.jollyany-bottom-section a {color:'.$footer_link_color.' !important;}';
-}
-if (!empty($footer_link_hover_color)) {
-    $styles[]    = '.jollyany-bottom-section a:hover {color:'.$footer_link_hover_color.' !important;}';
-}
+$footer_background_color = Style::getColor($params->get('footer_background_color', ''));
+$footer_text_color = Style::getColor($params->get('footer_text_color', ''));
+$footer_heading_color = Style::getColor($params->get('footer_heading_color', ''));
+$footer_link_color = Style::getColor($params->get('footer_link_color', ''));
+$footer_link_hover_color = Style::getColor($params->get('footer_link_hover_color', ''));
 
-$document->addStyledeclaration(implode('', $styles));
+$bottom_style   =   new Style('.jollyany-bottom-section');
+$bottom_style->addCss('background-color', $footer_background_color['light'] . ' !important');
+$bottom_style->addCss('color', $footer_text_color['light'] . ' !important');
+$bottom_style->child('h1,h2,h3,h4,h5,h6')->addCss('color', $footer_heading_color['light'] . '!important');
+$bottom_style->link()->addCss('color', $footer_link_color['light'] . ' !important');
+$bottom_style->link()->hover()->addCss('color', $footer_link_hover_color['light'] . ' !important');
+$bottom_style->render();
+
+$bottom_style   =   new Style('.jollyany-bottom-section', 'dark');
+$bottom_style->addCss('background-color', $footer_background_color['dark'] . ' !important');
+$bottom_style->addCss('color', $footer_text_color['dark'] . ' !important');
+$bottom_style->child('h1,h2,h3,h4,h5,h6')->addCss('color', $footer_heading_color['dark'] . '!important');
+$bottom_style->link()->addCss('color', $footer_link_color['dark'] . ' !important');
+$bottom_style->link()->hover()->addCss('color', $footer_link_hover_color['dark'] . ' !important');
+$bottom_style->render();
