@@ -2,6 +2,7 @@
 
 // 1. Your custom variables and variable overwrites.
 $global-link-color: $colorMain !default;
+$grid-divider-border: var(--bs-border-color) !default;
 
 // 2. Import default variables and available mixins.
 @import "uikit/variables-theme.scss";
