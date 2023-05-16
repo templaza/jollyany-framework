@@ -11,7 +11,7 @@
   color: $badge-color;
   background-color: $global-success-background;
 }
-.uk-grid-divider {
+.uk-grid-divider:not(.uk_divider_2) {
   &:not(.uk-grid-stack) {
     > .uk-grid-margin {
       margin-top: ($grid-gutter-vertical * 2);
@@ -67,6 +67,9 @@
     }
   }
 }
-.uk-modal-dialog {
+.uk-modal-dialog, .uk-card-default {
   background-color: var(--bs-body-bg);
+}
+blockquote {
+  color: var(--bs-heading-color,inherit);
 }

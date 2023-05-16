@@ -94,6 +94,32 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_express'      =>  array(
+                // Pack Info
+                'name'        => 'Express',
+                'desc'        => 'Newspaper & News Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/express/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://express.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/express',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Express Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_express',
+                    'ext_code'  =>  'tz-express-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                ),
+            ),
             'tz_amanus'      =>  array(
                 // Pack Info
                 'name'        => 'Amanus',
