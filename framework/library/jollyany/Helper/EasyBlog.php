@@ -13,6 +13,7 @@ class EasyBlog
 {
     public static function getCategories()
     {
+        if (!class_exists('EB')) return array();
         $model = \EB::model('Categories');
 
         $result = $model->getCategoryTree('ordering');
@@ -29,6 +30,7 @@ class EasyBlog
 
     public static function getTags()
     {
+        if (!class_exists('EB')) return array();
         $model = \EB::model('Tags');
 
         $result = $model->getTags();
@@ -57,6 +59,7 @@ class EasyBlog
 
     public static function getPosts($options = [])
     {
+        if (!class_exists('EB')) return array();
         $categories	= \EB::normalize($options, 'includeCats', []);
         $catIds = array();
 
