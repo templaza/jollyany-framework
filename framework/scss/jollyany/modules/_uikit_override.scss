@@ -73,3 +73,14 @@
 blockquote {
   color: var(--bs-heading-color,inherit);
 }
+@include color-mode(dark) {
+  .uk-text-meta {
+    color: #dddddd;
+  }
+  .uk-breadcrumb > :last-child > span, .uk-breadcrumb > :last-child > a:not([href]) {
+    color: #aaaaaa;
+  }
+  .uk-button-text::before {
+    border-color: #ffffff;
+  }
+}
