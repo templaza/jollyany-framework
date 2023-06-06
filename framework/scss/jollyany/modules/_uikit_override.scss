@@ -83,4 +83,10 @@ blockquote {
   .uk-button-text::before {
     border-color: #ffffff;
   }
+  .uk-text-lead {
+    color: #fff;
+  }
+  .uk-form-label {
+    color: var(--bs-body-color);
+  }
 }
