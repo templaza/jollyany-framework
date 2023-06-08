@@ -89,4 +89,7 @@ blockquote {
   .uk-form-label {
     color: var(--bs-body-color);
   }
+  .uk-heading-line > ::before, .uk-heading-line > ::after {
+    border-color: var(--bs-border-color);
+  }
 }
