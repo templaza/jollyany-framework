@@ -73,6 +73,9 @@
 blockquote {
   color: var(--bs-heading-color,inherit);
 }
+.uk-light .hikashop_product_quantity_div .uk-input {
+  border-color: rgba(255, 255, 255, 0.7);
+}
 @include color-mode(dark) {
   .uk-text-meta {
     color: #dddddd;
@@ -91,5 +94,18 @@ blockquote {
   }
   .uk-heading-line > ::before, .uk-heading-line > ::after {
     border-color: var(--bs-border-color);
+  }
+  .uk-button-primary {
+    &:hover {
+      color: $button-primary-color;
+    }
+  }
+  .uk-table-divider {
+    > * {
+      border-color: var(--bs-border-color) !important;
+      > * {
+        border-color: var(--bs-border-color) !important;
+      }
+    }
   }
 }

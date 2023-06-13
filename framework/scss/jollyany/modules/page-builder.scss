@@ -742,7 +742,21 @@
     }
   }
 }
-
+.ukimage {
+  .ukimage-dark {
+    display: none;
+  }
+}
+@include color-mode(dark) {
+  .ukimage {
+    .ukimage-inner {
+      display: none;
+    }
+    .ukimage-dark {
+      display: inline;
+    }
+  }
+}
 .ukmarker {
   .uk-marker-image {
     border: 3px solid #333333;
