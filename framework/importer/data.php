@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_autobike'      =>  array(
+                // Pack Info
+                'name'        => 'Autobike',
+                'desc'        => 'Moto Store & Bike Rental Services Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/autobike/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://autobike.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/autobike',
+
+                'joomla_version'     => array(3,4),
+
+                'template'      => array(
+                    'name'      =>  'Autobike Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_autobike',
+                    'ext_code'  =>  'tz-autobike-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['hikashop'],
+                    self::$exts['tz-portfolio'],
+                ),
+            ),
             'tz_express'      =>  array(
                 // Pack Info
                 'name'        => 'Express',
