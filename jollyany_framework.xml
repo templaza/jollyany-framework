@@ -1,13 +1,13 @@
 <updates>
     <update>
         <name>Jollyany Framework</name>
-        <version>3.5.15</version>
+        <version>3.5.16</version>
         <infourl title="Jollyany Releases">https://github.com/templaza/jollyany-framework/releases</infourl>
         <element>jollyany</element>
         <type>library</type>
         <client>0</client>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/templaza/jollyany-framework/releases/download/v3.5.15/jollyany-framework-3.5.15.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/templaza/jollyany-framework/releases/download/v3.5.16/jollyany-framework-3.5.16.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>
