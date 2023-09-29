@@ -276,9 +276,8 @@
                 return 1;
             }
         });
-        if ($('#astroid-form-fieldset-section-jollyanyexts .astroid-form-fieldset-section').length) {
-            var extsContainer       =   $('#astroid-form-fieldset-section-jollyanyexts .astroid-form-fieldset-section'),
-                dialogExtPopup         =   $('#install-ext-dialog'),
+        if ($('#astroid-page-jollyanyexts .as-group-content').length) {
+            var dialogExtPopup         =   $('#install-ext-dialog'),
                 dialogExtTemplate      =   $('#jollyany-dialog-extension');
 
             $('.intall-extension').on('click', function (e) {
@@ -391,9 +390,8 @@
                 return 1;
             })
         }
-        if ($('#astroid-form-fieldset-section-jollyanyimport .astroid-form-fieldset-section').length) {
-            var importContainer =   $('#astroid-form-fieldset-section-jollyanyimport .astroid-form-fieldset-section'),
-                dialogPopup     =   $('#install-package-dialog'),
+        if ($('#astroid-page-jollyanyimport .as-group-content').length) {
+            var dialogPopup     =   $('#install-package-dialog'),
                 dialogTemplate  =   $('#jollyany-dialog-template');
             
             $('.intall-package').on('click', function (e) {

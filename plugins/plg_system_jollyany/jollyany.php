@@ -1022,9 +1022,6 @@ class plgSystemJollyany extends JPlugin {
 		.jollyany-preset .close {position: absolute;top: 5px;right: 8px;}
 		#astroid-content-wrapper .jollyany-create-preset .form-control {max-width:100%;}
 		#astroid-content-wrapper .jollyany-create-preset textarea {min-height:auto;}
-		.card-highlight {
-			box-shadow: 7px 7px 7px rgba(0,0,0,0.2);
-		}
 		@media (min-width: 1500px) {
 	    .col-xxl-7 {
 	        flex: 0 0 58.3333333333% !important;
@@ -1039,7 +1036,13 @@ class plgSystemJollyany extends JPlugin {
             max-width: 25% !important;
 	    }
 	    }
+	    @media (min-width: 576px) {
+	        .card-group>.card.template-info {
+	            flex: 0 0 40%;
+	        }
+	    }
 		'); // to add css script
+        $document->addScript(JUri::root().'media/astroid/assets/vendor/jquery/jquery-3.5.1.min.js', "body");
         $document->addScript(JUri::root().'media/jollyany/assets/js/jollyany.min.js', "body"); // to add js file in body
         $document->addScript(JUri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
 		$document->addScriptDeclaration('var TZ_TEMPLATE_NAME = \''.$template->template.'\';'); // to add js script in head
@@ -1061,8 +1064,6 @@ class plgSystemJollyany extends JPlugin {
         if (!file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
             return false;
         }
-        $form->getForm()->removeField('presets', 'params');
-        $form->getForm()->removeField('template_preset', 'params');
         $form->loadOptions(JPATH_LIBRARIES . '/jollyany/framework/options');
     }
 

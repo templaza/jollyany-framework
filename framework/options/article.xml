@@ -2,37 +2,37 @@
 <form>
 	<fields name="params">
 		<fieldset label="ASTROID_OPTIONS_ARTICLE_BLOG" icon="far fa-newspaper" name="articles" addfieldpath="/libraries/astroid/framework/fields" order="6">
-			<field astroidgroup="article_single_options" name="course_category_data" type="astroidtext" astroid-switch="true" default="0" label="ENABLE_COURSE_DATA_OPTIONS" description="ENABLE_COURSE_DATA_OPTIONS_DESC">
+			<field astroidgroup="article_single_options" name="course_category_data" type="astroidradio" astroid-switch="true" default="0" label="ENABLE_COURSE_DATA_OPTIONS" description="ENABLE_COURSE_DATA_OPTIONS_DESC">
 			</field>
-			<field astroidgroup="article_single_options" name="course_contact_link" type="astroidtext" label="JOLLYANY_COURSE_CONTACT_LINK" description="JOLLYANY_COURSE_CONTACT_LINK_DESC" hint="contact@yoursite.com" ngShow="course_category_data=='1'" class="form-control">
+			<field astroidgroup="article_single_options" name="course_contact_link" type="astroidtext" label="JOLLYANY_COURSE_CONTACT_LINK" description="JOLLYANY_COURSE_CONTACT_LINK_DESC" hint="contact@yoursite.com" ngShow="[course_category_data]=='1'" class="form-control">
 			</field>
-			<field astroidgroup="article_single_options" name="course_contact_recaptcha" type="astroidtext" astroid-switch="true" default="0" label="JOLLYANY_RECAPTCHA" description="JOLLYANY_RECAPTCHA_TYPE_DESC" ngShow="course_category_data=='1'">
+			<field astroidgroup="article_single_options" name="course_contact_recaptcha" type="astroidradio" astroid-switch="true" default="0" label="JOLLYANY_RECAPTCHA" description="JOLLYANY_RECAPTCHA_TYPE_DESC" ngShow="[course_category_data]=='1'">
 			</field>
-			<field astroidgroup="article_single_options" name="course_contact_recaptcha_type" type="astroidlist" label="JOLLYANY_RECAPTCHA_TYPE" description="JOLLYANY_RECAPTCHA_TYPE_DESC" default="recaptcha" ngShow="course_contact_recaptcha=='1'" class="form-control">
+			<field astroidgroup="article_single_options" name="course_contact_recaptcha_type" type="astroidlist" label="JOLLYANY_RECAPTCHA_TYPE" description="JOLLYANY_RECAPTCHA_TYPE_DESC" default="recaptcha" ngShow="[course_contact_recaptcha]=='1'" class="form-control">
 				<option value="recaptcha">reCaptcha</option>
 				<option value="recaptcha_invisible">Invisible reCaptcha</option>
 			</field>
-			<field astroidgroup="article_single_options" code="html" name="course_contact_info" class="form-control" type="astroidtextarea" label="JOLLYANY_COURSE_CONTACT_INFO" description="JOLLYANY_COURSE_CONTACT_INFO_DESC" ngShow="course_category_data=='1'">
+			<field astroidgroup="article_single_options" code="html" name="course_contact_info" class="form-control" type="astroidtextarea" label="JOLLYANY_COURSE_CONTACT_INFO" description="JOLLYANY_COURSE_CONTACT_INFO_DESC" ngShow="[course_category_data]=='1'">
 			</field>
-			<field astroidgroup="article_single_options" code="html" name="course_contact_agreement" class="form-control" type="astroidtextarea" label="JOLLYANY_COURSE_CONTACT_AGREEMENT" description="JOLLYANY_COURSE_CONTACT_AGREEMENT_DESC" ngShow="course_category_data=='1'">
+			<field astroidgroup="article_single_options" code="html" name="course_contact_agreement" class="form-control" type="astroidtextarea" label="JOLLYANY_COURSE_CONTACT_AGREEMENT" description="JOLLYANY_COURSE_CONTACT_AGREEMENT_DESC" ngShow="[course_category_data]=='1'">
 			</field>
-			<field astroidgroup="article_single_options" name="event_category_data" type="astroidtext" astroid-switch="true" default="0" label="ENABLE_EVENT_DATA_OPTIONS" description="ENABLE_EVENT_DATA_OPTIONS_DESC">
+			<field astroidgroup="article_single_options" name="event_category_data" type="astroidradio" astroid-switch="true" default="0" label="ENABLE_EVENT_DATA_OPTIONS" description="ENABLE_EVENT_DATA_OPTIONS_DESC">
 			</field>
-			<field astroidgroup="article_single_options" name="googleapikey" type="astroidtext" label="JOLLYANY_GOOGLE_API_KEY" description="JOLLYANY_GOOGLE_API_KEY_DESC" ngShow="event_category_data=='1'" class="form-control">
+			<field astroidgroup="article_single_options" name="googleapikey" type="astroidtext" label="JOLLYANY_GOOGLE_API_KEY" description="JOLLYANY_GOOGLE_API_KEY_DESC" ngShow="[event_category_data]=='1'" class="form-control">
 			</field>
-			<field astroidgroup="article_single_options" name="googlemaptype" type="astroidlist" label="JOLLYANY_GOOGLE_MAP_TYPE" description="JOLLYANY_GOOGLE_MAP_TYPE" default="ROADMAP" ngShow="event_category_data=='1'" class="form-control">
+			<field astroidgroup="article_single_options" name="googlemaptype" type="astroidlist" label="JOLLYANY_GOOGLE_MAP_TYPE" description="JOLLYANY_GOOGLE_MAP_TYPE" default="ROADMAP" ngShow="[event_category_data]=='1'" class="form-control">
 				<option value="ROADMAP">ROADMAP</option>
 				<option value="SATELLITE">SATELLITE</option>
 				<option value="HYBRID">HYBRID</option>
 				<option value="TERRAIN">TERRAIN</option>
 			</field>
-			<field astroidgroup="article_single_options" name="googlemapzoom" type="astroidtext" label="JOLLYANY_GOOGLE_MAP_ZOOM" description="JOLLYANY_GOOGLE_MAP_ZOOM" default="15" ngShow="event_category_data=='1'" class="form-control">
+			<field astroidgroup="article_single_options" name="googlemapzoom" type="astroidtext" label="JOLLYANY_GOOGLE_MAP_ZOOM" description="JOLLYANY_GOOGLE_MAP_ZOOM" default="15" ngShow="[event_category_data]=='1'" class="form-control">
 			</field>
-			<field astroidgroup="article_single_options" name="googlemapmousescroll" type="astroidtext" astroid-switch="true" default="0" label="JOLLYANY_GOOGLE_MAP_MOUSE_SCROLL" ngShow="event_category_data=='1'" description="JOLLYANY_GOOGLE_MAP_MOUSE_SCROLL">
+			<field astroidgroup="article_single_options" name="googlemapmousescroll" type="astroidradio" astroid-switch="true" default="0" label="JOLLYANY_GOOGLE_MAP_MOUSE_SCROLL" ngShow="[event_category_data]=='1'" description="JOLLYANY_GOOGLE_MAP_MOUSE_SCROLL">
 			</field>
-			<field astroidgroup="article_single_options" name="googlemapshowcontrol" type="astroidtext" astroid-switch="true" default="0" label="JOLLYANY_GOOGLE_MAP_SHOW_CONTROLLER" ngShow="event_category_data=='1'" description="JOLLYANY_GOOGLE_MAP_SHOW_CONTROLLER">
+			<field astroidgroup="article_single_options" name="googlemapshowcontrol" type="astroidradio" astroid-switch="true" default="0" label="JOLLYANY_GOOGLE_MAP_SHOW_CONTROLLER" ngShow="[event_category_data]=='1'" description="JOLLYANY_GOOGLE_MAP_SHOW_CONTROLLER">
 			</field>
-			<field astroidgroup="article_single_options" name="googlemapheight" type="astroidtext" default="400" label="JOLLYANY_GOOGLE_MAP_HEIGHT" ngShow="event_category_data=='1'" description="JOLLYANY_GOOGLE_MAP_HEIGHT" class="form-control">
+			<field astroidgroup="article_single_options" name="googlemapheight" type="astroidtext" default="400" label="JOLLYANY_GOOGLE_MAP_HEIGHT" ngShow="[event_category_data]=='1'" description="JOLLYANY_GOOGLE_MAP_HEIGHT" class="form-control">
 			</field>
 		</fieldset>
 	</fields>

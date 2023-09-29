@@ -45,14 +45,14 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
         $totaltemp  =   JollyanyFrameworkDataImport::getTotalTemplate();
         $template   =   Astroid\Framework::getTemplate();
         $preview_img=   file_exists(JPATH_SITE. '/media/templates/site/' . $template->template . '/images/template_preview.png') ? JUri::root().'media/templates/site/'.$template->template.'/images/template_preview.png' : JUri::root().'templates/'.$template->template.'/template_preview.png';
-        $html[]     =   '<div class="row mt-4">';
-        $html[]     =   '<div class="col-12 col-xl-4 col-xxl-5 mb-4">';
-        $html[]     =   '<div class="card"><img src="'.$preview_img.'" class="card-img-top" alt="'.$template->template.'" />';
+
+        $html[]     =   '<div class="card-group">';
+        $html[]     =   '<div class="card template-info"><img src="'.$preview_img.'" class="card-img-top" alt="'.$template->template.'" />';
 
         $html[]     =   '<div class="card-body">';
         $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">You are using: Version <strong>'.$template->version.'</strong></h6>';
         $html[]     =   '<h5 class="card-title">'.JText::_($template->template).'</h5>';
-        $html[]     =   '<div class="card-text">'.JText::_(preg_replace('/tz_/i', 'tpl_', $template->template).'_desc').'</div>';
+        $html[]     =   '<div class="card-text form-text">'.JText::_(preg_replace('/tz_/i', 'tpl_', $template->template).'_desc').'</div>';
         $html[]     =   '</div>';
 
         $html[]     =   '<ul class="list-group list-group-flush">';
@@ -62,16 +62,16 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
         $html[]     =   '</ul>';
 
         $html[]     =   '</div>';
-        $html[]     =   '</div>';
-        $html[]     =   '<div class="col-12 col-xl-8 col-xxl-7 license-info">';
-	    $html[]     =   '<div class="card"><div class="card-body">';
+
         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
+            $html[]     =   '<div class="card"><div class="card-header">';
 	        $license->support_expired    = strtotime( $license->supported_until ) < time();
 	        self::$license = $license;
-	        $html[]     =   '<h3 class="card-title">'.JText::_('JOLLYANY_LICENSE_ACTIVATED').'</h3>';
-	        $html[]     =   '<p class="card-text">'.JText::_('JOLLYANY_WELCOME_DESC'). ' '.JText::_ ('JOLLYANY_WELCOME_PREMIUM').'</p>';
+	        $html[]     =   '<h5 class="m-0">'.JText::_('JOLLYANY_LICENSE_ACTIVATED').'</h5>';
+
 	        $html[]     =   '</div>';
 	        $html[]     =   '<ul class="list-group list-group-flush">';
+	        $html[]     =   '<li class="list-group-item"><p class="card-text form-text mt-0">'.JText::_('JOLLYANY_WELCOME_DESC'). ' '.JText::_ ('JOLLYANY_WELCOME_PREMIUM').'</p></li>';
 	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_BUYER').':</strong> '.$license->buyer.'</li>';
 	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_DOMAIN').':</strong> '.$license->domain.'</li>';
 	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_PURCHASE_CODE').':</strong> '.$license->purchase_code.'</li>';
@@ -87,45 +87,42 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	        $html[]     =   '</ul>';
 	        $html[]     =   '<div class="card-body license-action-buttons"><a href="#" id="jollyany-theme-activate" class="btn btn-primary"><i class="fas fa-sync-alt"></i> '.JText::_('JOLLYANY_WELCOME_REACTIVE_PRODUCT').'</a> <button type="button" class="btn btn-danger delete-template-activation" data-token="'.JSession::getFormToken().'"><i class="fas fa-times"></i> '.JText::_('JOLLYANY_ACTIVATE_DELETE_ACTIVATION').'</button></div>';
 	        $html[]     =   '</div>';
-            $html[]     =   '<div class="row mt-4">
-  <div class="col-sm-6">
-    <div class="card h-100">
+	        $html[]     =   '</div>';
+
+            $html[]     =   '<div class="card-group mt-4">
+    <div class="card">
       <div class="card-body">
         <div class="card-img-top display-4 text-success"><i class="far fa-smile-beam"></i></div>
-        <h5 class="card-title">I am satisfied with this template</h5>
-        <p class="card-text">Thank you very much! If you love our service please help us rate/review for Jollyany on <a href="https://themeforest.net/item/jollyany-responsive-multipurpose-joomla-template/8596818" target="_blank" rel="nofollow">Themeforest</a></p>
-        <a href="https://themeforest.net/item/jollyany-responsive-multipurpose-joomla-template/8596818" target="_blank" rel="nofollow" class="btn btn-success">Rate for Jollyany</a>
+        <h6 class="card-title">I am satisfied with this template</h6>
+        <p class="card-text form-text">Thank you very much! If you love our service please help us rate/review for Jollyany on <a href="https://themeforest.net/item/jollyany-responsive-multipurpose-joomla-template/8596818" target="_blank" rel="nofollow">Themeforest</a></p>
+        <a href="https://themeforest.net/item/jollyany-responsive-multipurpose-joomla-template/8596818" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-success">Rate for Jollyany</a>
       </div>
     </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card h-100">
+    <div class="card">
       <div class="card-body">
         <div class="card-img-top display-4 text-danger"><i class="far fa-tired"></i></div>
-        <h5 class="card-title">I\'m not satisfied with this stupid template</h5>
-        <p class="card-text">I am sorry for this inconvenience. You can ask a support on our <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow">forum</a> or <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow">Request a full refund</a> no hassles, no questions asked!</p>
-        <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow" class="btn btn-info">Ask a question</a> <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow" class="btn btn-danger">Request a Refund</a>
+        <h6 class="card-title">I\'m not satisfied with this stupid template</h6>
+        <p class="card-text form-text">I am sorry for this inconvenience. You can ask a support on our <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow">forum</a> or <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow">Request a full refund</a> no hassles, no questions asked!</p>
+        <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-info">Ask a question</a> <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-danger">Request a Refund</a>
       </div>
     </div>
-  </div>
 </div>';
             $html[]     =   '<blockquote class="blockquote text-center mt-4">
-  <p class="mb-0">I\'m not here to save the world. For now, your heart is enough. (^_^")</p>
+  <p>I\'m not here to save the world. For now, your heart is enough. (^_^")</p>
   <footer class="blockquote-footer">Sonny in <cite title="Source Title">TemPlaza.com</cite></footer>
 </blockquote>';
         } else {
+            $html[]     =   '<div class="card"><div class="card-body">';
             $html[]     =   '<h3>'.JText::_('JOLLYANY_OPTIONS_PACKAGE').'</h3>';
-            $html[]     =   '<p>'.JText::_('JOLLYANY_WELCOME_FREE_DESC').'</p><hr />';
-	        $html[]     =   '<div class="row">';
-	        $html[]     =   '<div class="col-12 col-sm-6">';
-	        $html[]     =   '<div class="card card-highlight"><div class="card-body">';
-	        $html[]     =   '<h4 class="card-title">'.JText::_('JOLLYANY_BENEFIT').'</h4>';
+            $html[]     =   '<p class="form-text">'.JText::_('JOLLYANY_WELCOME_FREE_DESC').'</p><hr />';
+	        $html[]     =   '<div class="card"><div class="card-body">';
+	        $html[]     =   '<h5 class="card-title">'.JText::_('JOLLYANY_BENEFIT').'</h5>';
 	        $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">Paid only once</h6>';
 	        $html[]     =   '<h3><small class="text-muted"><del>$1280</del></small> <strong>$79</strong></h3>';
 
-	        $html[]     =   '<p class="card-text">If you haven\'t purchased Jollyany, <a href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><strong>click here to buy a license</strong></a> and activate template.</p>';
+	        $html[]     =   '<p class="card-text form-text">If you haven\'t purchased Jollyany, <a href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><strong>click here to buy a license</strong></a> and activate template.</p>';
 	        $html[]     =   '</div>';
-	        $html[]     =   '<ul class="list-group list-group-flush">';
+	        $html[]     =   '<ul class="list-group list-group-flush form-text">';
 	        $html[]     =   '<li class="list-group-item"><i class="fas fa-check"></i>&nbsp;&nbsp;All Jollyany templates</li>';
 	        $html[]     =   '<li class="list-group-item"><i class="fas fa-check"></i>&nbsp;&nbsp;'.$totaltemp.'+ Joomla Templates</li>';
 	        $html[]     =   '<li class="list-group-item"><i class="fas fa-check"></i>&nbsp;&nbsp;6 Months Support</li>';
@@ -136,24 +133,19 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	        $html[]     =   '<li class="list-group-item"><i class="fas fa-check"></i>&nbsp;&nbsp;SP Page Builder Pro Included</li>';
 	        $html[]     =   '<li class="list-group-item"><i class="fas fa-check"></i>&nbsp;&nbsp;TZ Portfolio Pro Personal License</li>';
 	        $html[]     =   '</ul>';
-	        $html[]     =   '<div class="card-body"><a class="btn btn-primary" href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><i class="fas fa-shopping-cart"></i> Click here to buy a License</a></div>';
+	        $html[]     =   '<div class="card-body"><a class="btn btn-sm btn-as btn-as-primary" href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><i class="fas fa-shopping-cart"></i> Click here to buy a License</a></div>';
 	        $html[]     =   '</div>';
+	        $html[]     =   '<div class="card mt-3"><div class="card-body">';
+	        $html[]     =   '<h5 class="card-title">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION').'</h5>';
+            $html[]     =   '<p class="card-text form-text">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION_DESC').'</p>';
 	        $html[]     =   '</div>';
-	        $html[]     =   '<div class="col-12 col-sm-6">';
-	        $html[]     =   '<div class="card"><div class="card-body">';
-	        $html[]     =   '<h4 class="card-title">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION').'</h4>';
-            $html[]     =   '<p class="card-text">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION_DESC').'</p>';
+	        $html[]     =   '<ul class="list-group list-group-flush form-text"><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP1').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP2').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP3').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP4').'</li></ul>';
+	        $html[]     =   '<div class="card-body"><a href="#" id="jollyany-theme-activate" class="btn btn-sm btn-as btn-success"><i class="fas fa-hand-pointer"></i> '.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT').'</a></div>';
 	        $html[]     =   '</div>';
-	        $html[]     =   '<ul class="list-group list-group-flush"><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP1').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP2').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP3').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP4').'</li></ul>';
-	        $html[]     =   '<div class="card-body"><a href="#" id="jollyany-theme-activate" class="btn btn-success"><i class="fas fa-hand-pointer"></i> '.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT').'</a></div>';
-	        $html[]     =   '</div>';
-            $html[]     =   '</div>';
 	        $html[]     =   '</div>';
 	        $html[]     =   '</div></div>';
         }
 
-	    $html[]     =   '</div>';
-	    $html[]     =   '</div>';
         $key        =   $params->get('secret_key','');
         if (!$key) {
             $key            =   md5(uniqid('Jollyany'));
