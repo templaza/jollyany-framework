@@ -1,9 +1,6 @@
 @import "header";
 @import "layouts";
 .container, .sppb-row-container, .astroid-layout.astroid-layout-boxed .astroid-wrapper {
-  @media (min-width: 1300px){
-    max-width: 1280px;
-  }
   @media (min-width: 1500px){
     max-width: 1480px;
   }
