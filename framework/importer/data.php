@@ -94,6 +94,34 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_probike'      =>  array(
+                // Pack Info
+                'name'        => 'ProBike',
+                'desc'        => 'Bike Shop & Bicycle Rental Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/probike/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://probike.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/probike',
+
+                'joomla_version'     => array(3,4,5),
+
+                'template'      => array(
+                    'name'      =>  'ProBike Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_probike',
+                    'ext_code'  =>  'tz-probike-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['sp-page-builder'],
+                    self::$exts['uk-sp-addons'],
+                    self::$exts['hikashop'],
+                    self::$exts['tz-portfolio'],
+                ),
+            ),
             'tz_autobike'      =>  array(
                 // Pack Info
                 'name'        => 'Autobike',
