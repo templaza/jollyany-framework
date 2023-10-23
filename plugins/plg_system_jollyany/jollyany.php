@@ -1150,7 +1150,7 @@ class plgSystemJollyany extends JPlugin {
     public function onContentBeforeDisplay($context, &$row, &$params, $page = 0)
     {
         if (!file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
-            return false;
+            return '';
         }
         if ($context == 'com_content.category') {
             jimport('jollyany.framework.article');
@@ -1164,7 +1164,7 @@ class plgSystemJollyany extends JPlugin {
             return $content;
         }
 
-        return false;
+        return '';
     }
 
     protected function compareJoomlaVersion($template_joomla_version) {
