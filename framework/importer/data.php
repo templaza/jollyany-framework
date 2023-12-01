@@ -382,7 +382,7 @@ class JollyanyFrameworkDataImport {
                 'demo_url'    => 'https://goldenheart.jollyany.co/',
                 'doc_url'     => 'https://docs.jollyany.co/templates/goldenheart',
 
-                'joomla_version'     => array(3,4),
+                'joomla_version'     => array(3,4,5),
 
                 'template'      => array(
                     'name'      =>  'Golden Hearts Template',
