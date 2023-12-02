@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
     <fields name="params" addfieldpath="/libraries/astroid/framework/fields">
-        <fieldset label="JOLLYANY_OPTIONS_DASHBOARD" icon="fas fa-cloud" name="dashboard" addfieldpath="/libraries/jollyany/framework/fields" order="0">
+        <fieldset label="JOLLYANY_OPTIONS_DASHBOARD" icon="fas fa-cloud" name="dashboard" addfieldpath="/libraries/jollyany/framework/fields" order="13">
 
             <field type="astroidgroup" name="dashboard" title="JOLLYANY_WELCOME" description="JOLLYANY_OPTIONS_LICENSE_DESC" />
             <field type="astroidgroup" name="jollyanyexts" title="JOLLYANY_DATA_EXTENSIONS" description="JOLLYANY_OPTIONS_IMPORT_EXTENSIONS_DESC" />
