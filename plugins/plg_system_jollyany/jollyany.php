@@ -1042,7 +1042,7 @@ class plgSystemJollyany extends JPlugin {
 	        }
 	    }
 		'); // to add css script
-        $document->addScript(JUri::root().'media/astroid/assets/vendor/jquery/jquery-3.5.1.min.js', "body");
+        $document->addScript(JUri::root().'media/vendor/jquery/js/jquery.min.js', "body");
         $document->addScript(JUri::root().'media/jollyany/assets/js/jollyany.min.js', "body"); // to add js file in body
         $document->addScript(JUri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
 		$document->addScriptDeclaration('var TZ_TEMPLATE_NAME = \''.$template->template.'\';'); // to add js script in head
