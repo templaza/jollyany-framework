@@ -1,0 +1,20 @@
+<updates>
+    <update>
+        <name>UK Addons SP PageBuilder</name>
+        <version>3.5.17</version>
+        <infourl title="UK Addons SP PageBuilder">https://github.com/templaza/jollyany-framework/releases</infourl>
+        <element>jollyany</element>
+        <type>plugin</type>
+        <folder>sppagebuilder</folder>
+        <client>0</client>
+        <downloads>
+            <downloadurl type="full" format="zip">https://www.templaza.com/download.html?task=download.update&amp;produce=uk-addons&amp;level=free</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>TemPlaza</maintainer>
+        <maintainerurl>https://www.templaza.com</maintainerurl>
+        <targetplatform name="joomla" version="(3.)|(4.)|(5.)"/>
+    </update>
+</updates>
