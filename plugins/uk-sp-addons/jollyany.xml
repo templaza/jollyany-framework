@@ -13,6 +13,7 @@
     </description>
 	<files>
 		<filename plugin="jollyany">jollyany.php</filename>
+		<folder plugin="jollyany">addons</folder>
 	</files>
 	<updateservers>
 		<server type="extension" priority="1" name="Jollyany UK Addons">https://raw.githubusercontent.com/templaza/jollyany-framework/master/plugins/uk-sp-addons/updateserver.xml</server>
