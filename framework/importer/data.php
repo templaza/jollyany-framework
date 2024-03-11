@@ -94,6 +94,32 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'astroid_template_two'      =>  array(
+                // Pack Info
+                'name'        => 'Two',
+                'desc'        => 'Free Astroid Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/two/thumbnail.jpg',
+                'category'    => 'joomla',
+                'type'        => 'free',
+                'download'    => 'https://github.com/templaza/astroid-framework/releases/latest',
+
+                'demo_url'    => 'https://demo.astroidframe.work/',
+                'doc_url'     => 'https://docs.astroidframe.work/',
+
+                'joomla_version'     => array(4,5),
+
+                'template'      => array(
+                    'name'      =>  'Astroid Two Template',
+                    'type'      =>  'included',
+                    'code'      =>  'astroid_template_two',
+                    'ext_code'  =>  'astroid-template-two-api',
+                ),
+
+                'extensions'  => array(
+                ),
+            ),
             'tz_probike'      =>  array(
                 // Pack Info
                 'name'        => 'ProBike',
