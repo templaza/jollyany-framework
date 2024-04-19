@@ -1067,7 +1067,7 @@ class plgSystemJollyany extends JPlugin {
         $form->loadOptions(JPATH_LIBRARIES . '/jollyany/framework/options');
     }
 
-    public function onContentPrepareForm($form, $data) {
+    public function onAfterAstroidContentPrepareForm($form, $data) {
         if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
             return false;
         }
