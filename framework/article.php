@@ -11,13 +11,11 @@ jimport('jollyany.framework.jollyany');
 use Astroid\Framework;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Layout\FileLayout;
 use Joomla\CMS\Layout\LayoutHelper;
-use Joomla\CMS\Router\Route;
-use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Registry\Registry;
+use Joomla\Database\DatabaseInterface;
 
 class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
     public $print;
@@ -25,9 +23,11 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
     public $categoryParams;
 	function __construct($article, $categoryView = false, $print = null) {
 		parent::__construct($article, $categoryView);
+
 		$this->template         =   Framework::getTemplate();
 		$this->print            =   $print;
 		$this->isCategoryView   =   $categoryView;
+
 		$this->categoryParams   =   $this->_getCategoryParams();
 	}
 
@@ -291,13 +291,13 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
 
     protected function _getCategoryParams()
     {
-        $params = new JRegistry();
+        $params = new Registry();
         if (!empty($this->article->catid)) {
-            $db = JFactory::getDbo();
+            $db    = Factory::getContainer()->get(DatabaseInterface::class);
             $query = "SELECT `params` FROM `#__categories` WHERE `id`=" . $this->article->catid;
             $db->setQuery($query);
             $result = $db->loadObject();
-            if (!empty($result)) {
+            if (!empty($result) && !empty($result->params)) {
                 $params->loadString($result->params, 'JSON');
             }
         }
