@@ -952,53 +952,67 @@ class plgSystemJollyany extends JPlugin {
 		}
 	}
 
-	protected function getPackageData($step, $extension, $license) {
-		jimport('jollyany.framework.importer.data');
-		$url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
-		$data = array(
-			'task'          => 'download.package',
-			'produce'       => $extension->code,
-			'purchase_code' => $license->purchase_code,
-			'domain'        => JUri::getInstance() -> getHost(),
-			'step'          => $step,
-			'type'          => $extension->ext_code
-		);
-		$http       =   JHttpFactory::getHttp();
-		$response   =   $http -> post ($url, $data, array(
-			'Content-type' => 'application/x-www-form-urlencoded'
-		));
+    protected function getPackageData($step, $extension, $license) {
+        jimport('jollyany.framework.importer.data');
+        $url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
+        $data = array(
+            'task'          => 'download.package',
+            'produce'       => $extension->code,
+            'purchase_code' => $license->purchase_code,
+            'domain'        => JUri::getInstance() -> getHost(),
+            'step'          => $step,
+            'type'          => $extension->ext_code
+        );
+        $http       =   JHttpFactory::getHttp();
+        $response   =   $http -> post ($url, $data, array(
+            'Content-type' => 'application/x-www-form-urlencoded'
+        ));
 
-		$config     =   JFactory::getConfig();
-		$tmp_part   =   $config->get('tmp_path');
-		if($response -> code == 200) {
-			$header     = $response -> headers;
-			$filePartCount  = isset($header['Files-Part-Count']) ? $header['Files-Part-Count'] : 0;
-			if (isset($header['Content-Disposition']) && $header['Content-Disposition']) {
-			    $f_name =   preg_replace('/(^[^=]+=)|(;$)/', '', $header['Content-Disposition']);
-			    if ( is_array($f_name) && isset($f_name[0]) ) {
-			        $f_name =   $f_name[0];
+        $config     =   JFactory::getConfig();
+        $tmp_part   =   $config->get('tmp_path');
+        if($response -> code == 200) {
+            $header     = $response -> headers;
+            if (isset($header['Files-Part-Count'])) {
+                $filePartCount  = $header['Files-Part-Count'];
+            } elseif (isset($header['files-part-count'])) {
+                $filePartCount  = $header['files-part-count'];
+            } else {
+                $filePartCount  = 0;
+            }
+
+            if (isset($header['Content-Disposition']) && $header['Content-Disposition']) {
+                $f_name =   preg_replace('/(^[^=]+=)|(;$)/', '', $header['Content-Disposition']);
+                if ( is_array($f_name) && isset($f_name[0]) ) {
+                    $f_name =   $f_name[0];
                 } elseif ( !is_string($f_name) ) {
-			        $f_name =   null;
+                    $f_name =   null;
+                }
+            } elseif (isset($header['content-disposition']) && $header['content-disposition']) {
+                $f_name =   preg_replace('/(^[^=]+=)|(;$)/', '', $header['content-disposition']);
+                if ( is_array($f_name) && isset($f_name[0]) ) {
+                    $f_name =   $f_name[0];
+                } elseif ( !is_string($f_name) ) {
+                    $f_name =   null;
                 }
             } else {
-			    $f_name = null;
+                $f_name = null;
             }
-			if (!$f_name) return false;
-			$filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
-			if($filePartCount && $step <= $filePartCount){
-				JFile::append($tmp_part.'/'.$f_name,$response -> body, true);
-				if ($step == $filePartCount) {
-					return $tmp_part.'/'.$f_name;
-				} else {
-					return $this->getPackageData($step+1, $extension, $license);
-				}
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+            if (!$f_name) return false;
+            $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
+            if($filePartCount && $step <= $filePartCount){
+                JFile::append($tmp_part.'/'.$f_name,$response -> body, true);
+                if ($step == $filePartCount) {
+                    return $tmp_part.'/'.$f_name;
+                } else {
+                    return $this->getPackageData($step+1, $extension, $license);
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
 	// Astroid Admin Events
 	public function onBeforeAstroidAdminRender(&$template) {
