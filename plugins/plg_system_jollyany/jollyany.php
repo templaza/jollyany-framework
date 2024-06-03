@@ -230,9 +230,22 @@ class plgSystemJollyany extends JPlugin {
 
 							if($response -> code == 200) {
 								$header     = $response -> headers;
-								$filePartCount  = isset($header['Files-Part-Count'])?$header['Files-Part-Count']:0;
+                                if (isset($header['Files-Part-Count'])) {
+                                    $filePartCount  = $header['Files-Part-Count'];
+                                } elseif (isset($header['files-part-count'])) {
+                                    $filePartCount  = $header['files-part-count'];
+                                } else {
+                                    $filePartCount  = 0;
+                                }
                                 if (isset($header['Content-Disposition']) && $header['Content-Disposition']) {
                                     $f_name =   preg_replace('/(^[^=]+=)|(;$)/', '', $header['Content-Disposition']);
+                                    if ( is_array($f_name) && isset($f_name[0]) ) {
+                                        $f_name =   $f_name[0];
+                                    } elseif ( !is_string($f_name) ) {
+                                        $f_name =   null;
+                                    }
+                                } elseif (isset($header['content-disposition']) && $header['content-disposition']) {
+                                    $f_name =   preg_replace('/(^[^=]+=)|(;$)/', '', $header['content-disposition']);
                                     if ( is_array($f_name) && isset($f_name[0]) ) {
                                         $f_name =   $f_name[0];
                                     } elseif ( !is_string($f_name) ) {
