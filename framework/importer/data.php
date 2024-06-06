@@ -94,6 +94,31 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_travelami'      =>  array(
+                // Pack Info
+                'name'        => 'Travelami',
+                'desc'        => 'Tour & Travel Booking Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/travelami/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://travelami.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/travelami',
+
+                'joomla_version'     => array(3,4,5),
+
+                'template'      => array(
+                    'name'      =>  'Travelami Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_travelami',
+                    'ext_code'  =>  'tz-travelami-api',
+                ),
+
+                'extensions'  => array(
+                    self::$exts['tz-portfolio'],
+                ),
+            ),
             'astroid_template_two'      =>  array(
                 // Pack Info
                 'name'        => 'Two',

@@ -1,7 +1,7 @@
 <updates>
     <update>
         <name>Jollyany Framework</name>
-        <version>3.5.27</version>
+        <version>3.5.28</version>
         <infourl title="Jollyany Releases">https://github.com/templaza/jollyany-framework/releases</infourl>
         <element>jollyany</element>
         <type>library</type>
