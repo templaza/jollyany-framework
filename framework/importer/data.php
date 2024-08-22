@@ -94,6 +94,27 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_likeastar'      =>  array(
+                // Pack Info
+                'name'        => 'Like a Star',
+                'desc'        => 'Creative Agency Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/likeastar/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://likeastar.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/like-a-star',
+
+                'joomla_version'     => array(4,5),
+
+                'template'      => array(
+                    'name'      =>  'Like a Star Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_likeastar',
+                    'ext_code'  =>  'tz-likeastar-api',
+                ),
+            ),
             'tz_travelami'      =>  array(
                 // Pack Info
                 'name'        => 'Travelami',
