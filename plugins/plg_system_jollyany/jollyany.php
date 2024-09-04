@@ -1167,7 +1167,7 @@ class plgSystemJollyany extends JPlugin {
         }
         if ($context == 'com_content.article') {
             $course =   JollyanyFrameworkCourse::getData($row->id);
-            if ($course) {
+            if ($course && !empty($params) && isset($course->data) && !empty($course->data)) {
                 $params->set('jollyany_course_lessons',json_decode($course->data,true));
             }
             return true;
