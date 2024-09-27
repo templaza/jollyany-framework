@@ -1152,7 +1152,7 @@ class plgSystemJollyany extends JPlugin {
         if (!file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
             return false;
         }
-        if ($context == 'com_content.article' && $data->id && isset($data->attribs['jollyany_course_lessons'])) {
+        if ($context == 'com_content.article' && isset($data->id) && $data->id && isset($data->attribs['jollyany_course_lessons'])) {
             $course =   JollyanyFrameworkCourse::getData($data->id);
             if ($course) {
                 $data->attribs['jollyany_course_lessons'] = $course->data;
