@@ -19,6 +19,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Filesystem\File;
 use Joomla\Filesystem\Folder;
+use Joomla\CMS\Mail\MailerFactoryInterface;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
     jimport('jollyany.framework.course');
@@ -735,7 +736,7 @@ class plgSystemJollyany extends JPlugin {
                     try {
                         // Check for request forgeries.
                         // if cache isn't enable
-                        if( !Factory::getConfig()->get('caching') && !PluginHelper::getPlugin('system', 'cache') ) {
+                        if( !Factory::getApplication()->getConfig()->get('caching') && !PluginHelper::getPlugin('system', 'cache') ) {
                             // Check CSRF
                             if (!Session::checkToken()) {
                                 throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
@@ -743,7 +744,7 @@ class plgSystemJollyany extends JPlugin {
                         }
                         $input = $this->app->input;
 
-                        $mail = Factory::getMailer();
+                        $mail = Factory::getContainer()->get(MailerFactoryInterface::class)->createMailer();
                         $message = '';
                         $showcaptcha = false;
                         //inputs
@@ -792,11 +793,7 @@ class plgSystemJollyany extends JPlugin {
                                 if($gcaptcha == ''){
                                     throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_INVALID_CAPTCHA'));
                                 } else {
-                                    if($captcha_type == 'recaptcha_invisible') {
-                                        PluginHelper::importPlugin('captcha', 'recaptcha_invisible');
-                                    } else {
-                                        PluginHelper::importPlugin('captcha', 'recaptcha');
-                                    }
+                                    PluginHelper::importPlugin('captcha', 'astroidcaptcha');
                                     $dispatcher = JEventDispatcher::getInstance();
                                     $res = $dispatcher->trigger('onCheckAnswer', $gcaptcha);
 
@@ -835,7 +832,7 @@ class plgSystemJollyany extends JPlugin {
                         $mail_body .= '<p><strong>' . Text::_('JOLLYANY_COURSE_AJAX_CONTACT_SENDER_IP'). '</strong>: ' . $senderip .'</p>';
                         $mail_body .= '</div>';
 
-                        $config = Factory::getConfig();
+                        $config = Factory::getApplication()->getConfig();
 
                         $sender = array( $config->get( 'mailfrom' ), $config->get( 'fromname' ) );
                         $recipient = $config->get( 'mailfrom' );
@@ -857,7 +854,6 @@ class plgSystemJollyany extends JPlugin {
                         if ($mail->Send()) {
                             $return["status"]   =   'success';
                             $return["message"]  =   Text::_('JOLLYANY_AJAX_ERROR_SENT_SUCCESSFULLY');
-                            $return["code"]     =   200;
                         } else {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_SENT_MAIL_FAILED'));
                         }
