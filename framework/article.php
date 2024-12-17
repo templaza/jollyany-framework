@@ -16,6 +16,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 use Joomla\Database\DatabaseInterface;
+use Joomla\CMS\Session\Session;
 
 class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
     public $print;
@@ -49,13 +50,13 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
             <div class="jollyany-course-tab">
                 <ul class="uk-child-width-expand" uk-tab uk-switcher="connect: .jollyany-course-content">
                     <li>
-                        <a class="nav-link" href="#description"><?php echo JText::_('JGLOBAL_DESCRIPTION') ?></a>
+                        <a class="nav-link" href="#description"><?php echo Text::_('JGLOBAL_DESCRIPTION') ?></a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#lessons"><?php echo JText::_('JOLLYANY_COURSE_OPTIONS_TITLE_BASIC_LABEL') ?></a>
+                        <a class="nav-link" href="#lessons"><?php echo Text::_('JOLLYANY_COURSE_OPTIONS_TITLE_BASIC_LABEL') ?></a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#contact"><?php echo JText::_('JOLLYANY_COURSE_CONTACT_DETAILS') ?></a>
+                        <a class="nav-link" href="#contact"><?php echo Text::_('JOLLYANY_COURSE_CONTACT_DETAILS') ?></a>
                     </li>
                 </ul>
                 <div class="uk-switcher jollyany-course-content uk-margin-medium">
@@ -94,7 +95,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                                     $table_content  .=  '<table class="table table-hover lesson-table"><tbody>';
                                     $opened_flag    =   true;
                                 }
-                                $modal_content  .=  '<div id="jollyany-course-modal-'.$key.'" class="uk-modal-full jollyany-course-detail" data-token="'.\JSession::getFormToken().'" data-id="'.$key.'" data-cid="'.$this->article->id.'" uk-modal><div class="uk-modal-dialog"><button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>';
+                                $modal_content  .=  '<div id="jollyany-course-modal-'.$key.'" class="uk-modal-full jollyany-course-detail" data-token="'.Session::getFormToken().'" data-id="'.$key.'" data-cid="'.$this->article->id.'" uk-modal><div class="uk-modal-dialog"><button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>';
                                 $modal_content  .=  '<div class="uk-grid-collapse" uk-height-match uk-grid>';
 
                                 $modal_content  .=  '<div class="jollyany-course-lesson-detail uk-padding-large uk-width-2-3@m uk-width-3-5@l uk-flex-last@m" uk-height-viewport></div>';
@@ -104,7 +105,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                                 $modal_content  .=  '</div></div>';
                                 $downloadslider     =   isset($lesson['lesson_content_download_link']) && $lesson['lesson_content_download_link'] ? '<div><a href="'.JUri::root().'images/'.$lesson['lesson_content_download_link'].'" title="'.$lesson['lesson_content_title'].'" target="_blank"><span class="uk-badge"><i class="fas fa-download"></i></span></a></div>' : '';
 //                            echo '<tr><td width="45"><span uk-icon="play-circle"></span></td><td class="lesson-title"><a href="'.$lesson['lesson_content_video_url'].'" title="'.$lesson['lesson_content_title'].'" data-fancybox>'.$lesson['lesson_content_title'].'</a></td><td class="lesson-option">'.$lesson['lesson_content_duration'].'<span>'.$downloadslider.'</td></tr>';
-                                $table_content  .=  '<tr><td class="lesson-icon" width="45"><span uk-icon="file-text"></span></td><td class="lesson-index uk-visible@m" width="110">'.JText::_('JOLLYANY_COURSE_LECTURE').' '.$section.'.'.$index.'</td><td class="lesson-title"><a href="#jollyany-course-modal-'.$key.'" uk-toggle>'.$lesson['lesson_content_title'].'</a></td><td class="lesson-option uk-width-small uk-text-meta"><div class="uk-grid-small uk-flex-middle uk-flex-right" uk-grid><div>'.$lesson['lesson_content_duration'].'</div>'.$downloadslider.'</div></td></tr>';
+                                $table_content  .=  '<tr><td class="lesson-icon" width="45"><span uk-icon="file-text"></span></td><td class="lesson-index uk-visible@m" width="110">'.Text::_('JOLLYANY_COURSE_LECTURE').' '.$section.'.'.$index.'</td><td class="lesson-title"><a href="#jollyany-course-modal-'.$key.'" uk-toggle>'.$lesson['lesson_content_title'].'</a></td><td class="lesson-option uk-width-small uk-text-meta"><div class="uk-grid-small uk-flex-middle uk-flex-right" uk-grid><div>'.$lesson['lesson_content_duration'].'</div>'.$downloadslider.'</div></td></tr>';
                             }
                         }
                         $table_content  .=  '</tbody></table>';
@@ -126,22 +127,22 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                         <form class="jollyany-course-contact-form">
                             <div class="uk-child-width-1-2@m uk-margin uk-grid-small" uk-grid>
                                 <div>
-                                    <input class="uk-input" name="from_name" type="text" required="required" placeholder="<?php echo JText::_('JOLLYANY_COURSE_CONTACT_NAME'); ?>">
+                                    <input class="uk-input" name="from_name" type="text" required="required" placeholder="<?php echo Text::_('JOLLYANY_COURSE_CONTACT_NAME'); ?>">
                                 </div>
                                 <div>
-                                    <input class="uk-input" name="from_email" type="text" required="required" placeholder="<?php echo JText::_('JOLLYANY_COURSE_CONTACT_EMAIL'); ?>">
+                                    <input class="uk-input" name="from_email" type="text" required="required" placeholder="<?php echo Text::_('JOLLYANY_COURSE_CONTACT_EMAIL'); ?>">
                                 </div>
                             </div>
                             <div class="uk-child-width-1-2@m uk-margin uk-grid-small" uk-grid>
                                 <div>
-                                    <input class="uk-input" name="phone" type="text" placeholder="<?php echo JText::_('JOLLYANY_COURSE_CONTACT_TELEPHONE'); ?>">
+                                    <input class="uk-input" name="phone" type="text" placeholder="<?php echo Text::_('JOLLYANY_COURSE_CONTACT_TELEPHONE'); ?>">
                                 </div>
                                 <div>
-                                    <input class="uk-input" name="subject" type="text" required="required" placeholder="<?php echo JText::_('JOLLYANY_COURSE_CONTACT_MESSAGE_SUBJECT_DESC'); ?>">
+                                    <input class="uk-input" name="subject" type="text" required="required" placeholder="<?php echo Text::_('JOLLYANY_COURSE_CONTACT_MESSAGE_SUBJECT_DESC'); ?>">
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <textarea class="uk-textarea" name="message" rows="5" required="required" placeholder="<?php echo JText::_('JOLLYANY_COURSE_CONTACT_ENTER_MESSAGE_DESC'); ?>"></textarea>
+                                <textarea class="uk-textarea" name="message" rows="5" required="required" placeholder="<?php echo Text::_('JOLLYANY_COURSE_CONTACT_ENTER_MESSAGE_DESC'); ?>"></textarea>
                             </div>
                             <div class="uk-margin">
                                 <label><input class="uk-checkbox" name="agreement" type="checkbox"><?php echo ' '.$this->template->params->get('course_contact_agreement','I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>'); ?></label>
@@ -150,25 +151,21 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                                 <div class="uk-margin">
                                     <?php
                                     if ($this->template->params->get('course_contact_recaptcha_type','recaptcha')) {
-                                        PluginHelper::importPlugin('captcha', 'recaptcha');
-//                                        $dispatcher = Dispatcher::getInstance();
-//                                        $dispatcher->trigger('onInit', 'jollyany_course_contact_recaptcha');
+                                        PluginHelper::importPlugin('captcha', 'astroidcaptcha');
                                         $recaptcha = Factory::getApplication()->triggerEvent('onDisplay', array(null, 'jollyany_course_contact_recaptcha' , 'jollyany-course-contact-recaptcha'));
-                                        echo (isset($recaptcha[0])) ? $recaptcha[0] : '<p class="uk-alert-danger">' . JText::_('JOLLYANY_RECAPTCHA_NOT_INSTALLED') . '</p>';
+                                        echo (isset($recaptcha[0])) ? $recaptcha[0] : '<p class="uk-alert-danger">' . Text::_('JOLLYANY_RECAPTCHA_NOT_INSTALLED') . '</p>';
                                     } else {
-                                        PluginHelper::importPlugin('captcha', 'recaptcha_invisible');
-//                                        $dispatcher = Dispatcher::getInstance();
-//                                        $dispatcher->trigger('onInit', 'jollyany_course_contact_invisible_recaptcha');
+                                        PluginHelper::importPlugin('captcha', 'astroidcaptcha');
                                         $recaptcha = Factory::getApplication()->triggerEvent('onDisplay', array(null, 'jollyany_course_contact_invisible_recaptcha' , 'jollyany-course-contact-invisible-recaptcha'));
-                                        echo (isset($recaptcha[0])) ? $recaptcha[0] : '<p class="uk-alert-danger">' . JText::_('JOLLYANY_RECAPTCHA_NOT_INSTALLED') . '</p>';
+                                        echo (isset($recaptcha[0])) ? $recaptcha[0] : '<p class="uk-alert-danger">' . Text::_('JOLLYANY_RECAPTCHA_NOT_INSTALLED') . '</p>';
                                     }
                                     ?>
                                     <input type="hidden" name="captcha_type" value="<?php echo $this->template->params->get('course_contact_recaptcha_type','recaptcha'); ?>">
                                 </div>
                             <?php endif; ?>
-                            <input type="hidden" class="token" name="<?php echo \JSession::getFormToken(); ?>" value="1">
+                            <input type="hidden" class="token" name="<?php echo Session::getFormToken(); ?>" value="1">
                             <div class="uk-margin">
-                                <button type="submit" class="uk-button uk-button-primary uk-border-rounded"><?php echo JText::_('JOLLYANY_COURSE_CONTACT_SENT_TEXT'); ?></button>
+                                <button type="submit" class="uk-button uk-button-primary uk-border-rounded"><?php echo Text::_('JOLLYANY_COURSE_CONTACT_SENT_TEXT'); ?></button>
                             </div>
                             <div class="jollyany-ajax-contact-status uk-margin"></div>
                         </form>
@@ -192,18 +189,18 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
             if ((!$this->isCategoryView || ($this->isCategoryView && $this->categoryParams->get('jollyany_show_event_countdown',0))) && ($this->article->params->get('jollyany_event_start', '') || $this->article->params->get('jollyany_event_end', ''))) {
 
                 echo '<div class="time-count-down">';
-                $expired_ms     =   time() < strtotime($this->article->params->get('jollyany_event_end', ''))  ? JText::_('JOLLYANY_EVENT_START_MS') : JText::_('JOLLYANY_EVENT_EXPIRED_MS');
+                $expired_ms     =   time() < strtotime($this->article->params->get('jollyany_event_end', ''))  ? Text::_('JOLLYANY_EVENT_START_MS') : Text::_('JOLLYANY_EVENT_EXPIRED_MS');
                 $event_expired  =   $this->article->params->get('jollyany_event_expired', $expired_ms);
                 $document->addScript('media/jollyany/assets/js/vendor/jquery.countdown.min.js');
                 $countdown_id    =   uniqid('countdown_');
                 $txt            =   '';
                 $countdown_time =   '';
                 if (time() < strtotime($this->article->params->get('jollyany_event_start', ''))) {
-                    $txt        =   JText::_('JOLLYANY_COUNTDOWN_START');
+                    $txt        =   Text::_('JOLLYANY_COUNTDOWN_START');
                     $countdown_time =   date('Y/m/d H:i:s', strtotime($this->article->params->get('jollyany_event_start', '')));
                 }
                 elseif (time() < strtotime($this->article->params->get('jollyany_event_end', ''))) {
-                    $txt        =   JText::_('JOLLYANY_COUNTDOWN_END');
+                    $txt        =   Text::_('JOLLYANY_COUNTDOWN_END');
                     $countdown_time =   date('Y/m/d H:i:s', strtotime($this->article->params->get('jollyany_event_end', '')));
                 }
 
@@ -217,10 +214,10 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                                 .on('update.countdown', function(event) {
                                     var format = '%H:%M:%S';
                                     if((event.offset.totalDays > 0 && event.offset.weeks === 0) || (event.offset.totalDays % 7 > 0)) {
-                                        format = '<?php echo JText::_('JOLLYANY_EVENT_DAY'); ?> ' + format;
+                                        format = '<?php echo Text::_('JOLLYANY_EVENT_DAY'); ?> ' + format;
                                     }
                                     if(event.offset.weeks > 0) {
-                                        format = '<?php echo JText::_('JOLLYANY_EVENT_WEEK'); ?> ' + format;
+                                        format = '<?php echo Text::_('JOLLYANY_EVENT_WEEK'); ?> ' + format;
                                     }
                                     $(this).html(event.strftime(format));
                                 })
@@ -235,7 +232,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                 echo '</div>';
             }
             if ( !$this->isCategoryView && $this->article->params->get('jollyany_event_url', '') && (!$this->article->params->get('jollyany_event_start', '') || time() < strtotime($this->article->params->get('jollyany_event_start', '')))) { ?>
-                <div class="call-to-action"><a href="<?php echo $this->article->params->get('jollyany_event_url', ''); ?>" class="uk-button uk-button-primary"><?php echo $this->article->params->get('jollyany_event_url_text', JText::_('JOLLYANY_EVENT_BUTTON_TEXT')); ?></a></div>
+                <div class="call-to-action"><a href="<?php echo $this->article->params->get('jollyany_event_url', ''); ?>" class="uk-button uk-button-primary"><?php echo $this->article->params->get('jollyany_event_url_text', Text::_('JOLLYANY_EVENT_BUTTON_TEXT')); ?></a></div>
             <?php }
             echo '</div>';
             echo '<hr />';
@@ -255,7 +252,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                 echo '<tr><td class="event-duration"><span uk-icon="icon: calendar"></span></td><td>'. implode('<span uk-icon="icon: arrow-right"></span>', $event_duration) .'</td></tr>';
             }
             if ((!$this->isCategoryView || ($this->isCategoryView && $this->categoryParams->get('jollyany_show_event_seats',0))) && $this->article->params->get('jollyany_event_spot', '')) {
-                echo '<tr><td class="event-spot"><span uk-icon="icon: users"></span></td><td>'. JText::sprintf('JOLLYANY_EVENT_SPOT_TEXT', $this->article->params->get('jollyany_event_spot', ''))  .'</td></tr>';
+                echo '<tr><td class="event-spot"><span uk-icon="icon: users"></span></td><td>'. Text::sprintf('JOLLYANY_EVENT_SPOT_TEXT', $this->article->params->get('jollyany_event_spot', ''))  .'</td></tr>';
             }
             if ((!$this->isCategoryView || ($this->isCategoryView && $this->categoryParams->get('jollyany_show_event_phone',0))) && $this->article->params->get('jollyany_event_phone', '')) {
                 echo '<tr><td class="event-phone"><span uk-icon="icon: receiver"></span></td><td>'. $this->article->params->get('jollyany_event_phone', '') .'</td></tr>';
@@ -318,7 +315,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
                     }
                 }
                 $content .= '<div class="uk-text-meta uk-margin">';
-                $content .= '<i class="fas fa-book"></i>&nbsp;&nbsp;'. $lectures . ' ' . JText::_('JOLLYANY_COURSE_LECTURES');
+                $content .= '<i class="fas fa-book"></i>&nbsp;&nbsp;'. $lectures . ' ' . Text::_('JOLLYANY_COURSE_LECTURES');
                 $content .= '</div>';
             }
         }
@@ -351,7 +348,7 @@ class JollyanyFrameworkArticle extends AstroidFrameworkArticle {
 
             if ($params->get('jollyany_show_event_seats',0) && $row->get('jollyany_event_spot','')) {
                 $content .= '<div class="uk-grid-small" uk-grid>';
-                $content .= '<div class="uk-width-auto"><span uk-icon="icon: users; ratio: 0.8"></span></div><div class="uk-width-expand">'.JText::sprintf('JOLLYANY_EVENT_SPOT_TEXT', $row->get('jollyany_event_spot','')).'</div>';
+                $content .= '<div class="uk-width-auto"><span uk-icon="icon: users; ratio: 0.8"></span></div><div class="uk-width-expand">'.Text::sprintf('JOLLYANY_EVENT_SPOT_TEXT', $row->get('jollyany_event_spot','')).'</div>';
                 $content .= '</div>';
             }
 
