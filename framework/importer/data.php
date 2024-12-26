@@ -94,6 +94,27 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'tz_kamper'      =>  array(
+                // Pack Info
+                'name'        => 'Kamper',
+                'desc'        => 'Camping & Outdoor accommodation Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/kamper/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://kamper.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/kamper',
+
+                'joomla_version'     => array(4,5),
+
+                'template'      => array(
+                    'name'      =>  'Kamper Template',
+                    'type'      =>  'included',
+                    'code'      =>  'tz_kamper',
+                    'ext_code'  =>  'tz-kamper-api',
+                ),
+            ),
             'tz_likeastar'      =>  array(
                 // Pack Info
                 'name'        => 'Like a Star',
