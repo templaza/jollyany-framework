@@ -139,8 +139,7 @@ class plgSystemJollyany extends JPlugin {
                         $license->buyer             =   $this->app->input->get('buyer', '', 'RAW');
                         $license->domain            =   $this->app->input->get('domain', '', 'RAW');
 
-
-                        if (Folder::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
+                        if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
                             Folder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey');
                         }
                         File::write(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey'.DIRECTORY_SEPARATOR.'index.html','<!DOCTYPE html><title></title>');
