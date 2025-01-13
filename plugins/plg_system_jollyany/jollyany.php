@@ -12,12 +12,13 @@ if (file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid')) {
 }
 use Astroid\Framework;
 use Astroid\Helper;
+use Astroid\Helper\Media;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Plugin\PluginHelper;
-use Joomla\CMS\Filesystem\File;
+use Joomla\Filesystem\File;
 use Joomla\Filesystem\Folder;
 use Joomla\CMS\Mail\MailerFactoryInterface;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
@@ -172,7 +173,7 @@ class plgSystemJollyany extends JPlugin {
                             $table->save(array('params' => $this->params->toString()));
                         }
 
-                        if (Folder::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
+                        if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
                             Folder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey');
                         }
                         $return["status"] = "success";
@@ -261,7 +262,7 @@ class plgSystemJollyany extends JPlugin {
                                     $f_name = null;
                                 }
                                 if (!$f_name) throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_CAN_NOT_DOWNLOAD_PACKAGE'));
-                                $file_name  =   $file_name.'.'.File::getExt($f_name);
+                                $file_name  =   $file_name.'.'.Media::getExt($f_name);
                                 $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
                                 if($filePartCount && $step <= $filePartCount){
                                     File::append($tmp_part.'/'.$file_name,$response -> body, true);
