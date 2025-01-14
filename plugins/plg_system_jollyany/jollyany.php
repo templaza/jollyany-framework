@@ -637,7 +637,7 @@ class plgSystemJollyany extends JPlugin {
                         $file           = $this->app->input->post->get('name', '', 'RAW');
                         $file_name      = $presets_path.$file.'.json';
 
-                        if (File::exists($file_name)) {
+                        if (file_exists($file_name)) {
                             File::delete($file_name);
                         }
                         $return["status"]   =   'success';
@@ -1076,7 +1076,7 @@ class plgSystemJollyany extends JPlugin {
         $document->addScript(JUri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
         $document->addScriptDeclaration('var TZ_TEMPLATE_NAME = \''.$template->template.'\';'); // to add js script in head
 
-        if (File::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template->template.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-admin.png')) {
+        if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template->template.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-admin.png')) {
             $document->addScriptDeclaration('var TZ_LOGO_IMG = true;'); // to add js script in head
         } else {
             $document->addScriptDeclaration('var TZ_LOGO_IMG = false;'); // to add js script in head
