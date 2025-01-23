@@ -265,7 +265,7 @@ class plgSystemJollyany extends JPlugin {
                                 $file_name  =   $file_name.'.'.Media::getExt($f_name);
                                 $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
                                 if($filePartCount && $step <= $filePartCount){
-                                    File::append($tmp_part.'/'.$file_name,$response -> body, true);
+                                    File::write($tmp_part.'/'.$file_name,$response -> body, false, true);
                                     $return["pathcount"]    =   $filePartCount;
                                     if ($step == $filePartCount) {
                                         $return['archive']  =   $tmp_part.'/'.$file_name;
@@ -1015,7 +1015,7 @@ class plgSystemJollyany extends JPlugin {
             if (!$f_name) return false;
             $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
             if($filePartCount && $step <= $filePartCount){
-                File::append($tmp_part.'/'.$f_name,$response -> body, true);
+                File::write($tmp_part.'/'.$f_name,$response -> body, false, true);
                 if ($step == $filePartCount) {
                     return $tmp_part.'/'.$f_name;
                 } else {
