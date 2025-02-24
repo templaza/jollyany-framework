@@ -94,6 +94,27 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'astroid_nika'      =>  array(
+                // Pack Info
+                'name'        => 'Nika',
+                'desc'        => 'AI Software Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/nika/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://nika.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/nika',
+
+                'joomla_version'     => array(4,5),
+
+                'template'      => array(
+                    'name'      =>  'Nika Template',
+                    'type'      =>  'included',
+                    'code'      =>  'astroid_nika',
+                    'ext_code'  =>  'astroid-nika-api',
+                ),
+            ),
             'tz_kamper'      =>  array(
                 // Pack Info
                 'name'        => 'Kamper',
