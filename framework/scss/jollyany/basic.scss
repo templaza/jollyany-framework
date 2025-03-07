@@ -1,7 +1,7 @@
 @import "ally";
 
 // 1. Your custom variables and variable overwrites.
-$global-link-color: $colorMain !default;
+$global-link-color: var(--bs-link-color) !default;
 $grid-divider-border: var(--bs-border-color) !default;
 
 // 2. Import default variables and available mixins.
