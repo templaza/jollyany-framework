@@ -2,6 +2,7 @@
 
 // 1. Your custom variables and variable overwrites.
 $global-link-color: var(--bs-link-color) !default;
+$global-link-hover-color: var(--bs-link-hover-color) !default;
 $grid-divider-border: var(--bs-border-color) !default;
 
 // 2. Import default variables and available mixins.
