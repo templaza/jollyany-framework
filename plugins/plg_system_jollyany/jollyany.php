@@ -18,8 +18,8 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Plugin\PluginHelper;
-use Joomla\Filesystem\File;
-use Joomla\Filesystem\Folder;
+use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Mail\MailerFactoryInterface;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
@@ -58,6 +58,7 @@ class plgSystemJollyany extends JPlugin {
 
             $document->addScript('media/jollyany/assets/js/frontend.min.js', 'body');
         }
+        return true;
     }
     public function onAfterInitialise() {
         if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
