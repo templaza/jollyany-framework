@@ -162,9 +162,9 @@ switch($quantityLayout) {
 	}
 ?>
 		<div class="input-prepend input-append hikashop_product_quantity_div hikashop_product_quantity_div_leftright uk-button-group uk-margin-small-top uk-margin-remove-bottom hikashop_product_quantity_default_div <?php echo $extra_class; ?>">
-            <a class="hikashop_product_quantity_field_change_minus hikashop_product_quantity_field_change uk-button uk-button-default" href="#" data-hk-qty-mod="-1" onclick="return window.hikashop.updateQuantity(this,'<?php echo $id; ?>');" data-uk-icon="icon: minus; ratio: 0.7"></a>
+            <a class="hikashop_product_quantity_field_change_minus hikashop_product_quantity_field_change uk-button uk-button-default m-0" href="#" data-hk-qty-mod="-1" onclick="return window.hikashop.updateQuantity(this,'<?php echo $id; ?>');" data-uk-icon="icon: minus; ratio: 0.7"></a>
 			<input id="<?php echo $id; ?>" type="text" value="<?php echo $current_quantity; ?>" onfocus="this.select()" class="uk-input" name="<?php echo $name; ?>" data-hk-qty-min="<?php echo $min_quantity; ?>" data-hk-qty-max="<?php echo $max_quantity; ?>" onchange="window.hikashop.checkQuantity(this);" />
-            <a class="hikashop_product_quantity_field_change_plus hikashop_product_quantity_field_change uk-button uk-button-default" href="#" data-hk-qty-mod="1" onclick="return window.hikashop.updateQuantity(this,'<?php echo $id; ?>');" data-uk-icon="icon: plus; ratio: 0.7"></a>
+            <a class="hikashop_product_quantity_field_change_plus hikashop_product_quantity_field_change uk-button uk-button-default m-0" href="#" data-hk-qty-mod="1" onclick="return window.hikashop.updateQuantity(this,'<?php echo $id; ?>');" data-uk-icon="icon: plus; ratio: 0.7"></a>
 		</div>
 		<div class="hikashop_product_quantity_div hikashop_product_quantity_add_to_cart_div hikashop_product_quantity_add_to_cart_div_leftright"><?php
 			echo $html;
@@ -202,10 +202,10 @@ switch($quantityLayout) {
                 <input id="<?php echo $id; ?>" type="text" onfocus="this.select()" value="<?php echo $current_quantity; ?>" class="uk-input uk-text-center" name="<?php echo $name; ?>" data-hk-qty-min="<?php echo $min_quantity; ?>" data-hk-qty-max="<?php echo $max_quantity; ?>" onchange="window.hikashop.checkQuantity(this);" />
                 <div class="hikashop_product_quantity_div hikashop_product_quantity_change_div_regrouped uk-padding-remove-vertical h-100">
                     <div class="hikashop_product_quantity_change_div_regrouped_inner">
-                        <a class="hikashop_product_quantity_field_change_plus hikashop_product_quantity_field_change uk-display-block" href="#" data-hk-qty-mod="1" onclick="return window.hikashop.updateQuantity(this, '<?php echo $id; ?>');" uk-icon="icon: chevron-up; ratio: 0.5"></a>
+                        <a class="hikashop_product_quantity_field_change_plus hikashop_product_quantity_field_change uk-display-block m-0" href="#" data-hk-qty-mod="1" onclick="return window.hikashop.updateQuantity(this, '<?php echo $id; ?>');" uk-icon="icon: chevron-up; ratio: 0.5"></a>
                     </div>
                     <div class="hikashop_product_quantity_change_div_regrouped_inner">
-                        <a class="hikashop_product_quantity_field_change_minus hikashop_product_quantity_field_change uk-display-block" href="#" data-hk-qty-mod="-1" onclick="return window.hikashop.updateQuantity(this, '<?php echo $id; ?>');" uk-icon="icon: chevron-down; ratio: 0.5"></a>
+                        <a class="hikashop_product_quantity_field_change_minus hikashop_product_quantity_field_change uk-display-block m-0" href="#" data-hk-qty-mod="-1" onclick="return window.hikashop.updateQuantity(this, '<?php echo $id; ?>');" uk-icon="icon: chevron-down; ratio: 0.5"></a>
                     </div>
                 </div>
             </div>
