@@ -4,7 +4,7 @@
 
 # Jollyany Framework
 
-It's extended version of Astroid Framework hoang
+It's extended version of Astroid Framework
 
 Astroid Framework: https://github.com/templaza/astroid-framework
 
