@@ -933,38 +933,6 @@ class plgSystemJollyany extends JPlugin {
                     die();
                     break;
             }
-            switch ($astroid) {
-                case "save":
-                    header('Content-Type: application/json');
-                    header('Access-Control-Allow-Origin: *');
-                    $return = array();
-                    try {
-                        if (!Session::checkToken()) {
-                            throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
-                        }
-
-                        $jollyany_preset = $this->app->input->post->get('jollyany-preset', 0, 'INT');
-                        if ($jollyany_preset) {
-                            $params = $this->app->input->post->get('params', array(), 'RAW');
-                            $template_name = $this->app->input->get('jollyany-template', NULL, 'RAW');
-                            $preset = [
-                                'title' => $this->app->input->post->get('jollyany-preset-name', '', 'RAW'),
-                                'desc' => $this->app->input->post->get('jollyany-preset-desc', '', 'RAW'),
-                                'thumbnail' => '', 'demo' => '',
-                                'preset' => \json_encode($params)
-                            ];
-
-                            File::write(JPATH_SITE . "/templates/{$template_name}/astroid/presets/" . uniqid(JFilterOutput::stringURLSafe($preset['title']).'-') . '.json', \json_encode($preset));
-                        }
-                    } catch (\Exception $e) {
-                        $return["status"] = "error";
-                        $return["code"] = $e->getCode();
-                        $return["message"] = $e->getMessage();
-                        echo \json_encode($return);
-                        die();
-                    }
-                    break;
-            }
         }
     }
 
