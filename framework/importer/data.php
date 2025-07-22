@@ -94,6 +94,27 @@ class JollyanyFrameworkDataImport {
 
 	public static function getData() {
 	    self::$data   =   array(
+            'astroid_kowalski'      =>  array(
+                // Pack Info
+                'name'        => 'Kowalski',
+                'desc'        => 'Creative Portfolio Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/kowalski/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://kowalski.jollyany.co/',
+                'doc_url'     => 'https://docs.jollyany.co/templates/kowalski',
+
+                'joomla_version'     => array(4,5),
+
+                'template'      => array(
+                    'name'      =>  'Kowalski Template',
+                    'type'      =>  'included',
+                    'code'      =>  'astroid_kowalski',
+                    'ext_code'  =>  'astroid-kowalski-api',
+                ),
+            ),
             'astroid_nika'      =>  array(
                 // Pack Info
                 'name'        => 'Nika',
