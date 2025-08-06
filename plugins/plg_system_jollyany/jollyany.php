@@ -13,6 +13,7 @@ if (file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid')) {
 use Astroid\Framework;
 use Astroid\Helper;
 use Astroid\Helper\Media;
+use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -32,13 +33,10 @@ if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
  * @since  3.5.11
  */
 
-class plgSystemJollyany extends JPlugin {
+class plgSystemJollyany extends CMSPlugin {
     protected $app;
-    public function onAfterDispatch()
+    public function onAstroidAfterInitialise()
     {
-        if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !$this->isEnableExtension('astroid', 'plugin', 'system') || !$this->isEnableExtension('astroid', 'library')) {
-            return false;
-        }
         Astroid\Framework::getDocument()->addLayoutPath(JPATH_LIBRARIES . '/jollyany/framework/frontend/');
     }
     public function onBeforeRender()
