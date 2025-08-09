@@ -98,7 +98,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
                                 $hidden_html;
                             echo '</ul>';
                         } else {
-                            echo '<div class="hikashop_img_curr">'.
+                            echo '<div class="hikashop_img_curr position-relative" style="width: '.$img->width.'px; height: '.$img->height.'px;">'.
                                 $html.
                                 '</div>';
                         }
