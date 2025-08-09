@@ -80,7 +80,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
                     );
                     if($img->success) {
                         $html = '<img class="hikashop_product_listing_image" title="'.$this->escape(@$this->row->file_description).'" '.
-                            'alt="'.$this->escape(@$this->row->file_name).'" src="'.$img->url.'" data-uk-cover/>';
+                            'alt="'.$this->escape(@$this->row->file_name).'" src="'.$img->url.'"'.($hidden_html != '' ? ' data-uk-cover' : '').'/>';
                         if($this->config->get('add_webp_images', 1) && function_exists('imagewebp') && !empty($img->webpurl)) {
                             $html = '<picture>
 				<source srcset="'.$img->webpurl.'" type="image/webp">
@@ -98,7 +98,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
                                 $hidden_html;
                             echo '</ul>';
                         } else {
-                            echo '<div class="hikashop_img_curr position-relative" style="width: '.$img->width.'px; height: '.$img->height.'px;">'.
+                            echo '<div class="hikashop_img_curr">'.
                                 $html.
                                 '</div>';
                         }
