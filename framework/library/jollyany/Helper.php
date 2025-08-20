@@ -14,9 +14,15 @@ defined('_JEXEC') or die;
 use Joomla\Archive\Archive;
 use Joomla\CMS\Installer\InstallerHelper;
 use Joomla\CMS\Installer\Installer;
-\JLoader::import('joomla.filesystem.file');
-\JLoader::import('joomla.filesystem.folder');
-\JLoader::import('joomla.filesystem.path');
+use Joomla\Filesystem\Path;
+use Joomla\Filesystem\Folder;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Registry\Registry;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+use Joomla\Database\DatabaseInterface;
+use Joomla\CMS\Version;
 
 class Helper {
     /**
@@ -148,16 +154,16 @@ class Helper {
 
         // Clean the paths to use for archive extraction
         if ($root) {
-            $extractdir     =   \JPath::clean(JPATH_ROOT);
+            $extractdir     =   Path::clean(JPATH_ROOT);
         } else {
-            $extractdir     =   \JPath::clean(dirname($p_filename) . '/' . $tmpdir);
+            $extractdir     =   Path::clean(dirname($p_filename) . '/' . $tmpdir);
         }
-        $archivename = \JPath::clean($archivename);
+        $archivename = Path::clean($archivename);
 
         // Do the unpacking of the archive
         try
         {
-            $archive = new Archive(array('tmp_path' => \JFactory::getConfig()->get('tmp_path')));
+            $archive = new Archive(array('tmp_path' => Factory::getApplication()->getConfig()->get('tmp_path')));
             $extract = $archive->extract($archivename, $extractdir);
         }
         catch (\Exception $e)
@@ -190,13 +196,13 @@ class Helper {
          * List all the items in the installation directory.  If there is only one, and
          * it is a folder, then we will set that folder to be the installation folder.
          */
-        $dirList = array_merge((array) \JFolder::files($extractdir, ''), (array) \JFolder::folders($extractdir, ''));
+        $dirList = array_merge((array) Folder::files($extractdir, ''), (array) Folder::folders($extractdir, ''));
 
         if (count($dirList) === 1)
         {
-            if (\JFolder::exists($extractdir . '/' . $dirList[0]))
+            if (Folder::exists($extractdir . '/' . $dirList[0]))
             {
-                $extractdir = \JPath::clean($extractdir . '/' . $dirList[0]);
+                $extractdir = Path::clean($extractdir . '/' . $dirList[0]);
             }
         }
 
@@ -238,7 +244,7 @@ class Helper {
             InstallerHelper::cleanupInstall($e_package['packagefile'], $e_package['extractdir']);
             return array(
                 'status'    => false,
-                'message'   => \JText::_('JOLLYANY_AJAX_ERROR_EXT_NOT_FOUND').' '.$path
+                'message'   => Text::_('JOLLYANY_AJAX_ERROR_EXT_NOT_FOUND').' '.$path
             );
         }
 
@@ -248,7 +254,7 @@ class Helper {
             // There was an error installing the package.
             return array(
                 'status'    => false,
-                'message'   => \JText::_('JOLLYANY_AJAX_ERROR_CAN_NOT_INSTALL').' '.$path
+                'message'   => Text::_('JOLLYANY_AJAX_ERROR_CAN_NOT_INSTALL').' '.$path
             );
         }
 
@@ -261,7 +267,7 @@ class Helper {
         InstallerHelper::cleanupInstall($e_package['packagefile'], $e_package['extractdir']);
         return array(
             'status'    => true,
-            'message'   => \JText::_('JOLLYANY_AJAX_INSTALL_EXTENSION_SUCCESSFUL')
+            'message'   => Text::_('JOLLYANY_AJAX_INSTALL_EXTENSION_SUCCESSFUL')
         );
     }
 
@@ -271,17 +277,15 @@ class Helper {
      */
     public static function getLicense() {
         $lictext    =   '';
-        jimport('joomla.filesystem.file');
-        jimport('joomla.filesystem.folder');
-        if (JFolder::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
-            $key    =   JFolder::files(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey', '.txt', false, true);
+        if (Folder::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
+            $key    =   Folder::files(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey', '.txt', false, true);
             if (count($key)) {
                 $lictext    =   file_get_contents($key[0]);
             }
         }
         if (!$lictext) {
-            $jollyany   =   \JPluginHelper::getPlugin('system', 'jollyany');
-            $params     =   new \JRegistry($jollyany->params);
+            $jollyany = PluginHelper::getPlugin('system', 'jollyany');
+            $params = new Registry($jollyany->params);
             $lictext    =   $params->get('jollyany_license','');
         }
         return $lictext;
@@ -305,13 +309,13 @@ class Helper {
             $data = \json_decode($json, true);
             $preset = ['title' => pathinfo($file)['filename'], 'desc' => '', 'thumbnail' => '', 'demo' => '', 'preset' => [], 'name' => pathinfo($file)['filename']];
             if (isset($data['title']) && !empty($data['title'])) {
-                $preset['title'] = \JText::_($data['title']);
+                $preset['title'] = Text::_($data['title']);
             }
             if (isset($data['desc'])) {
-                $preset['desc'] = \JText::_($data['desc']);
+                $preset['desc'] = Text::_($data['desc']);
             }
             if (isset($data['thumbnail']) && !empty($data['thumbnail'])) {
-                $preset['thumbnail'] = \JURI::root() . 'templates/' . $template->template . '/' . $data['thumbnail'];
+                $preset['thumbnail'] = Uri::root() . 'templates/' . $template->template . '/' . $data['thumbnail'];
             }
             if (isset($data['demo'])) {
                 $preset['demo'] = $data['demo'];
@@ -325,7 +329,7 @@ class Helper {
     }
 
     public static function getExtVersion($element, $type = '') {
-        $db = JFactory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->select(
                 $db->quoteName('manifest_cache')
@@ -348,7 +352,7 @@ class Helper {
     public static function clearCache($template = '', $prefix = 'style')
     {
         $template_dir = JPATH_SITE . '/' . 'templates' . '/' . $template . '/' . 'css';
-        $version = new \JVersion;
+        $version = new Version;
         $version->refreshMediaVersion();
         if (!file_exists($template_dir)) {
             throw new \Exception("Template not found.", 404);
