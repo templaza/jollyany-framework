@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.1" type="library" method="upgrade">
+<extension type="library" method="upgrade">
    <name>Jollyany Framework</name>
    <libraryname>jollyany</libraryname>
    <author>TemPlaza</author>
-   <creationDate>July 2025</creationDate>
-   <version>3.5.39</version>
+   <creationDate>August 2025</creationDate>
+   <version>3.5.40</version>
    <url>https://www.templaza.com</url>
    <copyright>Copyright (C) 2025 TemPlaza, Jsc. All rights reserved.</copyright>
    <license>GNU General Public License version 3 or later; see LICENSE.txt</license>
