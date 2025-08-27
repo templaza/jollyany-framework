@@ -14,6 +14,7 @@ use Astroid\Framework;
 use Astroid\Helper;
 use Astroid\Helper\Media;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Installer\InstallerHelper;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -21,7 +22,14 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Folder;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Table\Table;
 use Joomla\CMS\Mail\MailerFactoryInterface;
+use Joomla\CMS\Form\Form;
+use Joomla\CMS\Version;
+use Joomla\Database\DatabaseInterface;
+use Jollyany\Helper as JollyanyFrameworkHelper;
+use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
     jimport('jollyany.framework.course');
@@ -80,13 +88,13 @@ class plgSystemJollyany extends CMSPlugin {
                     header('Access-Control-Allow-Origin: *');
                     $return = array();
                     try {
-                        $domain     =   JUri::getInstance() -> getHost();
+                        $domain     =   Uri::getInstance() -> getHost();
                         // If is localhost do-not do anything
                         if ( in_array($domain, array('localhost', '127.0.0.1', '::1')) ) {
                             throw new \Exception(Text::_('JOLLYANY_IS_LOCALHOST'), 204);
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -130,8 +138,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if ($this->params->get('secret_key') != $this->app->input->get('key')) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        $license                    =   new stdClass();
+
+                        $license                    =   new \stdClass();
                         $license->purchase_code     =   $this->app->input->get('purchase_code', '', 'RAW');
                         $license->license_type      =   $this->app->input->get('license_type', '', 'RAW');
                         $license->purchase_date     =   $this->app->input->get('purchase_date', '', 'RAW');
@@ -163,11 +171,11 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
+
                         if ($this->params->get('jollyany_license')) {
                             $this->params->set('jollyany_license', '');
                             $jollyany       =   PluginHelper::getPlugin('system', 'jollyany');
-                            $table          = JTable::getInstance('extension');
+                            $table          = Table::getInstance('extension');
                             $table->load($jollyany->id);
                             $table->save(array('params' => $this->params->toString()));
                         }
@@ -195,8 +203,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -225,7 +233,7 @@ class plgSystemJollyany extends CMSPlugin {
                                 'task'          => 'download.package',
                                 'produce'       => $install_code,
                                 'purchase_code' => $license->purchase_code,
-                                'domain'        => JUri::getInstance() -> getHost(),
+                                'domain'        => Uri::getInstance() -> getHost(),
                                 'step'          => $step,
                                 'type'          => 'quickstart-api'
                             );
@@ -297,8 +305,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -326,7 +334,7 @@ class plgSystemJollyany extends CMSPlugin {
 
                                 File::write(JPATH_ROOT.DIRECTORY_SEPARATOR.'installation'.DIRECTORY_SEPARATOR.'sql'.DIRECTORY_SEPARATOR.'databases.json', json_encode($packagedb), true);
                                 $return["package"]  = json_encode($package);
-                                $return["url_root"] = JUri::root();
+                                $return["url_root"] = Uri::root();
                             }
                             $return["status"] = "success";
                             $return["code"] = 200;
@@ -350,8 +358,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -385,8 +393,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -438,8 +446,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -474,7 +482,7 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -491,7 +499,7 @@ class plgSystemJollyany extends CMSPlugin {
                                     $path    =   $this->getPackageData(1, $extension, $license);
                                     if (!$path) throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_EXTENSION_NOT_FOUND'));
                                     // Unpack the downloaded package file.
-                                    $e_package  =   JInstallerHelper::unpack($path, true);
+                                    $e_package  =   InstallerHelper::unpack($path, true);
                                     $install_result  =   JollyanyFrameworkHelper::installPackage($path, $e_package, $tmp_dest);
                                     if (!$install_result['status']) {
                                         throw new \Exception($install_result['message']);
@@ -523,7 +531,7 @@ class plgSystemJollyany extends CMSPlugin {
                                     }
 
                                     // Download the package at the URL given.
-                                    $p_file = JInstallerHelper::downloadPackage($url);
+                                    $p_file = InstallerHelper::downloadPackage($url);
 
                                     // Was the package downloaded?
                                     if (!$p_file)
@@ -532,7 +540,7 @@ class plgSystemJollyany extends CMSPlugin {
                                     }
 
                                     // Unpack the downloaded package file.
-                                    $e_package = JInstallerHelper::unpack($tmp_dest . '/' . $p_file, true);
+                                    $e_package = InstallerHelper::unpack($tmp_dest . '/' . $p_file, true);
                                     $install_result  =   JollyanyFrameworkHelper::installPackage($url, $e_package, $tmp_dest);
                                     if (!$install_result['status']) {
                                         throw new \Exception($install_result['message']);
@@ -564,7 +572,7 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
+
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -576,7 +584,7 @@ class plgSystemJollyany extends CMSPlugin {
                                 $package->packagefile = $config->get('tmp_path') . '/' . $package->packagefile;
                             }
 
-                            JInstallerHelper::cleanupInstall($package->packagefile, $package->extractdir);
+                            InstallerHelper::cleanupInstall($package->packagefile, $package->extractdir);
                             $return["status"]   = "success";
                             $return["code"]     = 200;
                         } else {
@@ -659,8 +667,8 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-                        jimport('jollyany.framework.helper');
-                        jimport('jollyany.framework.importer.data');
+
+
                         $code          =   $this->app->input->post->get('code', '', 'RAW');
                         $return['element']  =   $code;
                         if (empty($code)) throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_NO_FILE_INSTALL'));
@@ -705,7 +713,7 @@ class plgSystemJollyany extends CMSPlugin {
                         }
                         $thumbs     = $this->app->input->get('thumbs', array(), 'RAW');
 
-                        jimport('jollyany.framework.importer.data');
+
                         $api_url    =   JollyanyFrameworkDataImport::getApiUrl();
                         for ($i = 0; $i < count($thumbs); $i++) {
                             $http       =   JHttpFactory::getHttp();
@@ -935,22 +943,22 @@ class plgSystemJollyany extends CMSPlugin {
     }
 
     protected function getPackageData($step, $extension, $license) {
-        jimport('jollyany.framework.importer.data');
+
         $url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
         $data = array(
             'task'          => 'download.package',
             'produce'       => $extension->code,
             'purchase_code' => $license->purchase_code,
-            'domain'        => JUri::getInstance() -> getHost(),
+            'domain'        => Uri::getInstance() -> getHost(),
             'step'          => $step,
             'type'          => $extension->ext_code
         );
-        $http       =   JHttpFactory::getHttp();
+        $http       =   \Joomla\CMS\Factory::getContainer()->get('HttpFactory')->getHttp();
         $response   =   $http -> post ($url, $data, array(
             'Content-type' => 'application/x-www-form-urlencoded'
         ));
 
-        $config     =   Factory::getConfig();
+        $config     =   Factory::getApplication()->getConfig();
         $tmp_part   =   $config->get('tmp_path');
         if($response -> code == 200) {
             $header     = $response -> headers;
@@ -1038,9 +1046,9 @@ class plgSystemJollyany extends CMSPlugin {
 	        }
 	    }
 		'); // to add css script
-        $document->addScript(JUri::root().'media/vendor/jquery/js/jquery.min.js', "body");
-        $document->addScript(JUri::root().'media/jollyany/assets/js/jollyany.min.js', "body"); // to add js file in body
-        $document->addScript(JUri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
+        $document->addScript(Uri::root().'media/vendor/jquery/js/jquery.min.js', "body");
+        $document->addScript(Uri::root().'media/jollyany/assets/js/jollyany.min.js', "body"); // to add js file in body
+        $document->addScript(Uri::root().'media/jollyany/assets/js/uikit.min.js', 'body');
         $document->addScriptDeclaration('var TZ_TEMPLATE_NAME = \''.$template->template.'\';'); // to add js script in head
 
         if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template->template.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-admin.png')) {
@@ -1071,7 +1079,7 @@ class plgSystemJollyany extends CMSPlugin {
         Helper::loadLanguage('jollyany');
         $frontendVisibility = $pluginParams->get('frontend_tabs_visibility', 1);
 
-        \JForm::addFormPath(JPATH_SITE . '/' . $lib_dir . '/framework/forms');
+        Form::addFormPath(JPATH_SITE . '/' . $lib_dir . '/framework/forms');
 
         if ($form->getName() == 'com_content.article' && ((Framework::isSite() && $frontendVisibility) || Framework::isAdmin())) {
             $form->loadFile('article', false);
@@ -1159,7 +1167,7 @@ class plgSystemJollyany extends CMSPlugin {
             jimport('jollyany.framework.article');
             $content = '';
             if ($params->get('jollyany_show_course_lecture',0)) {
-                $content .= JollyanyFrameworkArticle::getLectureTotal($row->id);
+                $content .= \Jollyany\Article::getLectureTotal($row->id);
             }
             // Convert parameter fields to objects.
             $row_params = new Registry($row->attribs);
@@ -1171,14 +1179,14 @@ class plgSystemJollyany extends CMSPlugin {
     }
 
     protected function compareJoomlaVersion($template_joomla_version) {
-        $joomla_current_version = new \JVersion;
+        $joomla_current_version = new Version();
         $joomla_current_version = $joomla_current_version->getShortVersion();
         $joomla_current_version = substr($joomla_current_version, 0, 1);
         return in_array($joomla_current_version, $template_joomla_version);
     }
 
     protected function isEnableExtension($element, $type = '', $folder = '') {
-        $db = Factory::getDbo();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = $db->getQuery(true)
             ->select(
                 $db->quoteName('enabled')
