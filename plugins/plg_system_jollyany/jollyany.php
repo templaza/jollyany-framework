@@ -25,9 +25,11 @@ use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\Mail\MailerFactoryInterface;
+use Joomla\CMS\Http\HttpFactory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Version;
 use Joomla\Database\DatabaseInterface;
+use Jollyany\Framework as JollyanyFramework;
 use Jollyany\Helper as JollyanyFrameworkHelper;
 use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
@@ -70,9 +72,10 @@ class plgSystemJollyany extends CMSPlugin {
         if (!file_exists(JPATH_LIBRARIES . '/astroid/framework/library/astroid') || !file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
             return false;
         }
-        Jollyany\Framework::init();
+        JollyanyFramework::init();
+        $import = JollyanyFramework::getDataImport();
         // load jollyany language
-        $lang = Factory::getLanguage();
+        $lang = Factory::getApplication()->getLanguage();
         $lang->load("jollyany", JPATH_SITE);
         $option     = $this->app->input->get('option', '');
         $jollyany   = $this->app->input->get('jollyany', '');
@@ -99,7 +102,7 @@ class plgSystemJollyany extends CMSPlugin {
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
                             $ch = curl_init();
-                            curl_setopt($ch, CURLOPT_URL, JollyanyFrameworkDataImport::getApiUrl());
+                            curl_setopt($ch, CURLOPT_URL, $import->getApiUrl());
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -213,7 +216,7 @@ class plgSystemJollyany extends CMSPlugin {
                             $step                  =   $this->app->input->post->get('step', 1);
                             $file_name             =   $this->app->input->post->get('file_name', '', 'RAW');
 
-                            $templates             =   JollyanyFrameworkDataImport::getData();
+                            $templates             =   $import->getData();
                             if (is_array($templates) && isset($templates[$install_code])) {
                                 $template          =   $templates[$install_code];
                                 if (!$this->compareJoomlaVersion($template['joomla_version'])) {
@@ -225,7 +228,7 @@ class plgSystemJollyany extends CMSPlugin {
                             $config         =   Factory::getConfig();
                             $tmp_part       =   $config->get('tmp_path') ;
 
-                            $url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
+                            $url        = $import->getApiUrl().'/index.php?option=com_tz_membership';
                             //install quickstart package
                             /* Get package zip file from server */
                             ini_set('memory_limit', '-1');
@@ -364,7 +367,7 @@ class plgSystemJollyany extends CMSPlugin {
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
                             $install_code          =   $this->app->input->post->get('install_code', '', 'RAW');
-                            $templates             =   JollyanyFrameworkDataImport::getData();
+                            $templates             =   $import->getData();
                             if (is_array($templates) && isset($templates[$install_code])) {
                                 $template          =   $templates[$install_code];
                                 $return['data']    =   json_encode($template['extensions']);
@@ -403,7 +406,7 @@ class plgSystemJollyany extends CMSPlugin {
                             $install_code          =   $this->app->input->post->get('install_code', '', 'RAW');
 
                             if (empty($extension_package) && !$template_package) throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_NO_FILE_INSTALL'));
-                            $templates             =   JollyanyFrameworkDataImport::getData();
+                            $templates             =   $import->getData();
                             if (is_array($templates) && isset($templates[$install_code])) {
                                 $template          =   $templates[$install_code];
                                 $arr_extensions    =   array();
@@ -714,9 +717,9 @@ class plgSystemJollyany extends CMSPlugin {
                         $thumbs     = $this->app->input->get('thumbs', array(), 'RAW');
 
 
-                        $api_url    =   JollyanyFrameworkDataImport::getApiUrl();
+                        $api_url    =   $import->getApiUrl();
                         for ($i = 0; $i < count($thumbs); $i++) {
-                            $http       =   JHttpFactory::getHttp();
+                            $http       =   HttpFactory::getHttp();
                             $response   =   $http -> get ($api_url.$thumbs[$i], array(
                                 'Content-type' => 'application/x-www-form-urlencoded'
                             ));
@@ -943,17 +946,19 @@ class plgSystemJollyany extends CMSPlugin {
     }
 
     protected function getPackageData($step, $extension, $license) {
-
-        $url        = JollyanyFrameworkDataImport::getApiUrl().'/index.php?option=com_tz_membership';
+        $import     = JollyanyFramework::getDataImport();
+        $url        = $import->getApiUrl().'/index.php?option=com_tz_membership';
         $data = array(
             'task'          => 'download.package',
             'produce'       => $extension->code,
             'purchase_code' => $license->purchase_code,
             'domain'        => Uri::getInstance() -> getHost(),
             'step'          => $step,
-            'type'          => $extension->ext_code
+            'type'          => $extension->ext_code,
+            'cloud_package' => $import->isCloudPackage() ? 1 : 0,
+            'cloud_key'     => $import->getCloudKey(),
         );
-        $http       =   \Joomla\CMS\Factory::getContainer()->get('HttpFactory')->getHttp();
+        $http       =   HttpFactory::getHttp();
         $response   =   $http -> post ($url, $data, array(
             'Content-type' => 'application/x-www-form-urlencoded'
         ));
@@ -962,6 +967,16 @@ class plgSystemJollyany extends CMSPlugin {
         $tmp_part   =   $config->get('tmp_path');
         if($response -> code == 200) {
             $header     = $response -> headers;
+            if (isset($header['Content-Type']) && ($header['Content-Type'][0] == 'application/json' || $header['Content-Type'] == 'application/json')) {
+                $return = \json_decode($response -> body);
+                if (isset($return->cloud_package) && (int) $return->cloud_package == 1) {
+                    $import->setApiUrl($return->cloud_url);
+                    $import->setCloudKey($return->cloud_key);
+                    return $this->getPackageData(1, $extension, $license);
+                } else {
+                    return false;
+                }
+            }
             if (isset($header['Files-Part-Count'])) {
                 $filePartCount  = $header['Files-Part-Count'];
             } elseif (isset($header['files-part-count'])) {
@@ -990,7 +1005,7 @@ class plgSystemJollyany extends CMSPlugin {
             if (!$f_name) return false;
             $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
             if($filePartCount && $step <= $filePartCount){
-                File::write($tmp_part.'/'.$f_name,$response -> body, false, true);
+                File::append($tmp_part.'/'.$f_name,$response -> body);
                 if ($step == $filePartCount) {
                     return $tmp_part.'/'.$f_name;
                 } else {

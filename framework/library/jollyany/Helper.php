@@ -200,7 +200,7 @@ class Helper {
 
         if (count($dirList) === 1)
         {
-            if (Folder::exists($extractdir . '/' . $dirList[0]))
+            if (file_exists($extractdir . '/' . $dirList[0]))
             {
                 $extractdir = Path::clean($extractdir . '/' . $dirList[0]);
             }
@@ -277,7 +277,7 @@ class Helper {
      */
     public static function getLicense() {
         $lictext    =   '';
-        if (Folder::exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
+        if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey')) {
             $key    =   Folder::files(JPATH_ROOT.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.'jollyanykey', '.txt', false, true);
             if (count($key)) {
                 $lictext    =   file_get_contents($key[0]);

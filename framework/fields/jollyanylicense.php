@@ -7,17 +7,21 @@
  */
 defined('JPATH_BASE') or die;
 
-jimport('jollyany.framework.helper');
-jimport('jollyany.framework.importer.data');
-
-JFormHelper::loadFieldClass('list');
+use Joomla\CMS\Form\Field\ListField;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Registry\Registry;
+use Jollyany\Helper as JollyanyFrameworkHelper;
+use Joomla\CMS\Table\Extension;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Session\Session;
 
 /**
  * Modules Position field.
  *
  * @since  3.4.2
  */
-class JFormFieldJollyanyLicense extends JFormFieldList {
+class JFormFieldJollyanyLicense extends ListField {
 
     /**
      * The form field type.
@@ -38,21 +42,21 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 
     protected function getInput() {
         $html       =   array();
-	    $jollyany   =   \JPluginHelper::getPlugin('system', 'jollyany');
-	    $params     =   new \JRegistry($jollyany->params);
+	    $jollyany   =   PluginHelper::getPlugin('system', 'jollyany');
+	    $params     =   new Registry($jollyany->params);
 	    $lictext    =   JollyanyFrameworkHelper::getLicense();
 	    $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
-        $totaltemp  =   JollyanyFrameworkDataImport::getTotalTemplate();
-        $template   =   Astroid\Framework::getTemplate();
-        $preview_img=   file_exists(JPATH_SITE. '/media/templates/site/' . $template->template . '/images/template_preview.png') ? JUri::root().'media/templates/site/'.$template->template.'/images/template_preview.png' : JUri::root().'templates/'.$template->template.'/template_preview.png';
+        $totaltemp  =   \Jollyany\Framework::getDataImport()->getTotalTemplate();
+        $template   =   \Astroid\Framework::getTemplate();
+        $preview_img=   file_exists(JPATH_SITE. '/media/templates/site/' . $template->template . '/images/template_preview.png') ? Uri::root().'media/templates/site/'.$template->template.'/images/template_preview.png' : Uri::root().'templates/'.$template->template.'/template_preview.png';
 
         $html[]     =   '<div class="card-group">';
         $html[]     =   '<div class="card template-info"><img src="'.$preview_img.'" class="card-img-top" alt="'.$template->template.'" />';
 
         $html[]     =   '<div class="card-body">';
         $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">You are using: Version <strong>'.$template->version.'</strong></h6>';
-        $html[]     =   '<h5 class="card-title">'.JText::_($template->template).'</h5>';
-        $html[]     =   '<div class="card-text form-text">'.JText::_(preg_replace('/tz_/i', 'tpl_', $template->template).'_desc').'</div>';
+        $html[]     =   '<h5 class="card-title">'.Text::_($template->template).'</h5>';
+        $html[]     =   '<div class="card-text form-text">'.Text::_(preg_replace('/tz_/i', 'tpl_', $template->template).'_desc').'</div>';
         $html[]     =   '</div>';
 
         $html[]     =   '<ul class="list-group list-group-flush">';
@@ -67,17 +71,17 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
             $html[]     =   '<div class="card"><div class="card-header">';
 	        $license->support_expired    = strtotime( $license->supported_until ) < time();
 	        self::$license = $license;
-	        $html[]     =   '<h5 class="m-0">'.JText::_('JOLLYANY_LICENSE_ACTIVATED').'</h5>';
+	        $html[]     =   '<h5 class="m-0">'.Text::_('JOLLYANY_LICENSE_ACTIVATED').'</h5>';
 
 	        $html[]     =   '</div>';
 	        $html[]     =   '<ul class="list-group list-group-flush">';
-	        $html[]     =   '<li class="list-group-item"><p class="card-text form-text mt-0">'.JText::_('JOLLYANY_WELCOME_DESC'). ' '.JText::_ ('JOLLYANY_WELCOME_PREMIUM').'</p></li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_BUYER').':</strong> '.$license->buyer.'</li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_DOMAIN').':</strong> '.$license->domain.'</li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_PURCHASE_CODE').':</strong> '.$license->purchase_code.'</li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_LICENCE_TYPE').':</strong> '.$license->license_type.'</li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_PURCHASE_DATE').':</strong> '.$license->purchase_date.'</li>';
-	        $html[]     =   '<li class="list-group-item"><strong>'.JText::_('JOLLYANY_ACTIVATE_SUPPORTED_UNTIL').':</strong> ';
+	        $html[]     =   '<li class="list-group-item"><p class="card-text form-text mt-0">'.Text::_('JOLLYANY_WELCOME_DESC'). ' '.Text::_ ('JOLLYANY_WELCOME_PREMIUM').'</p></li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_BUYER').':</strong> '.$license->buyer.'</li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_DOMAIN').':</strong> '.$license->domain.'</li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_PURCHASE_CODE').':</strong> '.$license->purchase_code.'</li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_LICENCE_TYPE').':</strong> '.$license->license_type.'</li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_PURCHASE_DATE').':</strong> '.$license->purchase_date.'</li>';
+	        $html[]     =   '<li class="list-group-item"><strong>'.Text::_('JOLLYANY_ACTIVATE_SUPPORTED_UNTIL').':</strong> ';
 	        if ($license->support_expired) {
 		        $html[]     =   $license->supported_until.' <span class="badge badge-danger">Your support is expired!</span> <a href="https://1.envato.market/zODvW" target="_blank"><strong>click here to renew your license</strong></a> and re-activate your package.';
 	        } else {
@@ -85,7 +89,7 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	        }
 	        $html[]     =   '</li>';
 	        $html[]     =   '</ul>';
-	        $html[]     =   '<div class="card-body license-action-buttons"><a href="#" id="jollyany-theme-activate" class="btn btn-primary"><i class="fas fa-sync-alt"></i> '.JText::_('JOLLYANY_WELCOME_REACTIVE_PRODUCT').'</a> <button type="button" class="btn btn-danger delete-template-activation" data-token="'.JSession::getFormToken().'"><i class="fas fa-times"></i> '.JText::_('JOLLYANY_ACTIVATE_DELETE_ACTIVATION').'</button></div>';
+	        $html[]     =   '<div class="card-body license-action-buttons"><a href="#" id="jollyany-theme-activate" class="btn btn-primary"><i class="fas fa-sync-alt"></i> '.Text::_('JOLLYANY_WELCOME_REACTIVE_PRODUCT').'</a> <button type="button" class="btn btn-danger delete-template-activation" data-token="'.Session::getFormToken().'"><i class="fas fa-times"></i> '.Text::_('JOLLYANY_ACTIVATE_DELETE_ACTIVATION').'</button></div>';
 	        $html[]     =   '</div>';
 	        $html[]     =   '</div>';
 
@@ -113,10 +117,10 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 </blockquote>';
         } else {
             $html[]     =   '<div class="card"><div class="card-body">';
-            $html[]     =   '<h3>'.JText::_('JOLLYANY_OPTIONS_PACKAGE').'</h3>';
-            $html[]     =   '<p class="form-text">'.JText::_('JOLLYANY_WELCOME_FREE_DESC').'</p><hr />';
+            $html[]     =   '<h3>'.Text::_('JOLLYANY_OPTIONS_PACKAGE').'</h3>';
+            $html[]     =   '<p class="form-text">'.Text::_('JOLLYANY_WELCOME_FREE_DESC').'</p><hr />';
 	        $html[]     =   '<div class="card"><div class="card-body">';
-	        $html[]     =   '<h5 class="card-title">'.JText::_('JOLLYANY_BENEFIT').'</h5>';
+	        $html[]     =   '<h5 class="card-title">'.Text::_('JOLLYANY_BENEFIT').'</h5>';
 	        $html[]     =   '<h6 class="card-subtitle mb-2 text-muted">Paid only once</h6>';
 	        $html[]     =   '<h3><small class="text-muted"><del>$1280</del></small> <strong>$79</strong></h3>';
 
@@ -136,11 +140,11 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 	        $html[]     =   '<div class="card-body"><a class="btn btn-sm btn-as btn-as-primary" href="https://1.envato.market/jollyany-multipurpose-joomla-template" target="_blank"><i class="fas fa-shopping-cart"></i> Click here to buy a License</a></div>';
 	        $html[]     =   '</div>';
 	        $html[]     =   '<div class="card mt-3"><div class="card-body">';
-	        $html[]     =   '<h5 class="card-title">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION').'</h5>';
-            $html[]     =   '<p class="card-text form-text">'.JText::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION_DESC').'</p>';
+	        $html[]     =   '<h5 class="card-title">'.Text::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION').'</h5>';
+            $html[]     =   '<p class="card-text form-text">'.Text::_('JOLLYANY_WELCOME_TEMPLATE_ACTIVATION_DESC').'</p>';
 	        $html[]     =   '</div>';
-	        $html[]     =   '<ul class="list-group list-group-flush form-text"><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP1').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP2').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP3').'</li><li class="list-group-item">'.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP4').'</li></ul>';
-	        $html[]     =   '<div class="card-body"><a href="#" id="jollyany-theme-activate" class="btn btn-sm btn-as btn-success"><i class="fas fa-hand-pointer"></i> '.JText::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT').'</a></div>';
+	        $html[]     =   '<ul class="list-group list-group-flush form-text"><li class="list-group-item">'.Text::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP1').'</li><li class="list-group-item">'.Text::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP2').'</li><li class="list-group-item">'.Text::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP3').'</li><li class="list-group-item">'.Text::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT_STEP4').'</li></ul>';
+	        $html[]     =   '<div class="card-body"><a href="#" id="jollyany-theme-activate" class="btn btn-sm btn-as btn-success"><i class="fas fa-hand-pointer"></i> '.Text::_('JOLLYANY_WELCOME_ACTIVE_PRODUCT').'</a></div>';
 	        $html[]     =   '</div>';
 	        $html[]     =   '</div>';
 	        $html[]     =   '</div></div>';
@@ -148,11 +152,12 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
 
         $key        =   $params->get('secret_key','');
         if (!$key) {
-            $key            =   md5(uniqid('Jollyany'));
-            $table          =   JTable::getInstance('extension');
+            $key = md5(uniqid('Jollyany', true));
+            $table = new Extension();
             $params->set('secret_key', $key);
             $table->load($jollyany->id);
-            $table->save(array('params' => $params->toString()));
+            $table->params = $params->toString();
+            $table->store();
         }
 
         $javascript =   json_encode( array(
@@ -169,10 +174,10 @@ class JFormFieldJollyanyLicense extends JFormFieldList {
             'productname' => (string)$this->element['productname'],
 
             // URL to activate license for
-            'url'      => \JUri::root(),
+            'url'      => Uri::root(),
 
             // URL to return back data
-            'callback_url'      => \JUri::root().'index.php?option=com_ajax&jollyany=activation&key='.$key
+            'callback_url'      => Uri::root().'index.php?option=com_ajax&jollyany=activation&key='.$key
         ) );
         $html[]     =   '<script id="jollyany-form-data-json" type="text/template">'.$javascript.'</script>';
         return implode($html);

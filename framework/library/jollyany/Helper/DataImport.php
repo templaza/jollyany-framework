@@ -6,11 +6,15 @@
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
 namespace Jollyany\Helper;
+use Joomla\CMS\Uri\Uri;
+
 defined('_JEXEC') or die;
 
 class DataImport {
-	protected static $api  =   'https://www.templaza.com';
-	public static $cache   =    array('thumb' => array());
+	protected $api  =   '';
+    protected $isCloud =   false;
+    protected $cloudKey   =   '';
+	public $cache   =    array('thumb' => array());
 	protected static $exts =    array(
 	    'sp-page-builder'  =>   array(
             'name'      =>  'SP Page Builder',
@@ -43,12 +47,14 @@ class DataImport {
             'ext_code'  =>  'hikashop',
         )
     );
+
+
     protected static $exts_convert       =   [
         'sp-page-builder' => 'com_sppagebuilder',
         'tz-portfolio' => 'com_tz_portfolio_plus',
         'hikashop' => 'com_hikashop',
     ];
-	protected static $data =    null;
+	protected $data =    null;
     protected static $replacer   =   [
         'tz_fashion_semona_joomla'  => 'tz_fashion',
         'tz_everline_joomla'        => 'tz_everline',
@@ -58,43 +64,10 @@ class DataImport {
         'profiler-joomla-template'  => 'tz_profiler',
     ];
 
-	public static function getThumb($src) {
-        if (file_exists(JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'jollyany'.$src)) {
-            return JUri::base(true).'/cache/jollyany'.$src;
-        } else {
-            self::$cache['thumb'][] =   $src;
-            return self::$api.$src;
-        }
-    }
-
-    public static function getTotalTemplate() {
-        return count(self::getData());
-    }
-
-	public static function getApiUrl() {
-		return self::$api;
-	}
-
-	public static function getExtensions() {
-	    return self::$exts;
-    }
-
-    public static function getExtCode($key) {
-	    if (isset(self::$exts_convert[$key])) {
-            return self::$exts_convert[$key];
-        }
-        return false;
-    }
-
-    public static function getConvertCode($key) {
-        if (isset(self::$replacer[$key])) {
-            return self::$replacer[$key];
-        }
-        return $key;
-    }
-
-	public static function getData() {
-	    self::$data   =   array(
+    public function __construct($api= 'https://www.templaza.com')
+    {
+        $this->api = $api;
+        $this->data = array(
             'astroid_kowalski'      =>  array(
                 // Pack Info
                 'name'        => 'Kowalski',
@@ -694,7 +667,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                 ),
             ),
@@ -721,7 +694,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                 ),
             ),
@@ -748,7 +721,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                 ),
             ),
@@ -775,7 +748,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                 ),
             ),
@@ -802,7 +775,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
@@ -831,7 +804,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
@@ -860,7 +833,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
@@ -888,7 +861,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['ui-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
@@ -917,7 +890,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
             ),
@@ -944,7 +917,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
             ),
@@ -971,7 +944,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
             ),
@@ -998,7 +971,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1026,7 +999,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                 ),
             ),
@@ -1053,7 +1026,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1081,7 +1054,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1109,7 +1082,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1137,7 +1110,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1191,7 +1164,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1219,7 +1192,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1247,7 +1220,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1275,7 +1248,7 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
@@ -1303,15 +1276,76 @@ class DataImport {
 
                 'extensions'  => array(
                     self::$exts['sp-page-builder'],
-	                self::$exts['uk-sp-addons'],
+                    self::$exts['uk-sp-addons'],
                     self::$exts['tz-portfolio'],
                     self::$exts['hikashop'],
                 ),
             ),
         );
-	    foreach (self::$data as $key => &$temp) {
-	        $temp['thumb'] = self::getThumb($temp['thumb']);
+        foreach ($this->data as $key => &$temp) {
+            $temp['thumb'] = $this->getThumb($temp['thumb']);
         }
-		return self::$data;
+    }
+
+	public function getThumb($src) {
+        if (file_exists(JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'jollyany'.$src)) {
+            return Uri::base(true).'/cache/jollyany'.$src;
+        } else {
+            $this->cache['thumb'][] =   $src;
+            return $this->api.$src;
+        }
+    }
+
+    public function getTotalTemplate() {
+        return count($this->getData());
+    }
+
+	public function getApiUrl() {
+		return $this->api;
+	}
+
+    public function setApiUrl($api = ''): void
+    {
+        if ($api) $this->api = $api;
+    }
+
+    public function setCloudKey($key = ''): void
+    {
+        if ($key) {
+            $this->isCloud  =   true;
+            $this->cloudKey =   $key;
+        }
+    }
+
+    public function isCloudPackage()
+    {
+        return $this->isCloud;
+    }
+
+    public function getCloudKey()
+    {
+        return $this->cloudKey;
+    }
+
+	public static function getExtensions() {
+	    return self::$exts;
+    }
+
+    public static function getExtCode($key) {
+	    if (isset(self::$exts_convert[$key])) {
+            return self::$exts_convert[$key];
+        }
+        return false;
+    }
+
+    public static function getConvertCode($key) {
+        if (isset(self::$replacer[$key])) {
+            return self::$replacer[$key];
+        }
+        return $key;
+    }
+
+	public function getData() {
+		return $this->data;
 	}
 }

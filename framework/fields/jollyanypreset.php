@@ -7,16 +7,17 @@
  */
 defined('JPATH_BASE') or die;
 
-jimport('jollyany.framework.helper');
-
-JFormHelper::loadFieldClass('list');
+use Jollyany\Helper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Field\ListField;
+use Joomla\Database\DatabaseInterface;
 
 /**
  * Modules Position field.
  *
  * @since  3.4.2
  */
-class JFormFieldJollyanyPreset extends JFormFieldList {
+class JFormFieldJollyanyPreset extends ListField {
 
 	/**
 	 * The form field type.
@@ -37,7 +38,7 @@ class JFormFieldJollyanyPreset extends JFormFieldList {
 
 	protected function getInput() {
 		$html       =   array();
-		$presets    =   JollyanyFrameworkHelper::getPresets();
+		$presets    =   Helper::getPresets();
 		$html[]     =   '<div class="row mt-4">';
 		$colors     =   ['#ffcdd2','#e1bee7','#bbdefb','#b2dfdb','#ffcc80'];
 
@@ -85,9 +86,9 @@ class JFormFieldJollyanyPreset extends JFormFieldList {
 	 * @return object|null
 	 */
 	protected function getTemplateInfo() {
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		if($input->getCmd('option') == 'com_ajax' && $input->getCmd('astroid') == 'manager'){
-			$db = JFactory::getDBO();
+			$db = Factory::getContainer()->get(DatabaseInterface::class);
 			$query = $db->getQuery(true);
 			$id = $input->getInt('id');
 

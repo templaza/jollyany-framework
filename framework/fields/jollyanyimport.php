@@ -7,17 +7,19 @@
  */
 defined('JPATH_BASE') or die;
 
-jimport('jollyany.framework.helper');
-jimport('jollyany.framework.importer.data');
-
-JFormHelper::loadFieldClass('list');
+use Joomla\CMS\Form\Field\ListField;
+use Jollyany\Helper as JollyanyFrameworkHelper;
+use Joomla\CMS\Factory;
+use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
+use Joomla\CMS\Session\Session;
+use Joomla\CMS\Language\Text;
 
 /**
  * Modules Position field.
  *
  * @since  3.4.2
  */
-class JFormFieldJollyanyImport extends JFormFieldList {
+class JFormFieldJollyanyImport extends ListField {
 
 	/**
 	 * The form field type.
@@ -32,12 +34,12 @@ class JFormFieldJollyanyImport extends JFormFieldList {
 		$lictext    =   JollyanyFrameworkHelper::getLicense();
 
 		$license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
-        $config     =   \JFactory::getConfig();
+        $config     =   Factory::getApplication()->getConfig();
 		$activated  =   0;
 		if ( is_object( $license ) && isset( $license->purchase_code ) ) {
 			$activated  =   1;
 		}
-		$templates  =   JollyanyFrameworkDataImport::getData();
+		$templates  =   \Jollyany\Framework::getDataImport()->getData();
 		$html[]     =   '<div class="row g-3 g-lg-4">';
 		foreach ($templates as $index => $value) {
 			$status     =   $value['category'] == 'comingsoon' ? ' tabindex="-1" aria-disabled="true"' : '';
@@ -50,7 +52,7 @@ class JFormFieldJollyanyImport extends JFormFieldList {
 			$data   =  '<div class="col-12 col-md-6 col-lg-6">';
 			$data   .=  '<div class="card '.$tpl_code.'">';
 			$data   .=  '<img data-src="'.$value['thumb'].'" data-width="590" data-height="555" class="card-img-top" alt="'.$value['name'].'" data-uk-img />';
-			$data   .=  '<div class="card-body"><h6 class="card-title">'.$value['name'].($current_version ? ' <span class="badge rounded-pill text-bg-primary">'.JText::_('JOLLYANY_INSTALLED_VERSION') . ': '.$current_version.'</span>' : '').'</h6><p class="card-text form-text">'.$value['desc'].'</p><div class="btn-group" role="group" aria-label="Install Action"><a href="#" class="btn btn-sm btn-as btn-primary intall-package'.$clsstatus.'"  data-token="'.JSession::getFormToken().'" data-name="'.$value['name'].'" data-file="'.$index.'" data-status="'.$activated.'"'.$status.'>'.JText::_('JOLLYANY_ACTION_INSTALL_PACKAGE'.$comingsoon).'</a><a href="'.$value['demo_url'].'" class="btn btn-as btn-outline-primary'.$clsstatus.'" target="_blank"'.$status.'>'.JText::_('JOLLYANY_ACTION_DEMO_URL').'</a><a href="'.$download.'" class="btn btn-sm btn-as btn-outline-primary'.$clsstatus.'" target="_blank"'.$status.'>'.JText::_('JOLLYANY_ACTION_DOWNLOAD_URL'). $type.'</a></div></div>';
+			$data   .=  '<div class="card-body"><h6 class="card-title">'.$value['name'].($current_version ? ' <span class="badge rounded-pill text-bg-primary">'.Text::_('JOLLYANY_INSTALLED_VERSION') . ': '.$current_version.'</span>' : '').'</h6><p class="card-text form-text">'.$value['desc'].'</p><div class="btn-group" role="group" aria-label="Install Action"><a href="#" class="btn btn-sm btn-as btn-primary intall-package'.$clsstatus.'"  data-token="'.Session::getFormToken().'" data-name="'.$value['name'].'" data-file="'.$index.'" data-status="'.$activated.'"'.$status.'>'.Text::_('JOLLYANY_ACTION_INSTALL_PACKAGE'.$comingsoon).'</a><a href="'.$value['demo_url'].'" class="btn btn-as btn-outline-primary'.$clsstatus.'" target="_blank"'.$status.'>'.Text::_('JOLLYANY_ACTION_DEMO_URL').'</a><a href="'.$download.'" class="btn btn-sm btn-as btn-outline-primary'.$clsstatus.'" target="_blank"'.$status.'>'.Text::_('JOLLYANY_ACTION_DOWNLOAD_URL'). $type.'</a></div></div>';
 			$data   .=  '</div>';
 			$data   .=  '</div>';
 			$html[] =   $data;
@@ -60,21 +62,21 @@ class JFormFieldJollyanyImport extends JFormFieldList {
 		$html[]     .=  '<script id="jollyany-dialog-template" type="text/template"><div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="install-package-title">'.JText::_('JOLLYANY_ACTION_DIALOG_TITLE').' <strong class="package-name">Package</strong></h5>
+        <h5 class="modal-title" id="install-package-title">'.Text::_('JOLLYANY_ACTION_DIALOG_TITLE').' <strong class="package-name">Package</strong></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="text-muted">'.JText::_('JOLLYANY_ACTION_DIALOG_TITLE_DESC').'</p>
+        <p class="text-muted">'.Text::_('JOLLYANY_ACTION_DIALOG_TITLE_DESC').'</p>
         <div class="form-group form-check pl-4">
 		  <input type="checkbox" class="form-check-input" id="template-package" checked>
-		  <label class="form-check-label" for="template-package"><h5>'.JText::_('JOLLYANY_ACTION_DIALOG_TEMPLATE_INSTALL').'</h5><small class="text-muted">'.JText::_('JOLLYANY_ACTION_DIALOG_TEMPLATE_INSTALL_DESC').'</small></label>
+		  <label class="form-check-label" for="template-package"><h5>'.Text::_('JOLLYANY_ACTION_DIALOG_TEMPLATE_INSTALL').'</h5><small class="text-muted">'.Text::_('JOLLYANY_ACTION_DIALOG_TEMPLATE_INSTALL_DESC').'</small></label>
 		</div>
 		<hr />
-		<h5>'.JText::_('JOLLYANY_ACTION_DIALOG_EXTENSION_INSTALL').'</h5><small class="text-muted">'.JText::_('JOLLYANY_ACTION_DIALOG_EXTENSION_INSTALL_DESC').'</small>
+		<h5>'.Text::_('JOLLYANY_ACTION_DIALOG_EXTENSION_INSTALL').'</h5><small class="text-muted">'.Text::_('JOLLYANY_ACTION_DIALOG_EXTENSION_INSTALL_DESC').'</small>
 		<div class="extensions-container"></div>
 		<hr />
-		<h5>'.JText::_('JOLLYANY_ACTION_DIALOG_QUICKSTART_DATA_INSTALL').'</h5>
-		<p class="text-lead">'.JText::_('JOLLYANY_ACTION_DIALOG_QUICKSTART_DATA_INSTALL_DESC').'</p>
+		<h5>'.Text::_('JOLLYANY_ACTION_DIALOG_QUICKSTART_DATA_INSTALL').'</h5>
+		<p class="text-lead">'.Text::_('JOLLYANY_ACTION_DIALOG_QUICKSTART_DATA_INSTALL_DESC').'</p>
 		<div class="db_info card bg-light mb-2" style="display: none;">
            <div class="card-body">
              <h5 class="card-title">Your database information</h5>
@@ -90,26 +92,26 @@ class JFormFieldJollyanyImport extends JFormFieldList {
 		<div class="form-group form-check pl-4 border-0">
 		  <input type="checkbox" class="form-check-input" id="demo-data-package">
 		  <label class="form-check-label" for="demo-data-package">
-              <h5>'.JText::_('JOLLYANY_ACTION_DIALOG_DATA_INSTALL').'</h5>
-              <p class="text-lead text-danger">'.JText::_('JOLLYANY_ACTION_DIALOG_DATA_INSTALL_DESC').'</p>
+              <h5>'.Text::_('JOLLYANY_ACTION_DIALOG_DATA_INSTALL').'</h5>
+              <p class="text-lead text-danger">'.Text::_('JOLLYANY_ACTION_DIALOG_DATA_INSTALL_DESC').'</p>
 		  </label>
 		</div>
 		<div class="dialogDebug mt-3"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">'.JText::_('JCANCEL').'</button>
-        <button type="button" class="btn btn-primary install-action" data-token="'.JSession::getFormToken().'" data-file="">'.JText::_('JOLLYANY_ACTION_INSTALL_PACKAGE').'</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">'.Text::_('JCANCEL').'</button>
+        <button type="button" class="btn btn-primary install-action" data-token="'.Session::getFormToken().'" data-file="">'.Text::_('JOLLYANY_ACTION_INSTALL_PACKAGE').'</button>
       </div>
     </div>
   </div></script>';
         $tzthumbs   =   array();
-		if (count(JollyanyFrameworkDataImport::$cache['thumb'])) {
-		    foreach (JollyanyFrameworkDataImport::$cache['thumb'] as $value) {
+		if (count(\Jollyany\Framework::getDataImport()->cache['thumb'])) {
+		    foreach (\Jollyany\Framework::getDataImport()->cache['thumb'] as $value) {
                 $tzthumbs[]     =   "'$value'";
             }
         }
         $document = Astroid\Framework::getDocument();
-        $document->addScriptDeclaration('var tzthumbs_cache = ['.implode(',', $tzthumbs).']; var tztoken = \''.JSession::getFormToken().'\';');
+        $document->addScriptDeclaration('var tzthumbs_cache = ['.implode(',', $tzthumbs).']; var tztoken = \''.Session::getFormToken().'\';');
 		return implode($html);
 	}
 }

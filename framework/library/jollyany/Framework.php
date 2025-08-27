@@ -9,14 +9,18 @@
 
 namespace Jollyany;
 
+use Jollyany\Helper\DataImport;
+
 defined('_JEXEC') or die;
 
 abstract class Framework
 {
+    public static $dataimport = null;
     public static function init()
     {
         define('_JOLLYANY', 1); // define astroid
         self::constants();
+        self::$dataimport = new DataImport();
     }
 
     public static function constants()
@@ -25,5 +29,13 @@ abstract class Framework
         define('JOLLYANY_SUPPORT', 'https://www.templaza.com/forums.html');
         define('JOLLYANY_DOCUMENT', 'https://docs.jollyany.co/');
         define('JOLLYANY_PURCHASE', 'https://1.envato.market/jollyany-joomla-package');
+    }
+
+    public static function getDataImport()
+    {
+        if (!self::$dataimport) {
+            self::$dataimport = new DataImport();
+        }
+        return self::$dataimport;
     }
 }

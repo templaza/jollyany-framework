@@ -11,14 +11,18 @@ JLoader::register('ModulesHelper', JPATH_ADMINISTRATOR . '/components/com_module
 
 use Astroid\Helper;
 
-JFormHelper::loadFieldClass('list');
+use Joomla\CMS\Form\Field\ListField;
+use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
 
 /**
  * Modules Position field.
  *
  * @since  3.4.2
  */
-class JFormFieldJollyanyModulesID extends JFormFieldList {
+class JFormFieldJollyanyModulesID extends ListField {
 
    /**
     * The form field type.
@@ -37,7 +41,7 @@ class JFormFieldJollyanyModulesID extends JFormFieldList {
     */
    public function getOptions() {
 
-	   $db    = JFactory::getDbo();
+	   $db    = Factory::getContainer()->get(DatabaseInterface::class);
 	   $query = $db->getQuery(true);
 	   $extension   =   (string)$this->element['extension'];
 	   if ($extension) {
@@ -57,7 +61,7 @@ class JFormFieldJollyanyModulesID extends JFormFieldList {
 
 	   $moduleids = [];
 	   foreach ($modules as $module) {
-		   $moduleids[$module->id] = JText::_($module->title);
+		   $moduleids[$module->id] = Text::_($module->title);
 	   }
 
 	   return $moduleids;
@@ -116,7 +120,7 @@ class JFormFieldJollyanyModulesID extends JFormFieldList {
 
       // Create a read-only list (no name) with hidden input(s) to store the value(s).
       if ((string) $this->readonly == '1' || (string) $this->readonly == 'true') {
-         $html[] = JHtml::_('select.genericlist', $options, '', trim($attr), 'value', 'text', $this->value, $this->id);
+         $html[] = HTMLHelper::_('select.genericlist', $options, '', trim($attr), 'value', 'text', $this->value, $this->id);
 
          // E.g. form field type tag sends $this->value as array
          if ($this->multiple && is_array($this->value)) {
@@ -132,7 +136,7 @@ class JFormFieldJollyanyModulesID extends JFormFieldList {
          }
       } else {
          // Create a regular list.
-         $html[] = JHtml::_('select.genericlist', $options, $this->name, trim($attr), 'value', 'text', $this->value, $this->id);
+         $html[] = HTMLHelper::_('select.genericlist', $options, $this->name, trim($attr), 'value', 'text', $this->value, $this->id);
       }
 
       return implode($html);
