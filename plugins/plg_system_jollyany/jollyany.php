@@ -32,6 +32,7 @@ use Joomla\Database\DatabaseInterface;
 use Jollyany\Framework as JollyanyFramework;
 use Jollyany\Helper as JollyanyFrameworkHelper;
 use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
+use Jollyany\Article as JollyanyFrameworkArticle;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
     jimport('jollyany.framework.course');
@@ -716,7 +717,6 @@ class plgSystemJollyany extends CMSPlugin {
                         }
                         $thumbs     = $this->app->input->get('thumbs', array(), 'RAW');
 
-
                         $api_url    =   $import->getApiUrl();
                         for ($i = 0; $i < count($thumbs); $i++) {
                             $http       =   HttpFactory::getHttp();
@@ -1179,10 +1179,9 @@ class plgSystemJollyany extends CMSPlugin {
             return '';
         }
         if ($context == 'com_content.category') {
-            jimport('jollyany.framework.article');
             $content = '';
             if ($params->get('jollyany_show_course_lecture',0)) {
-                $content .= \Jollyany\Article::getLectureTotal($row->id);
+                $content .= JollyanyFrameworkArticle::getLectureTotal($row->id);
             }
             // Convert parameter fields to objects.
             $row_params = new Registry($row->attribs);
