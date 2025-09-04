@@ -7,7 +7,6 @@
  */
 namespace Jollyany;
 defined('_JEXEC') or die;
-jimport('jollyany.framework.jollyany');
 use Astroid\Framework;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
