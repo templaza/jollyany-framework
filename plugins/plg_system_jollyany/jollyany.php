@@ -241,7 +241,7 @@ class plgSystemJollyany extends CMSPlugin {
                                 'step'          => $step,
                                 'type'          => 'quickstart-api'
                             );
-                            $http       =   JHttpFactory::getHttp();
+                            $http       =   HttpFactory::getHttp();
                             $response   =   $http -> post ($url, $data, array(
                                 'Content-type' => 'application/x-www-form-urlencoded'
                             ));
