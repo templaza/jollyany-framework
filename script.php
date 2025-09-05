@@ -7,6 +7,11 @@
  */
 // no direct access
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Installer\Installer;
+use Joomla\CMS\Language\Text;
+use Joomla\Database\DatabaseInterface;
+use Joomla\CMS\Filesystem\Folder;
 
 if (!class_exists('jollyanyInstallerScript')) {
     class jollyanyInstallerScript
@@ -58,7 +63,7 @@ if (!class_exists('jollyanyInstallerScript')) {
                     $this->installPlugin($plugin, $plugin_dir);
                     if (file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation')) {
                         jimport('joomla.filesystem.folder');
-                        JFolder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation');
+                        Folder::delete(JPATH_ROOT.DIRECTORY_SEPARATOR.'jollyany_installation');
                     }
                 }
             }
@@ -66,12 +71,12 @@ if (!class_exists('jollyanyInstallerScript')) {
 
         public function installPlugin($plugin, $plugin_dir)
         {
-            $db = JFactory::getDbo();
+            $db = Factory::getContainer()->get(DatabaseInterface::class);
             $plugin_name = str_replace($plugin_dir, '', $plugin);
             $plugin_name = explode('_', $plugin_name);
             $plugin_name = end($plugin_name);
 
-            $installer = new JInstaller;
+            $installer = new Installer;
             $installer->install($plugin);
 
             $query = $db->getQuery(true);
@@ -86,7 +91,7 @@ if (!class_exists('jollyanyInstallerScript')) {
 
         public function uninstallPlugin($plugin, $plugin_dir)
         {
-            $db = JFactory::getDbo();
+            $db = Factory::getContainer()->get(DatabaseInterface::class);
             $plugin_name = str_replace($plugin_dir, '', $plugin);
             $plugin_name = explode('_', $plugin_name);
             $plugin_name = end($plugin_name);
