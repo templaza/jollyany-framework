@@ -1,7 +1,7 @@
 <updates>
     <update>
         <name>UK Addons SP PageBuilder</name>
-        <version>3.5.19</version>
+        <version>3.5.20</version>
         <infourl title="UK Addons SP PageBuilder">https://github.com/templaza/jollyany-framework/releases</infourl>
         <element>jollyany</element>
         <type>plugin</type>
