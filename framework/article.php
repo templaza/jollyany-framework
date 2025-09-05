@@ -6,8 +6,6 @@
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
 defined('_JEXEC') or die;
-jimport('astroid.framework.article');
-jimport('jollyany.framework.jollyany');
 use Astroid\Framework;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;

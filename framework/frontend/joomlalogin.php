@@ -10,6 +10,8 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 extract($displayData);
 $params = Astroid\Framework::getTemplate()->getParams();
 $document = Astroid\Framework::getDocument();
@@ -22,7 +24,7 @@ $joomlalogin_class         = $params->get('joomlalogin_class', '');
 $joomlalogin_uikit_icon    = $params->get('joomlalogin_uikit_icon', 0);
 
 if ($whendisplay) {
-    $user       =   \JFactory::getUser();
+    $user       =   Factory::getApplication()->getIdentity();
 	if ((isset($user->id) && $user->id && $whendisplay == 'logged-out') || ($whendisplay == 'logged-in' && (!isset($user->id) || !$user->id))) {
 		return;
 	}
@@ -39,7 +41,7 @@ if ($joomlalogin_uikit_icon) {
 } else {
     $icon   =   '<i class="'.$joomlalogin_class.' mr-1"'.($joomlalogin_font_size ? ' style="font-size: '.$joomlalogin_font_size.'px;"' : '').'></i>';
 }
-$module = JModuleHelper::getModuleById($joomlalogin_module);
+$module = ModuleHelper::getModuleById($joomlalogin_module);
 $title  =   $module && isset($module->title) && $module->title ? $module->title : JText::_('TPL_JOLLYANY_LOGIN');
 ?>
 	<div class="jollyany-login">

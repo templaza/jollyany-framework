@@ -7,6 +7,7 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
+use Joomla\CMS\Helper\ModuleHelper;
 ?><?php
 if(!empty($this->canonical)) {
 	$doc = JFactory::getDocument();
@@ -390,9 +391,8 @@ $this->product = $this->element;
 	<div class="hikashop_submodules" id="hikashop_submodules" style="clear:both">
 <?php
 	if(!empty ($this->modules) && is_array($this->modules)) {
-		jimport('joomla.application.module.helper');
 		foreach($this->modules as $module) {
-			echo JModuleHelper::renderModule($module);
+			echo ModuleHelper::renderModule($module);
 		}
 	}
 ?>

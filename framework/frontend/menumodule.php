@@ -10,6 +10,7 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
 extract($displayData);
 $template = Astroid\Framework::getTemplate();
 $params = $template->getParams();
@@ -19,7 +20,7 @@ $menu_module            = $params->get('menu_module', 0);
 $whendisplay            = $params->get('when_menu_module_display', '');
 
 if ($whendisplay) {
-	$user       =   \JFactory::getUser();
+	$user       =   Factory::getApplication()->getIdentity();
 	if ((isset($user->id) && $user->id && $whendisplay == 'logged-out') || ($whendisplay == 'logged-in' && (!isset($user->id) || !$user->id))) {
 		return;
 	}

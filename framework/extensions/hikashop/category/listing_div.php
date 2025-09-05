@@ -7,6 +7,7 @@
  * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
+use Joomla\CMS\Factory;
 ?><?php
 $mainDivName=$this->params->get('main_div_name');
 $carouselEffect=$this->params->get('carousel_effect');
@@ -41,8 +42,7 @@ $exists = false;
 if(!empty($this->rows)) {
 	$row=reset($this->rows);
 	if(!empty($row->file_path)) {
-		jimport('joomla.filesystem.file');
-		if(JFile::exists($row->file_path)) {
+		if(file_exists($row->file_path)) {
 			$exists=true;
 		} else {
 			$exists=false;
@@ -53,11 +53,10 @@ if(!$exists) {
 	$config = hikashop_config();
 	$path = $config->get('default_image');
 	if($path == 'barcode.png') {
-		$file_path=HIKASHOP_MEDIA.'images'.DS.'barcode.png';
+		$file_path=HIKASHOP_MEDIA.'images'.DIRECTORY_SEPARATOR.'barcode.png';
 	}
 	if(!empty($path)) {
-		jimport('joomla.filesystem.file');
-		if(JFile::exists($this->image->main_uploadFolder.$path)) {
+		if(file_exists($this->image->main_uploadFolder.$path)) {
 			$exists = true;
 		}
 	} else {
@@ -89,7 +88,7 @@ $this->newSizes->width = $this->width = $width;
 $this->image->main_thumbnail_y=$height;
 $this->image->main_thumbnail_x=$width;
 
-$app = JFactory::getApplication();
+$app = Factory::getApplication();
 $in_hikashop_context = (hikaInput::get()->getString('option') == HIKASHOP_COMPONENT && in_array(hikaInput::get()->getString('ctrl','category'), array('category', 'product')));
 $cid = 0;
 $last_category_selected = 0;

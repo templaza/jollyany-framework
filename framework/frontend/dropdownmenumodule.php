@@ -10,6 +10,8 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 extract($displayData);
 $params = Astroid\Framework::getTemplate()->getParams();
 $document = Astroid\Framework::getDocument();
@@ -18,7 +20,7 @@ $menu_module            = $params->get('dropdownmenu_module', 0);
 $whendisplay            = $params->get('when_dropdownmenu_module_display', '');
 
 if ($whendisplay) {
-	$user       =   \JFactory::getUser();
+    $user   	=   Factory::getApplication()->getIdentity();
 	if ((isset($user->id) && $user->id && $whendisplay == 'logged-out') || ($whendisplay == 'logged-in' && (!isset($user->id) || !$user->id))) {
 		return;
 	}
@@ -26,7 +28,7 @@ if ($whendisplay) {
 if (!$menu || !$menu_module) {
 	return;
 }
-$module = JModuleHelper::getModuleById($menu_module);
+$module = ModuleHelper::getModuleById($menu_module);
 $title  =   $module && isset($module->title) && $module->title ? $module->title : JText::_('TPL_JOLLYANY_MENU');
 ?>
 

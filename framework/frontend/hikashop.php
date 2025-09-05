@@ -10,6 +10,7 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Language\Text;
 extract($displayData);
 $params = Astroid\Framework::getTemplate()->getParams();
 $document = Astroid\Framework::getDocument();
@@ -33,7 +34,7 @@ if ($hikacart_uikit_icon) {
 }
 ?>
 <div class="jollyany-hikacart">
-    <a href="#jollyany-hikacart-content" class="jollyany-hikacart-icon" uk-toggle><?php echo $icon; ?><?php echo $hikacart_enable_text ? ' ' . JText::_('TPL_JOLLYANY_YOUR_CART') : ''; ?></a>
+    <a href="#jollyany-hikacart-content" class="jollyany-hikacart-icon" uk-toggle><?php echo $icon; ?><?php echo $hikacart_enable_text ? ' ' . Text::_('TPL_JOLLYANY_YOUR_CART') : ''; ?></a>
 </div>
 <?php
 ob_start();
@@ -41,7 +42,7 @@ ob_start();
 <!-- Modal -->
 <div id="jollyany-hikacart-content" class="uk-modal-container" uk-modal>
     <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
-        <h2 class="uk-modal-title" id="jollyany-hikacart-title"><?php echo JText::_('TPL_JOLLYANY_YOUR_CART'); ?></h2>
+        <h2 class="uk-modal-title" id="jollyany-hikacart-title"><?php echo Text::_('TPL_JOLLYANY_YOUR_CART'); ?></h2>
         <?php echo $document->loadModule("{loadmoduleid $hikacart_module}"); ?>
         <button class="uk-modal-close-default" type="button" uk-close></button>
     </div>

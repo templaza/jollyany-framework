@@ -25,8 +25,7 @@ class Course {
         $query = $db->getQuery(true)
             ->select('*')
             ->from($db->quoteName('#__jollyany_course_data'))
-            ->where($db->quoteName('cid') . ' = :cid');
-        $query->bind(':cid', (int) $id, ParameterType::INTEGER);
+            ->where($db->quoteName('cid') . ' = ' . $id);
         $db->setQuery($query);
         return $db->loadObject();
     }
@@ -44,27 +43,22 @@ class Course {
             $query = $db->getQuery(true)
                 ->select('COUNT(*)')
                 ->from($db->quoteName('#__jollyany_course_data'))
-                ->where($db->quoteName('cid') . ' = :cid');
-            $query->bind(':cid', (int) $table->id, ParameterType::INTEGER);
+                ->where($db->quoteName('cid') . ' = ' . $table->id);
             $db->setQuery($query);
             $exists = (int) $db->loadResult() > 0;
 
             if ($exists) {
                 $query = $db->getQuery(true)
                     ->update($db->quoteName('#__jollyany_course_data'))
-                    ->set($db->quoteName('data') . ' = :data')
-                    ->where($db->quoteName('cid') . ' = :cid');
-                $query->bind(':data', $data, ParameterType::STRING);
-                $query->bind(':cid', (int) $table->id, ParameterType::INTEGER);
+                    ->set($db->quoteName('data') . ' = ' . $db->quote($data))
+                    ->where($db->quoteName('cid') . ' = ' . $table->id);
                 $db->setQuery($query)->execute();
             } else {
                 $columns = [$db->quoteName('cid'), $db->quoteName('data')];
                 $valuesQuery = $db->getQuery(true)
                     ->insert($db->quoteName('#__jollyany_course_data'))
                     ->columns($columns)
-                    ->values(':cid, :data');
-                $valuesQuery->bind(':cid', (int) $table->id, ParameterType::INTEGER);
-                $valuesQuery->bind(':data', $data, ParameterType::STRING);
+                    ->values($table->id.','.$db->quote($data));
                 $db->setQuery($valuesQuery)->execute();
             }
         } catch (\RuntimeException | \InvalidArgumentException $e) {

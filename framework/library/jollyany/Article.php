@@ -17,6 +17,8 @@ use Joomla\Registry\Registry;
 use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Uri\Uri;
+use Jollyany\Helper\Course as JollyanyFrameworkCourse;
 
 class Article extends \Astroid\Article {
     public $print;
@@ -103,7 +105,7 @@ class Article extends \Astroid\Article {
 
                                 $modal_content  .=  '</div>';
                                 $modal_content  .=  '</div></div>';
-                                $downloadslider     =   isset($lesson['lesson_content_download_link']) && $lesson['lesson_content_download_link'] ? '<div><a href="'.JUri::root().'images/'.$lesson['lesson_content_download_link'].'" title="'.$lesson['lesson_content_title'].'" target="_blank"><span class="uk-badge"><i class="fas fa-download"></i></span></a></div>' : '';
+                                $downloadslider     =   isset($lesson['lesson_content_download_link']) && $lesson['lesson_content_download_link'] ? '<div><a href="'.Uri::root().'images/'.$lesson['lesson_content_download_link'].'" title="'.$lesson['lesson_content_title'].'" target="_blank"><span class="uk-badge"><i class="fas fa-download"></i></span></a></div>' : '';
 //                            echo '<tr><td width="45"><span uk-icon="play-circle"></span></td><td class="lesson-title"><a href="'.$lesson['lesson_content_video_url'].'" title="'.$lesson['lesson_content_title'].'" data-fancybox>'.$lesson['lesson_content_title'].'</a></td><td class="lesson-option">'.$lesson['lesson_content_duration'].'<span>'.$downloadslider.'</td></tr>';
                                 $table_content  .=  '<tr><td class="lesson-icon" width="45"><span uk-icon="file-text"></span></td><td class="lesson-index uk-visible@m" width="110">'.Text::_('JOLLYANY_COURSE_LECTURE').' '.$section.'.'.$index.'</td><td class="lesson-title"><a href="#jollyany-course-modal-'.$key.'" uk-toggle>'.$lesson['lesson_content_title'].'</a></td><td class="lesson-option uk-width-small uk-text-meta"><div class="uk-grid-small uk-flex-middle uk-flex-right" uk-grid><div>'.$lesson['lesson_content_duration'].'</div>'.$downloadslider.'</div></td></tr>';
                             }
@@ -183,7 +185,7 @@ class Article extends \Astroid\Article {
         ob_start();
         $event_available    =   $this->article->params->get('jollyany_event_location', '') || $this->article->params->get('jollyany_event_phone', '') || $this->article->params->get('jollyany_event_start', '') || $this->article->params->get('jollyany_event_end', '') || $this->article->params->get('jollyany_event_spot', '') || $this->article->params->get('jollyany_event_long_lat', '') || $this->article->params->get('jollyany_event_url', '');
         if ($event_available) :
-            $document = Framework::getDocument();
+            $document = Framework::getDocument()->getWA();
             echo '<div class="event-information uk-card uk-card-body uk-card-default uk-margin-medium">';
             echo '<div class="event-countdown">';
             if ((!$this->isCategoryView || ($this->isCategoryView && $this->categoryParams->get('jollyany_show_event_countdown',0))) && ($this->article->params->get('jollyany_event_start', '') || $this->article->params->get('jollyany_event_end', ''))) {
@@ -191,7 +193,7 @@ class Article extends \Astroid\Article {
                 echo '<div class="time-count-down">';
                 $expired_ms     =   time() < strtotime($this->article->params->get('jollyany_event_end', ''))  ? Text::_('JOLLYANY_EVENT_START_MS') : Text::_('JOLLYANY_EVENT_EXPIRED_MS');
                 $event_expired  =   $this->article->params->get('jollyany_event_expired', $expired_ms);
-                $document->addScript('media/jollyany/assets/js/vendor/jquery.countdown.min.js');
+                $document->registerAndUseScript('jollyany.countdown', 'media/jollyany/assets/js/vendor/jquery.countdown.min.js', ['relative' => true, 'version' => 'auto'], [], ['jquery']);
                 $countdown_id    =   uniqid('countdown_');
                 $txt            =   '';
                 $countdown_time =   '';
@@ -274,9 +276,9 @@ class Article extends \Astroid\Article {
                 }
                 $location_json = json_encode($location_addr);
                 $google_id    =   uniqid('googlemap_');
-                $document->addStyleDeclaration('#'.$google_id.'{height:'.$this->template->params->get('googlemapheight', '400').'px;}');
-                $document->addScript('https://maps.googleapis.com/maps/api/js?key='. $this->template->params->get('googleapikey', ''));
-                $document->addScript('media/jollyany/assets/js/vendor/gmap.min.js');
+                $document->addInlineStyle('#'.$google_id.'{height:'.$this->template->params->get('googlemapheight', '400').'px;}');
+                $document->registerAndUseScript('jollyany.gmap_api', 'https://maps.googleapis.com/maps/api/js?key='. $this->template->params->get('googleapikey', ''));
+                $document->registerAndUseScript('jollyany.gmap', 'media/jollyany/assets/js/vendor/gmap.min.js', ['relative' => true, 'version' => 'auto'], [], ['jquery']);
                 echo '<div class="event_googlemaps uk-margin-medium">';
                 echo '<div id="'.$google_id.'" class="googlemapapi" data-lat="' . trim($longlat[0]) . '" data-lng="' . trim($longlat[1]) . '"  data-location=\''.base64_encode($location_json).'\' data-maptype="' . $this->template->params->get('googlemaptype','ROADMAP') . '" data-mapzoom="' . $this->template->params->get('googlemapzoom', '15') . '" data-mousescroll="' . $googlemapmousescroll . '" data-infowindow="' . base64_encode($this->article->params->get('jollyany_event_infowindow', '')) . '" data-show-controll=\''.$googlemapshowcontrol.'\'></div>';
                 echo '</div>';

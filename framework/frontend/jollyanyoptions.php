@@ -14,12 +14,14 @@ defined('_JEXEC') or die;
 
 use Astroid\Helper\Style;
 use Astroid\Framework;
+use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
 $template = Framework::getTemplate();
 $params = $template->getParams();
 $document = Framework::getDocument();
-$app = JFactory::getApplication();
+$app = Factory::getApplication();
 $sitename = $app->get('sitename');
-jimport('joomla.filesystem.file');
 
 // Linearicon icon
 $document->addStyleSheet('media/jollyany/assets/fonts/linearicons/font.min.css');
@@ -28,8 +30,8 @@ $document->addStyleSheet('media/jollyany/assets/fonts/linearicons/font.min.css')
 if ($params->get('preloader', 1)) {
     $preloader_logo = $params->get('preloader_logo', false);
     if (!empty($preloader_logo)) {
-        $svg    =    JFile::getExt($preloader_logo) == 'svg' ? 'uk-svg' : '';
-        $document->addCustomTag('<script id="jollyany-preloader-logo-template" type="text/template"><div class="jollyany-preloader-logo mb-3"><img src="'.JURI::root() . Astroid\Helper\Media::getPath() . '/' . $preloader_logo .'" alt="'.$sitename.'" '.$svg.' class="astroid-logo-preloader" /></div></script>', 'body');
+        $svg    =    File::getExt($preloader_logo) == 'svg' ? 'uk-svg' : '';
+        $document->addCustomTag('<script id="jollyany-preloader-logo-template" type="text/template"><div class="jollyany-preloader-logo mb-3"><img src="'.Uri::root() . Astroid\Helper\Media::getPath() . '/' . $preloader_logo .'" alt="'.$sitename.'" '.$svg.' class="astroid-logo-preloader" /></div></script>', 'body');
     }
 }
 
@@ -48,8 +50,8 @@ if ($header_absolute == '1') {
 // Logo sidebar
 $sidebar_logo = $params->get('sidebar_logo', false);
 if (!empty($sidebar_logo)) {
-    $svg    =    JFile::getExt($sidebar_logo) == 'svg' ? 'uk-svg' : '';
-    $document->addCustomTag('<script id="jollyany-sidebar-collapsed-logo-template" type="text/template"><div class="astroid-sidebar-collapsed-logo"><img src="'.JURI::root() . Astroid\Helper\Media::getPath() . '/' . $sidebar_logo .'" alt="'.$sitename.'" '.$svg.' class="astroid-logo-sidebar" /></div></script>', 'body');
+    $svg    =    File::getExt($sidebar_logo) == 'svg' ? 'uk-svg' : '';
+    $document->addCustomTag('<script id="jollyany-sidebar-collapsed-logo-template" type="text/template"><div class="astroid-sidebar-collapsed-logo"><img src="'.Uri::root() . Astroid\Helper\Media::getPath() . '/' . $sidebar_logo .'" alt="'.$sitename.'" '.$svg.' class="astroid-logo-sidebar" /></div></script>', 'body');
 }
 
 // Color option
@@ -64,7 +66,7 @@ $dropdownmenu_icon_color = Style::getColor($params->get('dropdownmenu_icon_color
 $social_profiles_style = $params->get('social_profiles_style', 1);
 
 if (!empty($background_image)) {
-    Style::addCssBySelector('body', 'background-image', 'url('.JURI::root() . Astroid\Helper\Media::getPath() . '/' . $background_image.')');
+    Style::addCssBySelector('body', 'background-image', 'url('.Uri::root() . Astroid\Helper\Media::getPath() . '/' . $background_image.')');
 }
 Style::addCssBySelector('.uk-text-meta, .uk-article-meta', 'color', $body_meta_color['light']);
 Style::addCssBySelector('[data-bs-theme=dark] .uk-text-meta, [data-bs-theme=dark] .uk-article-meta', 'color', $body_meta_color['dark']);

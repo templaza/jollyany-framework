@@ -10,6 +10,7 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
+use Joomla\CMS\Language\Text;
 extract($displayData);
 $params = Astroid\Framework::getTemplate()->getParams();
 $document = Astroid\Framework::getDocument();
@@ -21,7 +22,7 @@ if (!$hikawishlist || !$hikawishlist_module) {
 }
 ?>
     <div class="jollyany-hikawishlist">
-        <a href="#jollyany-hikawishlist-content" class="jollyany-hikawishlist-icon" data-uk-toggle><i class="fas fa-heart mr-1"></i> <?php echo JText::_('TPL_JOLLYANY_YOUR_WISHLIST'); ?></a>
+        <a href="#jollyany-hikawishlist-content" class="jollyany-hikawishlist-icon" data-uk-toggle><i class="fas fa-heart mr-1"></i> <?php echo Text::_('TPL_JOLLYANY_YOUR_WISHLIST'); ?></a>
     </div>
 <?php
 ob_start();
@@ -29,7 +30,7 @@ ob_start();
     <!-- Modal -->
     <div id="jollyany-hikawishlist-content" class="uk-modal-container" data-uk-modal>
         <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
-            <h2 class="uk-modal-title" id="jollyany-hikawishlist-title"><?php echo JText::_('TPL_JOLLYANY_YOUR_WISHLIST'); ?></h2>
+            <h2 class="uk-modal-title" id="jollyany-hikawishlist-title"><?php echo Text::_('TPL_JOLLYANY_YOUR_WISHLIST'); ?></h2>
             <?php echo $document->loadModule("{loadmoduleid $hikawishlist_module}"); ?>
             <button class="uk-modal-close-default" type="button" data-uk-close></button>
         </div>
