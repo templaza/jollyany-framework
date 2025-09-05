@@ -35,7 +35,6 @@ use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
 use Jollyany\Article as JollyanyFrameworkArticle;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
-    jimport('jollyany.framework.course');
 }
 
 /**
