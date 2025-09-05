@@ -521,8 +521,7 @@ class plgSystemJollyany extends CMSPlugin {
                                     // Handle updater XML file case:
                                     if (preg_match('/\.xml\s*$/', $url))
                                     {
-                                        jimport('joomla.updater.update');
-                                        $update = new JUpdate;
+                                        $update = new \Joomla\CMS\Updater\Update;
                                         $update->loadFromXml($url);
                                         $package_url = trim($update->get('downloadurl', false)->_data);
 
