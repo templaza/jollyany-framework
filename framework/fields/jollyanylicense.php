@@ -11,7 +11,8 @@ use Joomla\CMS\Form\Field\ListField;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Registry\Registry;
 use Jollyany\Helper as JollyanyFrameworkHelper;
-use Joomla\CMS\Table\Extension;
+use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseInterface;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
@@ -153,11 +154,16 @@ class JFormFieldJollyanyLicense extends ListField {
         $key        =   $params->get('secret_key','');
         if (!$key) {
             $key = md5(uniqid('Jollyany', true));
-            $table = new Extension();
             $params->set('secret_key', $key);
-            $table->load($jollyany->id);
-            $table->params = $params->toString();
-            $table->store();
+
+            $db    = Factory::getContainer()->get(DatabaseInterface::class);
+            $query = $db->getQuery(true)
+                ->update($db->quoteName('#__extensions'))
+                ->set($db->quoteName('params') . ' = ' . $db->quote($params->toString()))
+                ->where($db->quoteName('extension_id') . ' = ' . (int) $jollyany->id);
+
+            $db->setQuery($query);
+            $db->execute();
         }
 
         $javascript =   json_encode( array(
