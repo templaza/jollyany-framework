@@ -33,6 +33,7 @@ use Jollyany\Framework as JollyanyFramework;
 use Jollyany\Helper as JollyanyFrameworkHelper;
 use Jollyany\Helper\DataImport as JollyanyFrameworkDataImport;
 use Jollyany\Article as JollyanyFrameworkArticle;
+use Jollyany\Helper\Course as JollyanyFrameworkCourse;
 if (file_exists(JPATH_LIBRARIES . '/jollyany/framework')) {
     JLoader::registerNamespace('Jollyany', JPATH_LIBRARIES . '/jollyany/framework/library/jollyany', false, false, 'psr4');
 }
