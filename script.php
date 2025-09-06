@@ -77,6 +77,7 @@ if (!class_exists('jollyanyInstallerScript')) {
             $plugin_name = end($plugin_name);
 
             $installer = new Installer;
+            $installer->setDatabase($db); // Set the database
             $installer->install($plugin);
 
             $query = $db->getQuery(true);
