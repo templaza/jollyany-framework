@@ -1,0 +1,201 @@
+.col-1-1 {
+  @extend .col-12;
+}
+.col-1-2 {
+  @extend .col-6;
+}
+.col-1-3 {
+  @extend .col-4;
+}
+.col-2-3 {
+  @extend .col-8;
+}
+.col-1-4 {
+  @extend .col-3;
+}
+.col-3-4 {
+  @extend .col-9;
+}
+.col-1-5 {
+  @extend .col-2;
+}
+.col-2-5 {
+  @extend .col-4;
+}
+.col-4-5 {
+  @extend .col-8;
+}
+.col-1-6 {
+  @extend .col-2;
+}
+.col-5-6 {
+  @extend .col-10;
+}
+
+// Small devices (tablets, 768px and up)
+.col-sm-1-1 {
+  @extend .col-sm-12;
+}
+.col-sm-1-2 {
+  @extend .col-sm-6;
+}
+.col-sm-1-3 {
+  @extend .col-sm-4;
+}
+.col-sm-2-3 {
+  @extend .col-sm-8;
+}
+.col-sm-1-4 {
+  @extend .col-sm-3;
+}
+.col-sm-3-4 {
+  @extend .col-sm-9;
+}
+.col-sm-1-5 {
+  @extend .col-sm-2;
+}
+.col-sm-2-5 {
+  @extend .col-sm-4;
+}
+.col-sm-4-5 {
+  @extend .col-sm-8;
+}
+.col-sm-1-6 {
+  @extend .col-sm-2;
+}
+.col-sm-5-6 {
+  @extend .col-sm-10;
+}
+
+// Medium devices (desktops, 992px and up)
+.col-md-1-1 {
+  @extend .col-md-12;
+}
+.col-md-1-2 {
+  @extend .col-md-6;
+}
+.col-md-1-3 {
+  @extend .col-md-4;
+}
+.col-md-2-3 {
+  @extend .col-md-8;
+}
+.col-md-1-4 {
+  @extend .col-md-3;
+}
+.col-md-3-4 {
+  @extend .col-md-9;
+}
+.col-md-1-5 {
+  @extend .col-md-2;
+}
+.col-md-2-5 {
+  @extend .col-md-4;
+}
+.col-md-4-5 {
+  @extend .col-md-8;
+}
+.col-md-1-6 {
+  @extend .col-md-2;
+}
+.col-md-5-6 {
+  @extend .col-md-10;
+}
+
+// Large devices (desktops, 992px and up)
+.col-lg-1-1 {
+  @extend .col-lg-12;
+}
+.col-lg-1-2 {
+  @extend .col-lg-6;
+}
+.col-lg-1-3 {
+  @extend .col-lg-4;
+}
+.col-lg-1-3 {
+  @extend .col-lg-4;
+}
+.col-lg-2-3 {
+  @extend .col-lg-8;
+}
+.col-lg-1-4 {
+  @extend .col-lg-3;
+}
+.col-lg-3-4 {
+  @extend .col-lg-9;
+}
+.col-lg-1-5 {
+  @extend .col-lg-2;
+}
+.col-lg-2-5 {
+  @extend .col-lg-4;
+}
+.col-lg-4-5 {
+  @extend .col-lg-8;
+}
+.col-lg-1-6 {
+  @extend .col-lg-2;
+}
+.col-lg-5-6 {
+  @extend .col-lg-10;
+}
+
+// X-Large devices (desktops, 992px and up)\
+.col-xl-1-1 {
+  @extend .col-xl-12;
+}
+.col-xl-1-2 {
+  @extend .col-xl-6;
+}
+.col-xl-1-3 {
+  @extend .col-xl-4;
+}
+.col-xl-1-3 {
+  @extend .col-xl-4;
+}
+.col-xl-2-3 {
+  @extend .col-xl-8;
+}
+.col-xl-1-4 {
+  @extend .col-xl-3;
+}
+.col-xl-3-4 {
+  @extend .col-xl-9;
+}
+.col-xl-1-5 {
+  @extend .col-xl-2;
+}
+.col-xl-2-5 {
+  @extend .col-xl-4;
+}
+.col-xl-4-5 {
+  @extend .col-xl-8;
+}
+.col-xl-1-6 {
+  @extend .col-xl-2;
+}
+.col-xl-5-6 {
+  @extend .col-xl-10;
+}
+
+.astroid-img-cover {
+  @each $breakpoint, $width in $grid-breakpoints {
+    @include media-breakpoint-between($breakpoint, breakpoint-next($breakpoint), $grid-breakpoints) {
+      @if ($breakpoint == 'xs') {
+        &:not(.col-1-1) {
+          > * {
+            position: absolute;
+            margin-bottom: 0;
+          }
+        }
+      } @else {
+        &:not(.col-#{$breakpoint}-1-1) {
+          > * {
+            position: absolute;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

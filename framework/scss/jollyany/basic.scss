@@ -24,6 +24,9 @@ $grid-divider-border: var(--bs-border-color) !default;
 // 7 Transition style
 @import "modules/animations";
 
+// Legacy code
+@import "legacy";
+
 .lead {
   line-height: 1.6em;
   strong {
