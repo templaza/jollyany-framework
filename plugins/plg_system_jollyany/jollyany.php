@@ -208,7 +208,6 @@ class plgSystemJollyany extends CMSPlugin {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
 
-
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
                         if ( is_object( $license ) && isset( $license->purchase_code ) ) {
@@ -229,18 +228,33 @@ class plgSystemJollyany extends CMSPlugin {
                             $config         =   Factory::getConfig();
                             $tmp_part       =   $config->get('tmp_path') ;
 
-                            $url        = $import->getApiUrl().'/index.php?option=com_tz_membership';
-                            //install quickstart package
+                            $cloud_package = array();
+                            if (file_exists($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json')) {
+                                $cloud_tmp = file_get_contents($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json');
+                                $cloud_package = json_decode($cloud_tmp, true);
+                                $url        = $cloud_package['cloud_url'].'/index.php?option=com_tz_membership';
+                                $data = array(
+                                    'task'          => 'download.package',
+                                    'produce'       => $cloud_package['product'],
+                                    'type'          => $cloud_package['type'],
+                                    'cloud_package' => 1,
+                                    'cloud_key'     => $cloud_package['cloud_key'],
+                                    'step'          => $step,
+                                );
+                            } else {
+                                $url        = $import->getApiUrl().'/index.php?option=com_tz_membership';
+                                $data = array(
+                                    'task'          => 'download.package',
+                                    'produce'       => $install_code,
+                                    'purchase_code' => $license->purchase_code,
+                                    'domain'        => Uri::getInstance() -> getHost(),
+                                    'step'          => $step,
+                                    'type'          => 'quickstart-api'
+                                );
+                            }
+
                             /* Get package zip file from server */
                             ini_set('memory_limit', '-1');
-                            $data = array(
-                                'task'          => 'download.package',
-                                'produce'       => $install_code,
-                                'purchase_code' => $license->purchase_code,
-                                'domain'        => Uri::getInstance() -> getHost(),
-                                'step'          => $step,
-                                'type'          => 'quickstart-api'
-                            );
                             $http       =   HttpFactory::getHttp();
                             $response   =   $http -> post ($url, $data, array(
                                 'Content-type' => 'application/x-www-form-urlencoded'
@@ -248,6 +262,27 @@ class plgSystemJollyany extends CMSPlugin {
 
                             if($response -> code == 200) {
                                 $header     = $response -> headers;
+                                if (!empty($header['Cloud-Package'])) {
+                                    $cloud_package = json_decode($response->body, true);
+                                    File::write($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json', $response->body);
+                                    $url        = $cloud_package['cloud_url'].'/index.php?option=com_tz_membership';
+                                    $data = array(
+                                        'task'          => 'download.package',
+                                        'produce'       => $cloud_package['product'],
+                                        'type'          => $cloud_package['type'],
+                                        'cloud_package' => 1,
+                                        'cloud_key'     => $cloud_package['cloud_key'],
+                                        'step'          => $step,
+                                    );
+                                    $http       =   HttpFactory::getHttp();
+                                    $response   =   $http -> post ($url, $data, array(
+                                        'Content-type' => 'application/x-www-form-urlencoded'
+                                    ));
+                                    if($response -> code != 200) {
+                                        throw new \Exception(Text::_('Can not connect to cloud server. Please try again later.'));
+                                    }
+                                    $header     = $response -> headers;
+                                }
                                 if (isset($header['Files-Part-Count'])) {
                                     $filePartCount  = $header['Files-Part-Count'];
                                 } elseif (isset($header['files-part-count'])) {
@@ -272,6 +307,7 @@ class plgSystemJollyany extends CMSPlugin {
                                 } else {
                                     $f_name = null;
                                 }
+
                                 if (!$f_name) throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_CAN_NOT_DOWNLOAD_PACKAGE'));
                                 $file_name  =   $file_name.'.'.Media::getExt($f_name);
                                 $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
@@ -280,6 +316,9 @@ class plgSystemJollyany extends CMSPlugin {
                                     $return["pathcount"]    =   $filePartCount;
                                     if ($step == $filePartCount) {
                                         $return['archive']  =   $tmp_part.'/'.$file_name;
+                                        if (!empty($cloud_package) && isset($cloud_package['cloud_key']) && $cloud_package['cloud_key'] != '' && file_exists($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json')) {
+                                            File::delete($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json');
+                                        }
                                     }
                                 } else {
                                     throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR_CAN_NOT_DOWNLOAD_PACKAGE'));
@@ -309,7 +348,6 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-
 
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
@@ -362,7 +400,6 @@ class plgSystemJollyany extends CMSPlugin {
                         if (!Session::checkToken()) {
                             throw new \Exception(Text::_('JOLLYANY_AJAX_ERROR'));
                         }
-
 
                         $lictext    =   JollyanyFrameworkHelper::getLicense();
                         $license    =   JollyanyFrameworkHelper::maybe_unserialize($lictext);
