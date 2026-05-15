@@ -68,6 +68,27 @@ class DataImport {
     {
         $this->api = $api;
         $this->data = array(
+            'astroid_sbona'      =>  array(
+                // Pack Info
+                'name'        => 'Sbona',
+                'desc'        => 'Sport Clubs & Outdoors Joomla Template',
+
+                // Pack Data
+                'thumb'       => '/images/stories/kowalski/thumbnail.jpg',
+                'category'    => 'joomla',
+
+                'demo_url'    => 'https://sbona.jollyany.co/',
+                'doc_url'     => 'https://docs.astroidframe.work/category/sbona',
+
+                'joomla_version'     => array(4,5,6),
+
+                'template'      => array(
+                    'name'      =>  'Kowalski Template',
+                    'type'      =>  'included',
+                    'code'      =>  'astroid_kowalski',
+                    'ext_code'  =>  'astroid-kowalski-api',
+                ),
+            ),
             'astroid_kowalski'      =>  array(
                 // Pack Info
                 'name'        => 'Kowalski',
@@ -78,7 +99,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://kowalski.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/kowalski',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -99,7 +120,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://nika.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/nika',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -120,7 +141,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://kamper.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/kamper',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -141,7 +162,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://likeastar.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/like-a-star',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -162,9 +183,9 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://travelami.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/travelami',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
-                'joomla_version'     => array(3,4,5),
+                'joomla_version'     => array(4,5,6),
 
                 'template'      => array(
                     'name'      =>  'Travelami Template',
@@ -213,7 +234,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://probike.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/probike',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -241,7 +262,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://autobike.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/autobike',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -269,7 +290,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://express.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/express',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -295,7 +316,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://amanus.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/amanus',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -323,7 +344,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://plazart.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/plazart',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -351,9 +372,9 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://todaynews.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/todaynews',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
-                'joomla_version'     => array(3,4,5),
+                'joomla_version'     => array(4,5,6),
 
                 'template'      => array(
                     'name'      =>  'Today News Template',
@@ -377,7 +398,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://interiart.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/interiart',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -405,7 +426,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://medil.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/medil',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -433,7 +454,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://agruco.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/agruco',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -461,7 +482,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://oraz.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/oraz',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -489,7 +510,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://goldenheart.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/goldenheart',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -517,7 +538,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://organico.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/organico',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -545,9 +566,9 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://baressco.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/baressco',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
-                'joomla_version'     => array(3,4,5),
+                'joomla_version'     => array(4,5,6),
 
                 'template'      => array(
                     'name'      =>  'Baressco Template',
@@ -573,7 +594,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://powfit.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/powfit',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -600,7 +621,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://alex.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/alex',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -626,7 +647,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://lefala.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/lefala',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -654,7 +675,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://newspaper.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/newspaper',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -681,7 +702,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://magazine.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/magazine',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -708,7 +729,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://varaham.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/varaham',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(4,5,6),
 
@@ -735,7 +756,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://krypton.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/krypton',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -762,7 +783,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://alita.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/alita',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -791,7 +812,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://martha.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/martha',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -820,7 +841,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://logistics.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/logistics',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -848,7 +869,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://pethub.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/pethub',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -877,7 +898,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://goldena.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/goldena',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -904,9 +925,9 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://educab.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/educab',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
-                'joomla_version'     => array(3,4,5),
+                'joomla_version'     => array(4,5,6),
 
                 'template'      => array(
                     'name'      =>  'Educab Template',
@@ -931,7 +952,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://profiler.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/profiler',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -958,7 +979,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://musika.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/musika',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -986,7 +1007,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://jollyany.co/',
-                'doc_url'     => 'https://jollyany.co/support/documentation',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1013,7 +1034,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://everline.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/everline',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1041,7 +1062,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://eventory.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/eventory',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1069,7 +1090,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://meetup.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/meetup',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1097,7 +1118,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://newage.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/new-age',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1125,7 +1146,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://nish2.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/nish_ii',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1151,7 +1172,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://fashion.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/fashion',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1179,7 +1200,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://justice.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/lawyer-justice',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1207,7 +1228,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://charity.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/charity',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1235,7 +1256,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://foodz.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/foodz',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
@@ -1263,7 +1284,7 @@ class DataImport {
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://construction.jollyany.co/',
-                'doc_url'     => 'https://docs.jollyany.co/templates/construction/',
+                'doc_url'     => 'https://docs.astroidframe.work',
 
                 'joomla_version'     => array(3,4,5),
 
