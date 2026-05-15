@@ -74,7 +74,7 @@ class DataImport {
                 'desc'        => 'Sport Clubs & Outdoors Joomla Template',
 
                 // Pack Data
-                'thumb'       => '/images/stories/kowalski/thumbnail.jpg',
+                'thumb'       => '/images/stories/sbona/thumbnail.jpg',
                 'category'    => 'joomla',
 
                 'demo_url'    => 'https://sbona.jollyany.co/',
@@ -83,10 +83,10 @@ class DataImport {
                 'joomla_version'     => array(4,5,6),
 
                 'template'      => array(
-                    'name'      =>  'Kowalski Template',
+                    'name'      =>  'Sbona Template',
                     'type'      =>  'included',
-                    'code'      =>  'astroid_kowalski',
-                    'ext_code'  =>  'astroid-kowalski-api',
+                    'code'      =>  'astroid_sbona',
+                    'ext_code'  =>  'astroid-sbona-api',
                 ),
             ),
             'astroid_kowalski'      =>  array(
