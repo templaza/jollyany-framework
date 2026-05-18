@@ -57,14 +57,8 @@ class plgSystemJollyany extends CMSPlugin {
         }
         if (Framework::isSite()) {
             $document = Astroid\Framework::getDocument(); // Astroid Document
-            if ($this->params->get('jollyany_load_uikit', 'local') === 'local') {
-                $document->addScript('media/jollyany/assets/js/uikit.min.js', 'body');
-                $document->addScript('media/jollyany/assets/js/uikit-icons.min.js', 'body');
-            } else {
-                $document->addScript('https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js', 'body');
-                $document->addScript('https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js', 'body');
-            }
-
+            $document->getWA()->useScript('astroid.uikit');
+            $document->getWA()->useScript('astroid.uikit-icons');
             $document->addScript('media/jollyany/assets/js/frontend.min.js', 'body');
         }
         return true;
