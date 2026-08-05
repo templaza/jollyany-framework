@@ -42,7 +42,7 @@ if ($joomlalogin_uikit_icon) {
     $icon   =   '<i class="'.$joomlalogin_class.' mr-1"'.($joomlalogin_font_size ? ' style="font-size: '.$joomlalogin_font_size.'px;"' : '').'></i>';
 }
 $module = ModuleHelper::getModuleById($joomlalogin_module);
-$title  =   $module && isset($module->title) && $module->title ? $module->title : JText::_('TPL_JOLLYANY_LOGIN');
+$title  =   $module && isset($module->title) && $module->title ? $module->title : \Joomla\CMS\Language\Text::_('TPL_JOLLYANY_LOGIN');
 ?>
 	<div class="jollyany-login">
 		<a href="#jollyany-login-content" class="jollyany-login-icon" uk-toggle><?php echo $icon; ?><?php echo $joomlalogin_enable_text ? ' ' . $title : ''; ?></a>
@@ -53,7 +53,7 @@ ob_start();
     <!-- Modal -->
     <div id="jollyany-login-content" uk-modal>
         <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
-            <h2 class="uk-modal-title" id="jollyany-login-title"><?php echo JText::_('TPL_JOLLYANY_LOGIN'); ?></h2>
+            <h2 class="uk-modal-title" id="jollyany-login-title"><?php echo \Joomla\CMS\Language\Text::_('TPL_JOLLYANY_LOGIN'); ?></h2>
             <?php echo $document->loadModule("{loadmoduleid $joomlalogin_module}"); ?>
             <button class="uk-modal-close-default" type="button" uk-close></button>
         </div>

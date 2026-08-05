@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 
 use Astroid\Helper\Style;
 use Astroid\Framework;
-use Joomla\CMS\Filesystem\File;
+use Joomla\Filesystem\File;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 $template = Framework::getTemplate();
