@@ -256,8 +256,10 @@ class plgSystemJollyany extends CMSPlugin {
 
                             if($response -> code == 200) {
                                 $header     = $response -> headers;
-                                if (!empty($header['Cloud-Package'])) {
+
+                                if (!empty($header['Cloud-Package']) || !empty($header['cloud-package'])) {
                                     $cloud_package = json_decode($response->body, true);
+
                                     File::write($tmp_part.DIRECTORY_SEPARATOR.md5($install_code.$license->purchase_code).'.json', $response->body);
                                     $url        = $cloud_package['cloud_url'].'/index.php?option=com_tz_membership';
                                     $data = array(
