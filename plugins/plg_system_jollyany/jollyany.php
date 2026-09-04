@@ -1035,7 +1035,7 @@ class plgSystemJollyany extends CMSPlugin {
             if (!$f_name) return false;
             $filePartCount = is_array($filePartCount) && isset($filePartCount[0]) ? $filePartCount[0] : $filePartCount;
             if($filePartCount && $step <= $filePartCount){
-                File::append($tmp_part.'/'.$f_name,$response -> body);
+                File::write($tmp_part.'/'.$f_name, $response -> body, false, true);
                 if ($step == $filePartCount) {
                     return $tmp_part.'/'.$f_name;
                 } else {
