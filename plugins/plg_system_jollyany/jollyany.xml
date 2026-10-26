@@ -8,7 +8,7 @@
    <copyright>Copyright (C) 2026 TemPlaza, Jsc. All rights reserved.</copyright>
    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
    <authorEmail>info@templaza.com</authorEmail>
-   <authorUrl>https://www.templaza.com</authorUrl>
+   <authorUrl>https://templaza.com</authorUrl>
    <description>Jollyany Framework Plugin Description Here</description>>
    <files>
       <filename plugin="jollyany">jollyany.php</filename>
@@ -25,6 +25,6 @@
       </fields>
    </config>
    <updateservers>
-      <server type="extension" name="Jollyany Plugin" priority="1">https://www.templaza.com/tzupdates/jollyany.xml</server>
+      <server type="extension" name="Jollyany Plugin" priority="1">https://templaza.com/tzupdates/jollyany.xml</server>
    </updateservers>
 </extension>

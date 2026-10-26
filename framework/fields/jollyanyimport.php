@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   Jollyany Framework
- * @author    TemPlaza https://www.templaza.com
+ * @author    TemPlaza https://templaza.com
  * @copyright Copyright (C) 2009 - 2022 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
@@ -47,7 +47,7 @@ class JFormFieldJollyanyImport extends ListField {
 			$comingsoon =   $value['category'] == 'comingsoon' ? '_COMINGSOON' : '';
 			$tpl_code   =   JollyanyFrameworkDataImport::getConvertCode($index);
             $current_version    =   JollyanyFrameworkHelper::getExtVersion($tpl_code);
-            $download   =   isset($value['download']) && $value['download'] ? $value['download'] : 'https://www.templaza.com/download/joomla-templates.html';
+            $download   =   isset($value['download']) && $value['download'] ? $value['download'] : 'https://templaza.com/download/joomla-templates.html';
             $type       =   isset($value['type']) && $value['type'] == 'free' ? ' Free' : '';
 			$data   =  '<div class="col-12 col-md-6 col-lg-6">';
 			$data   .=  '<div class="card '.$tpl_code.'">';

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   Jollyany Framework
- * @author    TemPlaza https://www.templaza.com
+ * @author    TemPlaza https://templaza.com
  * @copyright Copyright (C) 2009 - 2019 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
@@ -34,7 +34,7 @@ class JFormFieldJollyanyPreset extends ListField {
 	/**
 	 *    Laborator API Server URL
 	 */
-	public static $api_server = 'https://www.templaza.com';
+	public static $api_server = 'https://templaza.com';
 
 	protected function getInput() {
 		$html       =   array();

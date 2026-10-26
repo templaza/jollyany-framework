@@ -1,14 +1,14 @@
 <?php
 /**
  * @package   Jollyany Framework
- * @author    TemPlaza https://www.templaza.com
+ * @author    TemPlaza https://templaza.com
  * @copyright Copyright (C) 2009 - 2021 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
 defined('_JEXEC') or die;
 
 class JollyanyFrameworkDataImport {
-	protected static $api  =   'https://www.templaza.com';
+	protected static $api  =   'https://templaza.com';
 	public static $cache   =    array('thumb' => array());
 	protected static $exts =    array(
 	    'sp-page-builder'  =>   array(

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   Jollyany Framework
- * @author    TemPlaza https://www.templaza.com
+ * @author    TemPlaza https://templaza.com
  * @copyright Copyright (C) 2009 - 2021 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
@@ -64,7 +64,7 @@ class DataImport {
         'profiler-joomla-template'  => 'tz_profiler',
     ];
 
-    public function __construct($api= 'https://www.templaza.com')
+    public function __construct($api= 'https://templaza.com')
     {
         $this->api = $api;
         $this->data = array(

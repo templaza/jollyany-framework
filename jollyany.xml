@@ -5,11 +5,11 @@
    <author>TemPlaza</author>
    <creationDate>September 2026</creationDate>
    <version>3.6.2</version>
-   <url>https://www.templaza.com</url>
+   <url>https://templaza.com</url>
    <copyright>Copyright (C) 2026 TemPlaza, Jsc. All rights reserved.</copyright>
    <license>GNU General Public License version 3 or later; see LICENSE.txt</license>
    <authorEmail>info@templaza.com</authorEmail>
-   <authorUrl>https://www.templaza.com</authorUrl>
+   <authorUrl>https://templaza.com</authorUrl>
    <description>Jollyany Template Framework by TemPlaza</description>
    <scriptfile>script.php</scriptfile>
    <files>

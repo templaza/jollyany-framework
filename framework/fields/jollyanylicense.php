@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   Jollyany Framework
- * @author    TemPlaza https://www.templaza.com
+ * @author    TemPlaza https://templaza.com
  * @copyright Copyright (C) 2009 - 2019 TemPlaza.
  * @license https://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
  */
@@ -39,7 +39,7 @@ class JFormFieldJollyanyLicense extends ListField {
     /**
      *    Laborator API Server URL
      */
-    public static $api_server = 'https://www.templaza.com';
+    public static $api_server = 'https://templaza.com';
 
     protected function getInput() {
         $html       =   array();
@@ -107,8 +107,8 @@ class JFormFieldJollyanyLicense extends ListField {
       <div class="card-body">
         <div class="card-img-top display-4 text-danger"><i class="far fa-tired"></i></div>
         <h6 class="card-title">I\'m not satisfied with this stupid template</h6>
-        <p class="card-text form-text">I am sorry for this inconvenience. You can ask a support on our <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow">forum</a> or <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow">Request a full refund</a> no hassles, no questions asked!</p>
-        <a href="https://www.templaza.com/forums.html" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-info">Ask a question</a> <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-danger">Request a Refund</a>
+        <p class="card-text form-text">I am sorry for this inconvenience. You can ask a support on our <a href="https://templaza.com/tickets.html" target="_blank" rel="nofollow">forum</a> or <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow">Request a full refund</a> no hassles, no questions asked!</p>
+        <a href="https://templaza.com/tickets.html" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-info">Ask a question</a> <a href="https://themeforest.net/refund_requests/new" target="_blank" rel="nofollow" class="btn btn-sm btn-as btn-danger">Request a Refund</a>
       </div>
     </div>
 </div>';
